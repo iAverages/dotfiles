@@ -62,8 +62,9 @@ if [ -f ~/.localrc ]; then
     source ~/.localrc
 fi
 
-# Load aliases
-source .aliasesrc
+alias ls='ls --color'
+alias c='code'
+alias cat='batcat'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
