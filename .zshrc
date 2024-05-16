@@ -16,6 +16,21 @@ zinit light zsh-users/zsh-syntax-highlighting
 # Load completions
 autoload -U compinit && compinit
 
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# Configure history
+HISTSIZE=10000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
 eval "$(starship init zsh)"
 
 # Start SSH Agent
