@@ -22,6 +22,11 @@ if ! command_exists zsh; then
   exit 1
 fi
 
+if ! command_exists stow; then
+  echo "Stow is not installed, please install stow"
+  exit 1
+fi
+
 REPO_URL=https://github.com/iAverages/dotfiles.git
 INSTALL_PATH=$HOME/.config
 
@@ -37,3 +42,5 @@ fi
 cd $INSTALL_PATH
 
 curl -sS https://starship.rs/install.sh | sh
+
+stow .
