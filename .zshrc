@@ -31,6 +31,10 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# Allow for case-insensitive tab completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+
 eval "$(starship init zsh)"
 
 # Start SSH Agent
@@ -55,6 +59,9 @@ add_to_path "/usr/local/go/bin"
 if [ -f ~/.localrc ]; then
     source ~/.localrc
 fi
+
+# Load aliases
+source .aliasesrc
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
