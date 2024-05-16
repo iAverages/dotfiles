@@ -9,6 +9,13 @@ fi
 
 source "$ZINIT_HOME/zinit.zsh"
 
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
+
+# Load completions
+autoload -U compinit && compinit
+
 eval "$(starship init zsh)"
 
 # Start SSH Agent
