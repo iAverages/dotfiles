@@ -169,6 +169,10 @@
         {
             "before": ["s", "l"],
             "after": ["<c-w>", "l"]
+        },
+        {
+            "before": ["<leader>", "e"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
         }
     ],
     "vim.leader": "<space>",
@@ -185,5 +189,6 @@
     "editor.minimap.enabled": false,
     "rust-analyzer.check.command": "clippy",
     "typescript.updateImportsOnFileMove.enabled": "never",
-    "editor.fontFamily": "'JetBrainsMono Nerd Font', Consolas, 'Courier New', monospace"
+    "editor.fontFamily": "'JetBrainsMono Nerd Font', Consolas, 'Courier New', monospace",
+    "prisma.showPrismaDataPlatformNotification": false
 }
