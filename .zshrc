@@ -65,6 +65,9 @@ fi
 alias ls='ls --color'
 alias c='code'
 alias cat='batcat'
+alias g='git'
+alias ga='git add .'
+alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml'"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
