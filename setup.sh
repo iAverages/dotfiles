@@ -3,7 +3,7 @@
 set -e
 
 # Ensure command exists 
-function command_exists() {
+command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
@@ -28,7 +28,7 @@ if ! command_exists stow; then
 fi
 
 REPO_URL=https://github.com/iAverages/dotfiles.git
-INSTALL_PATH=$HOME/.config
+INSTALL_PATH=$HOME/dotfiles/
 
 if [ -d "$INSTALL_PATH" ]; then
   echo "Dotfiles already installed, updating"
@@ -41,6 +41,8 @@ fi
 
 cd $INSTALL_PATH
 
-curl -sS https://starship.rs/install.sh | sh
+if ! command_exists starship; then
+  curl -sS https://starship.rs/install.sh | sh
+fi
 
 stow .
