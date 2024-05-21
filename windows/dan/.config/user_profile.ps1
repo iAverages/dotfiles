@@ -1,9 +1,35 @@
-# Prompt
-Import-Module posh-git
-$omp_config = Join-Path $PSScriptRoot ".\dan.omp.json"
-oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
+# set PowerShell to UTF-8
+[console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-# Alias 
-Set-Alias vim nvim
+Invoke-Expression (&starship init powershell)
+
+# PSReadLine
+Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineOption -BellStyle None
+Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
+Set-PSReadLineOption -PredictionSource History
+
+# Fzf
+Import-Module PSFzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+
+# Env
+$env:GIT_SSH = "C:\Windows\system32\OpenSSH\ssh.exe"
+
+# Alias
+Set-Alias -Name vim -Value nvim
 Set-Alias ll ls
-Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
+Set-Alias g git
+Set-Alias grep findstr
+Set-Alias c code
+
+# Utilities
+function which ($command) {
+  Get-Command -Name $command -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+}
+
+$env:PATH = [Environment]::GetEnvironmentVariable("Path", "User") + ';' + [Environment]::GetEnvironmentVariable("Path", "Machine")
+
+$yarn_bin = yarn global bin | Out-String
+$env:PATH = $env:PATH + ";" + $yarn_bin
