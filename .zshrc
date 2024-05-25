@@ -64,7 +64,14 @@ fi
 
 alias ls='ls --color'
 alias c='code'
-alias cat='batcat'
+if command -v "batcat" >/dev/null 2>&1; then
+    alias cat='batcat'
+fi
+
+if command -v "bat" >/dev/null 2>&1;then
+    alias cat='bat'
+fi
+
 alias g='git'
 alias ga='git add .'
 alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml'"
