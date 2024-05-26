@@ -125,6 +125,7 @@
     tilt
     distrobox
     alejandra
+    tig
   ];
 
   users.defaultUserShell = pkgs.zsh;
