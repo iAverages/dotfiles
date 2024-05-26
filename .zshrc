@@ -66,6 +66,10 @@ fi
 
 alias ls='ls --color'
 alias c='code'
+alias editnix='~/dotfiles/rebuild-nix.sh'
+alias editdots='~/dotfiles/editdots.sh'
+alias res='source ~/dotfiles/.zshrc'
+
 if command -v "batcat" >/dev/null 2>&1; then
     alias cat='batcat'
 fi
@@ -82,6 +86,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-function rebuild () {
-  sudo nixos-rebuild switch --flake ~/dotfiles/nixos/
-}
