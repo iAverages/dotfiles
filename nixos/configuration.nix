@@ -55,6 +55,7 @@
     layout = "gb";
     variant = "";
   };
+
   # Configure console keymap
   console.keyMap = "uk";
 
