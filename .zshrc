@@ -37,6 +37,8 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
 zinit cdreplay -q
 
+export EDITOR=nvim
+
 eval "$(starship init zsh)"
 
 # Start SSH Agent
