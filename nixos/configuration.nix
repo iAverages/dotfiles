@@ -126,6 +126,7 @@
     distrobox
     alejandra
     tig
+    libnotify
   ];
 
   users.defaultUserShell = pkgs.zsh;
