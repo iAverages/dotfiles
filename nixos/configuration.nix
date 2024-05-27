@@ -116,9 +116,9 @@
     discord
     spotify
     gh
-    rustc
-    cargo
-    clippy
+    #rustc
+    #cargo
+    #clippy
     yarn
     nodePackages.pnpm
     nodejs_20
@@ -131,6 +131,7 @@
     libnotify
     smplayer
     mpv
+    rustup
   ];
 
   users.defaultUserShell = pkgs.zsh;
