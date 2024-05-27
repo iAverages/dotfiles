@@ -129,6 +129,7 @@
     tig
     libnotify
     smplayer
+    mpv
   ];
 
   users.defaultUserShell = pkgs.zsh;
