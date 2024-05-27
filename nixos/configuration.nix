@@ -128,6 +128,7 @@
     alejandra
     tig
     libnotify
+    smplayer
   ];
 
   users.defaultUserShell = pkgs.zsh;
