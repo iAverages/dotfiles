@@ -116,6 +116,7 @@
     discord
     spotify
     gh
+    mysql
     #rustc
     #cargo
     #clippy
