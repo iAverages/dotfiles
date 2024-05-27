@@ -190,5 +190,6 @@
     "rust-analyzer.check.command": "clippy",
     "typescript.updateImportsOnFileMove.enabled": "never",
     "editor.fontFamily": "'JetBrainsMono Nerd Font', Consolas, 'Courier New', monospace",
-    "prisma.showPrismaDataPlatformNotification": false
+    "prisma.showPrismaDataPlatformNotification": false,
+    "github.copilot.editor.enableAutoCompletions": true
 }

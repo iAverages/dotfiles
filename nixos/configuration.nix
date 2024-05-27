@@ -118,6 +118,7 @@
     gh
     rustc
     cargo
+    clippy
     yarn
     nodePackages.pnpm
     nodejs_20
