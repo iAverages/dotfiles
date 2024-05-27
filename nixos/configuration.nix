@@ -117,6 +117,7 @@
     spotify
     gh
     mysql
+    libreoffice
     #rustc
     #cargo
     #clippy
