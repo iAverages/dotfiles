@@ -134,6 +134,8 @@
     smplayer
     mpv
     rustup
+    wofi
+    teams-for-linux
   ];
 
   users.defaultUserShell = pkgs.zsh;
