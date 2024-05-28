@@ -136,6 +136,7 @@
     rustup
     wofi
     teams-for-linux
+    stripe-cli
   ];
 
   users.defaultUserShell = pkgs.zsh;
