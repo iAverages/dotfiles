@@ -141,6 +141,10 @@
     (waybar.overrideAttrs (oldAttrs: {
       meson = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     }))
+    dunst
+    libnotify
+    swww
+    rofi-wayland
   ];
 
   users.defaultUserShell = pkgs.zsh;
