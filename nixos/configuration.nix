@@ -137,6 +137,7 @@
     wofi
     teams-for-linux
     stripe-cli
+    waybar
   ];
 
   users.defaultUserShell = pkgs.zsh;
