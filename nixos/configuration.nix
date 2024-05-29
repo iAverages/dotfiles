@@ -138,6 +138,9 @@
     teams-for-linux
     stripe-cli
     waybar
+    (waybar.overrideAttrs (oldAttrs: {
+      meson = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+    }))
   ];
 
   users.defaultUserShell = pkgs.zsh;
