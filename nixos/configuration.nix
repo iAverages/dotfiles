@@ -145,6 +145,7 @@
     libnotify
     swww
     rofi-wayland
+    networkmanagerapplet
   ];
 
   users.defaultUserShell = pkgs.zsh;
