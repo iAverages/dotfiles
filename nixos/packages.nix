@@ -2,6 +2,7 @@
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
   programs.direnv.enable = true;
+  programs.gnupg.agent.enable = true;
 
   # $ nix search wget
   environment.systemPackages = with pkgs; [
