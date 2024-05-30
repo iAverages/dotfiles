@@ -1,4 +1,4 @@
-{}: {
+{pkgs, ...}: {
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
   programs.direnv.enable = true;

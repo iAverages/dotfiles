@@ -1,4 +1,4 @@
-{}: {
+{pkgs, ...}: {
   users.users.dan = {
     isNormalUser = true;
     description = "dan";
@@ -9,4 +9,5 @@
   };
 
   users.extraGroups.vboxusers.members = ["dan"];
+  users.defaultUserShell = pkgs.zsh;
 }
