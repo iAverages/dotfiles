@@ -53,5 +53,6 @@
     swww
     rofi-wayland
     networkmanagerapplet
+    thunderbird
   ];
 }
