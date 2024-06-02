@@ -54,5 +54,6 @@
     rofi-wayland
     networkmanagerapplet
     thunderbird
+    lazygit
   ];
 }
