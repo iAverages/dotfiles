@@ -1,3 +1,10 @@
+
+# If not inside of tmux, start it
+
+if [ -z "$TMUX" ]; then
+    tmux attach || tmux new
+fi
+
 # Setup zinit plugin manager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
