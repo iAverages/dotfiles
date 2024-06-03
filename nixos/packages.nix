@@ -39,6 +39,7 @@
     tig
     libnotify
     smplayer
+    mplayer
     mpv
     rustup
     wofi
