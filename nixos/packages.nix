@@ -57,5 +57,6 @@
     thunderbird
     lazygit
     php
+    php82Packages.composer
   ];
 }
