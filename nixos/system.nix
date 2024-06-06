@@ -20,9 +20,6 @@
   programs.nix-ld.libraries = with pkgs; [
   ];
 
-  # Set system hostname
-  networking.hostName = "izanami";
-
   # Enable networking
   networking.networkmanager.enable = true;
 
