@@ -56,5 +56,6 @@
     networkmanagerapplet
     thunderbird
     lazygit
+    php
   ];
 }
