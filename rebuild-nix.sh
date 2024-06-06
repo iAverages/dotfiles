@@ -2,10 +2,9 @@
 
 set -e
 
-# Open nvim and set cwd to dotfiles
-nvim --cmd "~/dotfiles/nixos/" ~/dotfiles/nixos/
-
 pushd ~/dotfiles/nixos/
+
+nvim .
 
 # Early return if no changes were detected
 if git diff --quiet '*.nix'; then

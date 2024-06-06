@@ -2,10 +2,9 @@
 
 set -e
 
-# Open nvim and set cwd to dotfiles
-nvim --cmd "~/dotfiles/" ~/dotfiles/
-
 pushd ~/dotfiles/
+
+nvim .
 
 # Early return if no changes were detected
 if git diff --quiet; then
@@ -19,12 +18,13 @@ git diff -U0 '*'
 
 echo "Applying changes to zsh..."
 
-source ~/dotfiles/.zshrc
+# TODO: Work out why sourcing .zshrc fails in here only
+#source ~/dotfiles/.zshrc
 
-readline -p "What did you change?" commitmsg
+#read -p "What did you change? " commitmsg
 
 # Commit all changes witih the generation metadata
-git commit -am "$commitmsg"
+#git commit -am "$commitmsg"
 
 # Back to where you were
 popd
