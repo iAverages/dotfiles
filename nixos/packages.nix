@@ -59,5 +59,6 @@
     php
     php82Packages.composer
     termius
+    #yt-dlp-light
   ];
 }
