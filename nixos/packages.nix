@@ -4,7 +4,6 @@
   programs.direnv.enable = true;
   programs.gnupg.agent.enable = true;
 
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vscode
     neovim
@@ -25,9 +24,6 @@
     gh
     mysql
     libreoffice
-    #rustc
-    #cargo
-    #clippy
     yarn
     nodePackages.pnpm
     nodejs_20
@@ -39,7 +35,6 @@
     tig
     libnotify
     smplayer
-    mplayer
     mpv
     rustup
     wofi

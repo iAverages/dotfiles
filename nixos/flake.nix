@@ -20,7 +20,8 @@
       };
       modules = [
         nixos-hardware.nixosModules.framework-16-7040-amd
-        ./hardware-configuration-izanami.nix
+        ./machines/izanami/hardware-configuration.nix
+        ./machines/izanami/configuration.nix
         ./configuration.nix
       ];
     };
@@ -32,9 +33,9 @@
         meta = {hostname = "kirsi";};
       };
       modules = [
-        ./hardware-configuration-kirsi.nix
+        ./machines/kirsi/hardware-configuration.nix
+        ./machines/kirsi/configuration.nix
         ./configuration.nix
-        ./pc-config.nix
       ];
     };
   };
