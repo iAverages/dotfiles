@@ -24,7 +24,7 @@ alejandra . &>/dev/null ||
 git diff -U0 '*.nix'
 
 # Use sudo before so login is cached and I get this message once authed
-sudo echo "NixOS Rebuilding..."
+sudo echo "NixOS Rebuilding for $(hostname)..."
 
 # Rebuild, output simplified errors, log trackebacks
 sudo nixos-rebuild switch --flake ~/dotfiles/nixos/#$(hostname) &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
@@ -33,7 +33,7 @@ sudo nixos-rebuild switch --flake ~/dotfiles/nixos/#$(hostname) &>nixos-switch.l
 current=$(nixos-rebuild list-generations | grep current)
 
 # Commit all changes witih the generation metadata
-git commit -am "$current"
+git commit -am "$(hostname): $current"
 
 # Back to where you were
 popd
