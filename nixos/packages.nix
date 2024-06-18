@@ -55,5 +55,6 @@
     php82Packages.composer
     termius
     yt-dlp
+    ffmpeg
   ];
 }
