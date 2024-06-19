@@ -56,6 +56,6 @@
     termius
     yt-dlp
     ffmpeg
-    docker_25
+    docker_26
   ];
 }
