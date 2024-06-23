@@ -57,6 +57,7 @@
     yt-dlp
     ffmpeg
     docker_26
+    gnumake
   ];
 
   environment.variables = {
