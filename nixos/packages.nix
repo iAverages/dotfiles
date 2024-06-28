@@ -58,6 +58,7 @@
     ffmpeg
     docker_26
     gnumake
+    jq
   ];
 
   environment.variables = {
