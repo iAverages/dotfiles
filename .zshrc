@@ -76,6 +76,8 @@ alias c='code'
 alias editnix='~/dotfiles/rebuild-nix.sh'
 alias editdots='~/dotfiles/editdots.sh'
 alias res='source ~/dotfiles/.zshrc'
+alias rebuild='sudo nixos-rebuild switch --flake ~/dotfiles/nixos/#$(hostname) &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)'
+alias zsource='source ~/.zshrc'
 
 if command -v "batcat" >/dev/null 2>&1; then
     alias cat='batcat'
