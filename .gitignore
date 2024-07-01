@@ -1,2 +1,3 @@
 .localrc
 *.log
+.config/Code/*
