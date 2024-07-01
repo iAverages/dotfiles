@@ -18,4 +18,8 @@
       useOSProber = true;
     };
   };
+
+  # Enable SSH server
+  services.openssh.enable = true;
+  services.openssh.permitRootLogin = "no";
 }
