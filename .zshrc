@@ -88,6 +88,7 @@ if command -v "bat" >/dev/null 2>&1;then
 fi
 
 alias g='git'
+alias gs='git status'
 alias ga='git add .'
 alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml'"
 
