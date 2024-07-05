@@ -59,6 +59,7 @@
     docker_26
     gnumake
     jq
+    ncdu
   ];
 
   environment.variables = {
