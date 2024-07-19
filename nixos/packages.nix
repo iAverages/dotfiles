@@ -61,13 +61,13 @@
     jq
     ncdu
 
-# stuff for hyprland
-overskride
-udiskie
-hyprcursor
-hyprlock
-hyprpaper
-hypridle
+    # stuff for hyprland
+    overskride
+    udiskie
+    hyprcursor
+    hyprlock
+    hyprpaper
+    hypridle
   ];
 
   programs.nm-applet.enable = true;
