@@ -68,7 +68,10 @@
     hyprlock
     hyprpaper
     hypridle
+    gnome-keyring
   ];
+
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   programs.nm-applet.enable = true;
 
