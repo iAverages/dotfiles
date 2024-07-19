@@ -60,6 +60,7 @@
     gnumake
     jq
     ncdu
+    postman
   ];
 
   environment.variables = {
