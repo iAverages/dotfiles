@@ -61,6 +61,7 @@
     jq
     ncdu
     postman
+    unzip
   ];
 
   environment.variables = {
