@@ -64,6 +64,7 @@
     unzip
     ripgrep
     luarocks
+    fd
   ];
 
   environment.variables = {
