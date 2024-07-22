@@ -62,6 +62,7 @@
     ncdu
     postman
     unzip
+    ripgrep
   ];
 
   environment.variables = {
