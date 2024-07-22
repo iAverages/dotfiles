@@ -63,6 +63,7 @@
     postman
     unzip
     ripgrep
+    luarocks
   ];
 
   environment.variables = {
