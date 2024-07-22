@@ -65,6 +65,7 @@
     ripgrep
     luarocks
     fd
+    lua
   ];
 
   environment.variables = {
