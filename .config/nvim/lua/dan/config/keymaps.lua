@@ -16,3 +16,5 @@ map("n", "<leader>l", "<C-w>l")
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
+-- Cut without yanking
+map("n", "x", "\"_x", "Cut without yanking")

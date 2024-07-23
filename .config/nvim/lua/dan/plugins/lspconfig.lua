@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
 local on_attach = function(client, bufnr)
-   require("lspconfig").on_attach(client, bufnr)
+  require("lsp-format").on_attach(client, bufnr)
 end
 
 return {
@@ -10,8 +10,8 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
-    { "folke/neodev.nvim", opts = {} },
-			"lukas-reineke/lsp-format.nvim",
+    { "folke/neodev.nvim",                   opts = {} },
+    "lukas-reineke/lsp-format.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -91,13 +91,14 @@ return {
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
           capabilities = capabilities,
+          on_attach = on_attach,
           settings = {
             Lua = {
               -- make the language server recognize "vim" global
               diagnostics = {
                 globals = { "vim" },
               },
-completion = {
+              completion = {
                 callSnippet = "Replace",
               },
             },
