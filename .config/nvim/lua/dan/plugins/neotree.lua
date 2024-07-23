@@ -8,6 +8,11 @@ return {
 		"3rd/image.nvim",
 	},
 	opts = {
+		buffers = {
+			follow_currnet_file = {
+				enable = true
+			}
+		},
 		filesystem = {
 			visible = true,
 			hide_dotfiles = false,

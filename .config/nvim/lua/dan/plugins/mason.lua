@@ -39,6 +39,7 @@ return {
         "prettier", -- prettier formatter
         "stylua",   -- lua formatter
         "rustfmt",  -- rust formatter
+        "eslint",   -- typescript linter
       },
     })
   end,

@@ -16,7 +16,8 @@ return {
     telescope.setup({
       pickers = {
         find_files = {
-          hidden = true }
+          hidden = true
+        }
       },
       defaults = {
         path_display = { "truncate" },
