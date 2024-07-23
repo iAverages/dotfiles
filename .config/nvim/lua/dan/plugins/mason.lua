@@ -28,7 +28,7 @@ return {
       -- list of servers for mason to install
       ensure_installed = {
         "lua_ls",
-	"tsserver",
+        "tsserver",
         "rust_analyzer",
         "intelephense",
       },
@@ -37,7 +37,8 @@ return {
     mason_tool_installer.setup({
       ensure_installed = {
         "prettier", -- prettier formatter
-        "stylua", -- lua formatter
+        "stylua",   -- lua formatter
+        "rustfmt",  -- rust formatter
       },
     })
   end,
