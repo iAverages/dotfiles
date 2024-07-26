@@ -65,6 +65,7 @@
     luarocks
     fd
     lua
+    prettierd
   ];
 
   environment.variables = {
