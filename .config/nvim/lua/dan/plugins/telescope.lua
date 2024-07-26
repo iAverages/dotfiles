@@ -20,6 +20,12 @@ return {
         }
       },
       defaults = {
+        file_ignore_patterns = {
+          "target",       -- rust output
+          "node_modules", -- nodejs packages
+          "vendor",       -- php packages
+          ".direnv",      -- nix shit
+        },
         path_display = { "truncate" },
         mappings = {
           i = {

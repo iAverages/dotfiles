@@ -28,10 +28,11 @@ return {
       -- list of servers for mason to install
       ensure_installed = {
         "lua_ls",
-        "tsserver",
+        "vtsls",
         "rust_analyzer",
         "intelephense",
       },
+
     })
 
     mason_tool_installer.setup({
