@@ -36,7 +36,6 @@
     libnotify
     smplayer
     mpv
-    rustup
     wofi
     teams-for-linux
     stripe-cli
