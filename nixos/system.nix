@@ -32,6 +32,7 @@
 
   # Enable Docker
   virtualisation.docker.enable = true;
+  virtualisation.docker.package = pkgs.docker_27;
 
   # Set your time zone.
   time.timeZone = "Europe/London";
