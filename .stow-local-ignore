@@ -4,3 +4,4 @@ windows
 .gitignore
 setup.sh
 nixos
+nixos-switch.log

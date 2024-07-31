@@ -1,12 +1,15 @@
 live_config_reload = true
 
+[env]
+TERM = "xterm-256color"
+
 [window]
 decorations = "full"
 opacity = 0.8
 
-[window.padding]
-x = 8
-y = 8
+# [window.padding]
+# x = 8
+# y = 8
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
@@ -14,6 +17,3 @@ style = "Regular"
 
 [scrolling]
 history = 0
-
-[colors.normal]
-red = "#ff6969"

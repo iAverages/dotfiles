@@ -1,2 +1,3 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+require("dan.config.lazy")
+require("dan.config.keymaps")
+require("dan.config.options")

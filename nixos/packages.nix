@@ -4,6 +4,8 @@
   programs.direnv.enable = true;
   programs.gnupg.agent.enable = true;
 
+  # nixpkgs.overlays = [rust-overlay.overlays.default];
+
   environment.systemPackages = with pkgs; [
     vscode
     neovim
@@ -36,7 +38,6 @@
     libnotify
     smplayer
     mpv
-    rustup
     wofi
     teams-for-linux
     stripe-cli
@@ -60,6 +61,14 @@
     gnumake
     jq
     ncdu
+    postman
+    unzip
+    ripgrep
+    luarocks
+    fd
+    lua
+    prettierd
+    rust-bin.stable.latest.default
 
     # stuff for hyprland
     overskride

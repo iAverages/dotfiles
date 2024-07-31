@@ -3,13 +3,14 @@
 add_newline = false
 
 format = """
+ \
 $directory\
 $git_branch\
 $character"""
 
 [directory]
 style = "fg:#8a38d2 bold"
-fish_style_pwd_dir_length  = 1
+fish_style_pwd_dir_length = 1
 truncate_to_repo = true
 
 [character]
