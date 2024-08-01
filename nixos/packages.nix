@@ -4,8 +4,6 @@
   programs.direnv.enable = true;
   programs.gnupg.agent.enable = true;
 
-  # nixpkgs.overlays = [rust-overlay.overlays.default];
-
   environment.systemPackages = with pkgs; [
     vscode
     neovim
@@ -68,7 +66,6 @@
     fd
     lua
     prettierd
-    rust-bin.stable.latest.default
   ];
 
   environment.variables = {
