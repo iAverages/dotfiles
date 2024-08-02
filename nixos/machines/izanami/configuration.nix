@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   # Configuration specific to this machine
 
   # Set hostname of the machine
@@ -14,5 +14,9 @@
       device = "/swapfile";
       size = 16 * 1024; # 16GB
     }
+  ];
+
+  environment.systemPackages = with pkgs; [
+    wl-copy
   ];
 }

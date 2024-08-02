@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   # Configuration specific to this machine
 
   # Use the NVIDIA driver
@@ -22,4 +26,8 @@
   # Enable SSH server
   services.openssh.enable = true;
   services.openssh.permitRootLogin = "no";
+
+  environment.systemPackages = with pkgs; [
+    xclip
+  ];
 }
