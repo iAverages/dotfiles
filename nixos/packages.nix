@@ -66,6 +66,7 @@
     fd
     lua
     prettierd
+    playerctl
   ];
 
   environment.variables = {
