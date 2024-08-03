@@ -67,6 +67,8 @@
     lua
     prettierd
     playerctl
+    inotify-tools
+    killall
   ];
 
   environment.variables = {
