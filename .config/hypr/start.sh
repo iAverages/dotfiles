@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-swww init &
+# wallpaper
+swww-daemon &
 
-nm-applet --indicator &
+# Network shit
+nm-applet &
 
-waybar &
+# Script handles auto reloading
+~/.scripts/launch-waybar &
 
 dunst

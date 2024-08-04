@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR="$HOME/dotfiles/wallpapers/" 
+CACHE_FILE="$HOME/.cache/swww-wallpaper"
+
+TODAY=$(date +%Y-%m-%d)
+FORCE=false
+if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
+    FORCE=true
+fi
+if [ -f "$CACHE_FILE" ] && [ "$FORCE" == "false" ]; then
+    LAST_DATE=$(head -n 1 "$CACHE_FILE")
+    LAST_WALLPAPER=$(tail -n 1 "$CACHE_FILE")
+
+    if [ "$LAST_DATE" == "$TODAY" ]; then
+        swww img "$LAST_WALLPAPER"
+        exit 0
+    fi
+fi
+
+WALLPAPER=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
+swww img "$WALLPAPER"
+echo -e "$TODAY\n$WALLPAPER" > "$CACHE_FILE"
