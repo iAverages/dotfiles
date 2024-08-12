@@ -14,6 +14,7 @@ opt.smartcase = true
 opt.cursorline = true
 opt.termguicolors = true
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+opt.scrolloff = 8
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
