@@ -69,6 +69,7 @@
     playerctl
     inotify-tools
     killall
+    fzf
   ];
 
   environment.variables = {
