@@ -99,3 +99,5 @@ export NVM_DIR="$HOME/.nvm"
 mkdir ~/.bin 2>/dev/null``
 add_to_path ~/.bin
 add_to_path ~/.cargo/bin
+
+source <(fzf --zsh)
