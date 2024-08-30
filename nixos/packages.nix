@@ -70,6 +70,7 @@
     inotify-tools
     killall
     fzf
+    obs-studio
   ];
 
   environment.variables = {
