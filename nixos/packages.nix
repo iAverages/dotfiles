@@ -34,7 +34,6 @@
     alejandra
     tig
     libnotify
-    smplayer
     mpv
     wofi
     teams-for-linux
