@@ -31,7 +31,6 @@
     gnomeExtensions.tiling-assistant
     gnomeExtensions.window-calls
     grim
-    slurp
   ];
 
   programs.hyprland.enable = true;
