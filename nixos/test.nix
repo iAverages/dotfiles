@@ -9,7 +9,7 @@
     gtk3
     hyprpaper
     hyprpicker
-    mako # notification system developed by swaywm maintainer
+    dunst
     mm-common
     nil
     nwg-look
@@ -31,6 +31,7 @@
     gnomeExtensions.tiling-assistant
     gnomeExtensions.window-calls
     grim
+    blueman
   ];
 
   programs.hyprland.enable = true;
