@@ -4,6 +4,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    swaynotificationcenter
     swww
     grim # screenshot functionality
     gtk3
