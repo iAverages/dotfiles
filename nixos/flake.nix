@@ -20,6 +20,12 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
+    # pkgs = import nixpkgs {
+    #   inherit system;
+    #   overlays = [
+    #     inputs.hyprpanel.overlay
+    #   ];
+    # };
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -33,7 +39,10 @@
         ./machines/izanami/configuration.nix
         ./configuration.nix
         ({pkgs, ...}: {
-          nixpkgs.overlays = [rust-overlay.overlays.default];
+          nixpkgs.overlays = [
+            rust-overlay.overlays.default
+            inputs.hyprpanel.overlay
+          ];
           environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
         })
       ];
