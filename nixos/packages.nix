@@ -78,6 +78,7 @@
     inputs.rose-pine-hyprcursor.packages.${system}.default
     hyprpanel
     ags
+    bun
   ];
 
   environment.variables = {
