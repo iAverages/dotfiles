@@ -9,6 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   };
 
   outputs = {
@@ -17,9 +18,11 @@
     nixos-hardware,
     rust-overlay,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    system = "x86_64-linux";
+  in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       specialArgs = {
         inherit inputs;
         meta = {hostname = "izanami";};
