@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
   programs.direnv.enable = true;
@@ -71,6 +75,7 @@
     killall
     fzf
     obs-studio
+    inputs.rose-pine-hyprcursor.packages.${system}.default
   ];
 
   environment.variables = {

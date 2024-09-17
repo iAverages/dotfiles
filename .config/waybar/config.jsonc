@@ -22,6 +22,7 @@
         "bluetooth",
         "pulseaudio",
         "custom/notification",
+        "battery",
         "clock",
     ],
     // Modules configuration
