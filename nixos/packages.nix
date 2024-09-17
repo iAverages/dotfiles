@@ -77,6 +77,7 @@
     obs-studio
     inputs.rose-pine-hyprcursor.packages.${system}.default
     hyprpanel
+    ags
   ];
 
   environment.variables = {
