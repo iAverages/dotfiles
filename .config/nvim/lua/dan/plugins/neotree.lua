@@ -7,6 +7,9 @@ return {
         "MunifTanjim/nui.nvim",
         "3rd/image.nvim",
     },
+    config = function()
+        require("transparent").clear_prefix("NeoTree")
+    end,
     opts = {
         buffers = {
             follow_currnet_file = {
