@@ -70,6 +70,7 @@
     killall
     fzf
     obs-studio
+    steam
   ];
 
   environment.variables = {
