@@ -8,7 +8,7 @@ return {
         },
 
         config = function()
-            ---@diagnostic disable-next-line: missing-fields
+            ---@diagnostic disable: missing-fields
             require("Comment").setup({
                 toggler = {
                     line = "<C-_>",
@@ -16,8 +16,10 @@ return {
                 opleader = {
                     line = "<C-_>",
                 },
+
                 pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
             })
+            ---@diagnostic enable: missing-fields
         end,
         lazy = false,
         opts = {
@@ -33,6 +35,10 @@ return {
     {
         "echasnovski/mini.move",
         lazy = false,
+        version = false,
+        config = function()
+            require("mini.move").setup()
+        end,
     },
     -- Better buffer closing actions. Available via the buffers helper.
     {
