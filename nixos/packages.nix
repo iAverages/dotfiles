@@ -38,7 +38,6 @@
     alejandra
     tig
     libnotify
-    smplayer
     mpv
     wofi
     teams-for-linux
@@ -79,6 +78,7 @@
     hyprpanel
     ags
     bun
+    steam
   ];
 
   environment.variables = {
