@@ -10,6 +10,10 @@
     };
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    astal = {
+      url = "github:aylur/astal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

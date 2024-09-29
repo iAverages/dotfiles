@@ -19,6 +19,26 @@
         "type": "github"
       }
     },
+    "astal": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727569307,
+        "narHash": "sha256-bgr9Q8WFBO0epZYFRPLo2ooSOBGmQzqdiB51clD2sPc=",
+        "owner": "aylur",
+        "repo": "astal",
+        "rev": "f17b28d2d28e4c087a996fcf7b0bb43c789a3885",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aylur",
+        "repo": "astal",
+        "type": "github"
+      }
+    },
     "hyprlang": {
       "inputs": {
         "nixpkgs": [
@@ -142,6 +162,7 @@
     },
     "root": {
       "inputs": {
+        "astal": "astal",
         "hyprpanel": "hyprpanel",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
