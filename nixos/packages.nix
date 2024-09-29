@@ -78,6 +78,7 @@
     ags
     bun
     steam
+    home-manager
   ];
 
   environment.variables = {
