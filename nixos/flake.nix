@@ -38,29 +38,14 @@
         ./machines/izanami/hardware-configuration.nix
         ./machines/izanami/configuration.nix
         ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.dan = import ./home.nix;
-        }
-        # home-manager.nixosModules.home-manager
-        # {
-        #   home-manager.useGlobalPkgs = true;
-        #   home-manager.useUserPackages = true;
-        #   home-manager.users.dan = import ./home.nix;
-        #   home-manager.specialArgs = {
-        #     inherit inputs system;
-        #   };
-        # }
-        #
-        # ({pkgs, ...}: {
-        #   nixpkgs.overlays = [
-        #     rust-overlay.overlays.default
-        #     inputs.hyprpanel.overlay
-        #   ];
-        #   environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
-        # })
+        inputs.home-manager.nixosModules.default
+        ({pkgs, ...}: {
+          nixpkgs.overlays = [
+            rust-overlay.overlays.default
+            inputs.hyprpanel.overlay
+          ];
+          environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
+        })
       ];
     };
 
