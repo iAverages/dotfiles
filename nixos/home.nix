@@ -1,6 +1,6 @@
 {
-  inputs,
-  pkgs,
+  # inputs,
+  # pkgs,
   ...
 }: {
   home.username = "dan";
@@ -47,12 +47,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.ags = {
-    enable = true;
-    configDir = null;
-
-    extraPackages = with pkgs; [
-      inputs.ags.packages.${system}.battery
-    ];
-  };
+  # programs.ags = {
+  #   enable = true;
+  #   configDir = null;
+  #
+  #   extraPackages = with pkgs; [
+  #     inputs.ags.packages.${system}.battery
+  #   ];
+  # };
 }

@@ -38,6 +38,12 @@
         ./machines/izanami/hardware-configuration.nix
         ./machines/izanami/configuration.nix
         ./configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.dan = import ./home.nix;
+        }
         # home-manager.nixosModules.home-manager
         # {
         #   home-manager.useGlobalPkgs = true;
