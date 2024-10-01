@@ -8,6 +8,8 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   };
 
   outputs = {
@@ -16,9 +18,17 @@
     nixos-hardware,
     rust-overlay,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    system = "x86_64-linux";
+    # pkgs = import nixpkgs {
+    #   inherit system;
+    #   overlays = [
+    #     inputs.hyprpanel.overlay
+    #   ];
+    # };
+  in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       specialArgs = {
         inherit inputs;
         meta = {hostname = "izanami";};
@@ -29,7 +39,10 @@
         ./machines/izanami/configuration.nix
         ./configuration.nix
         ({pkgs, ...}: {
-          nixpkgs.overlays = [rust-overlay.overlays.default];
+          nixpkgs.overlays = [
+            rust-overlay.overlays.default
+            inputs.hyprpanel.overlay
+          ];
           environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
         })
       ];
