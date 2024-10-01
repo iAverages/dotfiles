@@ -9,6 +9,6 @@
     ./services.nix
     ./system.nix
     ./user.nix
-    ./test.nix
+    # ./test.nix
   ];
 }
