@@ -26,11 +26,11 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
-      inherit system;
       specialArgs = {
-        inherit inputs;
+      inherit inputs;
         meta = {hostname = "izanami";};
       };
       modules = [
@@ -38,7 +38,6 @@
         ./machines/izanami/hardware-configuration.nix
         ./machines/izanami/configuration.nix
         ./configuration.nix
-        inputs.home-manager.nixosModules.default
         ({pkgs, ...}: {
           nixpkgs.overlays = [
             rust-overlay.overlays.default
@@ -61,5 +60,22 @@
         ./configuration.nix
       ];
     };
+homeConfigurations.dan = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs { inherit system; };
+
+      # pass inputs as specialArgs
+      extraSpecialArgs = { inherit inputs; };
+
+      # import your home.nix
+      modules = [ ./home.nix ];
+    };
+    # homeConfigurations.dan = home-manager.lib.homeManagerConfiguration {
+    #   inherit pkgs;
+    #
+    #   extraSpecialArgs = {
+    #   inherit inputs pkgs;
+    #   };
+    #   modules = [ ./home.nix ];
+    # };
   };
 }

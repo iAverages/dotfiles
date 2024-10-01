@@ -75,7 +75,6 @@
     fzf
     obs-studio
     inputs.rose-pine-hyprcursor.packages.${system}.default
-    ags
     bun
     steam
     home-manager
