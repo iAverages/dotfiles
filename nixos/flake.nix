@@ -56,6 +56,7 @@
         #   patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$file" || true
         #   patchelf --set-rpath $ {rpath}:$out/share/Abbys\ Little\ Theft.desktop $file || true
         # done
+        patchelf --set-rpath $(nix eval --raw nixpkgs.webkitgtk.out)/lib $out/bin/Abbys_Little_Theft
 
         # Fix the desktop link
         substituteInPlace $out/share/applications/Abbys\ Little\ Theft.desktop \
