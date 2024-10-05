@@ -38,7 +38,7 @@
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs pkgs;
+        inherit inputs pkgs settings;
         system = settings.system;
         meta = {hostname = "izanami";};
       };

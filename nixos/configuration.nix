@@ -11,6 +11,7 @@
     ./system.nix
     ./user.nix
     ./system/wm/hyprland.nix
+    ./apps/docker.nix
   ];
 
   # homeConfigurations."dan" = inputs.home-manager.lib.homeManagerConfiguration {
