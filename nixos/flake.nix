@@ -27,51 +27,50 @@
   } @ inputs: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    # abby = pkgs.stdenv.mkDerivation {
-    #   pname = "abby";
-    #   version = "0.5.4";
-    #
-    #   src = /home/dan/Downloads/abby/bundle/deb/abby.deb;
-    #
-    #   nativeBuildInputs = [pkgs.dpkg];
-    #   buildInputs = [pkgs.webkitgtk]; # Add webkitgtk to the build inputs
-    #
-    #   dontUnpack = true;
-    #   installPhase = ''
-    #     mkdir -p $out
-    #     dpkg -x $src $out
-    #     cp -av $out/usr/* $out
-    #     rm -rf $out/opt $out/usr
-    #     # rm $out/bin/Abbys_Little_Theft
-    #     #
-    #     # ln -s "$out/share/skypeforlinux/skypeforlinux" "$out/bin/skypeforlinux"
-    #
-    #     # Otherwise it looks "suspicious"
-    #     chmod -R g-w $out
-    #   '';
-    #
-    #   postFixup = ''
-    #     # for file in $(find $out -type f \( -perm /0111 -o -name \*.so\* -or -name \*.node\* \) ); do
-    #     #   patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$file" || true
-    #     #   patchelf --set-rpath $ {rpath}:$out/share/Abbys\ Little\ Theft.desktop $file || true
-    #     # done
-    #     patchelf --set-rpath $(nix eval --raw nixpkgs.webkitgtk.out)/lib $out/bin/Abbys_Little_Theft
-    #     patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$out/bin/Abbys_Little_Theft"
-    #
-    #     # Fix the desktop link
-    #     substituteInPlace $out/share/applications/Abbys\ Little\ Theft.desktop \
-    #       --replace /usr/bin/ $out/bin/
-    #   '';
-    # };
-    #
-    # wrappedAbby = pkgs.buildFHSUserEnv {
-    #   name = "wrappedAbby";
-    #   targetPkgs = pkgs: [
-    #     pkgs.webkitgtk
-    #   ];
-    #   runScript = "${abby}/bin/Abbys_Little_Theft";
-    # };
-    # abby = pkgs.callPackage ./abby.nix {};
+    abby = pkgs.stdenv.mkDerivation {
+      pname = "abby";
+      version = "0.5.4";
+
+      src = /home/dan/Downloads/abby/bundle/deb/abby.deb;
+
+      nativeBuildInputs = [pkgs.dpkg];
+      buildInputs = [pkgs.webkitgtk]; # Add webkitgtk to the build inputs
+
+      dontUnpack = true;
+      installPhase = ''
+        mkdir -p $out
+        dpkg -x $src $out
+        cp -av $out/usr/* $out
+        rm -rf $out/opt $out/usr
+        # rm $out/bin/Abbys_Little_Theft
+        #
+        # ln -s "$out/share/skypeforlinux/skypeforlinux" "$out/bin/skypeforlinux"
+
+        # Otherwise it looks "suspicious"
+        chmod -R g-w $out
+      '';
+
+      postFixup = ''
+        # for file in $(find $out -type f \( -perm /0111 -o -name \*.so\* -or -name \*.node\* \) ); do
+        #   patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$file" || true
+        #   patchelf --set-rpath $ {rpath}:$out/share/Abbys\ Little\ Theft.desktop $file || true
+        # done
+        patchelf --set-rpath $(nix eval --raw nixpkgs.webkitgtk.out)/lib $out/bin/Abbys_Little_Theft
+        patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$out/bin/Abbys_Little_Theft"
+
+        # Fix the desktop link
+        substituteInPlace $out/share/applications/Abbys\ Little\ Theft.desktop \
+          --replace /usr/bin/ $out/bin/
+      '';
+    };
+
+    wrappedAbby = pkgs.buildFHSUserEnv {
+      name = "wrappedAbby";
+      targetPkgs = pkgs: [
+        pkgs.webkitgtk
+      ];
+      runScript = "${abby}/bin/Abbys_Little_Theft";
+    };
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
       specialArgs = {
@@ -85,7 +84,7 @@
         ./configuration.nix
         # ./abby.nix
         ({...}: {
-          # environment.systemPackages = [wrappedAbby];
+          environment.systemPackages = [wrappedAbby];
         })
         ({pkgs, ...}: {
           nixpkgs.overlays = [
