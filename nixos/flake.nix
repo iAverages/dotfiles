@@ -64,6 +64,14 @@
           --replace /usr/bin/ $out/bin/
       '';
     };
+
+    wrappedAbby = pkgs.buildFHSUserEnv {
+      name = "wrappedAbby";
+      targetPkgs = pkgs: [
+        pkgs.webkitgtk
+      ];
+      runScript = "${abby}/bin/Abbys_Little_Theft";
+    };
     # abby = pkgs.callPackage ./abby.nix {};
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
