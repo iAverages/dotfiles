@@ -1,15 +1,7 @@
-{
-  settings,
-  pkgs,
-  inputs,
-  ...
-}: {
+{settings, ...}: {
+  imports = [./wm/hyprland.nix];
   home.username = settings.user;
   home.homeDirectory = "/home/${settings.user}";
-
-  home.packages = [
-    inputs.ags.packages.${pkgs.system}.astal
-  ];
 
   # TODO: Move from Stow to this
   home.file = {
