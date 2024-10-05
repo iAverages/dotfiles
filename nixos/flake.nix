@@ -30,7 +30,7 @@
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
       specialArgs = {
-      inherit inputs;
+        inherit inputs;
         meta = {hostname = "izanami";};
       };
       modules = [
@@ -60,14 +60,14 @@
         ./configuration.nix
       ];
     };
-homeConfigurations.dan = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs { inherit system; };
+    homeConfigurations.dan = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {inherit system;};
 
       # pass inputs as specialArgs
-      extraSpecialArgs = { inherit inputs; };
+      extraSpecialArgs = {inherit inputs;};
 
       # import your home.nix
-      modules = [ ./home.nix ];
+      modules = [./home.nix];
     };
     # homeConfigurations.dan = home-manager.lib.homeManagerConfiguration {
     #   inherit pkgs;

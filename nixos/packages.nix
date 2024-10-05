@@ -8,6 +8,10 @@
   programs.direnv.enable = true;
   programs.gnupg.agent.enable = true;
 
+  lib = with pkgs; [
+    webkitgtk
+  ];
+
   environment.systemPackages = with pkgs; [
     vscode
     neovim

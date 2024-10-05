@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "dan";
@@ -18,7 +21,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
- inputs.ags.packages.${pkgs.system}.astal
+    inputs.ags.packages.${pkgs.system}.astal
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -75,13 +78,13 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  imports = [ inputs.ags.homeManagerModules.default ];
+  imports = [inputs.ags.homeManagerModules.default];
 
   programs.ags = {
     enable = true;
     configDir = ../home-manager/ags;
 
-extraPackages = with pkgs; [
+    extraPackages = with pkgs; [
       inputs.ags.packages.${pkgs.system}.battery
       inputs.ags.packages.${pkgs.system}.astal
       inputs.ags.packages.${pkgs.system}.hyprland
@@ -92,5 +95,4 @@ extraPackages = with pkgs; [
       fzf
     ];
   };
-
 }
