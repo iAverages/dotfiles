@@ -37,8 +37,29 @@
       nativeBuildInputs = [pkgs.dpkg];
       buildInputs = [pkgs.webkitgtk]; # Add webkitgtk to the build inputs
 
+      dontUnpack = true;
       installPhase = ''
-        dpkg-deb -x $src $out
+        mkdir -p $out
+        dpkg -x $src $out
+        cp -av $out/usr/* $out
+        rm -rf $out/opt $out/usr
+        # rm $out/bin/Abbys_Little_Theft
+        #
+        # ln -s "$out/share/skypeforlinux/skypeforlinux" "$out/bin/skypeforlinux"
+
+        # Otherwise it looks "suspicious"
+        chmod -R g-w $out
+      '';
+
+      postFixup = ''
+        # for file in $(find $out -type f \( -perm /0111 -o -name \*.so\* -or -name \*.node\* \) ); do
+        #   patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$file" || true
+        #   patchelf --set-rpath $ {rpath}:$out/share/Abbys\ Little\ Theft.desktop $file || true
+        # done
+
+        # Fix the desktop link
+        substituteInPlace $out/share/applications/Abbys\ Little\ Theft.desktop \
+          --replace /usr/bin/ $out/bin/
       '';
     };
     # abby = pkgs.callPackage ./abby.nix {};
