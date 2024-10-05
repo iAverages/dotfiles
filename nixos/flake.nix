@@ -24,9 +24,12 @@
     home-manager,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
+    settings = {
+      user = "dan";
+      system = "x86_64-linux";
+    };
     pkgs = import nixpkgs {
-      inherit system;
+      system = settings.system;
       config = {
         allowUnfree = true;
         allowUnfreePredicate = _: true;
@@ -35,7 +38,8 @@
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs pkgs system;
+        inherit inputs pkgs;
+        system = settings.system;
         meta = {hostname = "izanami";};
       };
       modules = [
