@@ -82,7 +82,7 @@
     bun
     steam
     home-manager
-    webkitgtk
+    webkitgtk_4_1
   ];
 
   environment.variables = {
