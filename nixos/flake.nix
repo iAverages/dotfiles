@@ -86,7 +86,7 @@
         ./configuration.nix
         # ./abby.nix
         ({...}: {
-          environment.systemPackages = [wrappedAbby];
+          # environment.systemPackages = [wrappedAbby];
         })
         ({pkgs, ...}: {
           nixpkgs.overlays = [
