@@ -1,8 +1,15 @@
-{...}: {
+{
+  inputs,
+  meta,
+  ...
+}: {
+  imports = [
+    inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+  ];
   # Configuration specific to this machine
 
   # Set hostname of the machine
-  networking.hostName = "izanami";
+  networking.hostName = meta.hostname;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

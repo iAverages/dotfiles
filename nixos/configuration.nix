@@ -1,4 +1,10 @@
-{inputs, ...}: {
+{
+  inputs,
+  meta,
+  ...
+}: {
+  networking.hostName = meta.hostname;
+
   imports = [
     inputs.home-manager.nixosModules.default
     # Include the results of the hardware scan.

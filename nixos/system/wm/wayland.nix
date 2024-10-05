@@ -23,6 +23,10 @@
   #       };})
   #   ];
 
+  environment.systemPackages = with pkgs; [
+    wl-clipboard
+  ];
+
   # Configure xwayland
   services.xserver = {
     enable = true;

@@ -43,11 +43,23 @@
         meta = {hostname = "izanami";};
       };
       modules = [
-        nixos-hardware.nixosModules.framework-16-7040-amd
         ./machines/izanami/hardware-configuration.nix
         ./machines/izanami/configuration.nix
         ./configuration.nix
       ];
+    };
+    homeConfigurations = {
+      ${settings.user} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./user/home.nix
+        ];
+        extraSpecialArgs = {
+          inherit settings;
+          inherit pkgs;
+          inherit inputs;
+        };
+      };
     };
   };
 }
