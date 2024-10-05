@@ -10,7 +10,6 @@
     ./services.nix
     ./system.nix
     ./user.nix
-    # ./test.nix
   ];
 
   # homeConfigurations."dan" = inputs.home-manager.lib.homeManagerConfiguration {
