@@ -27,6 +27,20 @@
   } @ inputs: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+
+    abby = pkgs.stdenv.mkDerivation {
+      pname = "abby";
+      version = "0.5.4";
+
+      src = /home/dan/Downloads/abby/bundle/deb;
+
+      buildInputs = [pkgs.webkitgtk]; # Add webkitgtk to the build inputs
+
+      installPhase = ''
+        mkdir -p $out/
+        cp -r * $out/
+      '';
+    };
     # abby = pkgs.callPackage ./abby.nix {};
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
@@ -39,10 +53,10 @@
         ./machines/izanami/hardware-configuration.nix
         ./machines/izanami/configuration.nix
         ./configuration.nix
-        ./abby.nix
-        # ({...}: {
-        #   environment.systemPackages = [abby];
-        # })
+        # ./abby.nix
+        ({...}: {
+          environment.systemPackages = [abby];
+        })
         ({pkgs, ...}: {
           nixpkgs.overlays = [
             rust-overlay.overlays.default

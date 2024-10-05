@@ -1,19 +1,19 @@
-{lib, ...}:
-lib.stdenv.mkDerivation {
+{pkgs, ...}:
+pkgs.stdenv.mkDerivation {
   pname = "abby";
   version = "0.5.4";
 
   src = /home/dan/Downloads/abby/bundle/deb;
 
-  buildInputs = [lib.webkitgtk]; # Add webkitgtk to the build inputs
+  buildInputs = [pkgs.webkitgtk]; # Add webkitgtk to the build inputs
 
   installPhase = ''
     mkdir -p $out/
     cp -r * $out/
   '';
 
-  meta = with lib; {
+  meta = with pkgs; {
     description = "abby";
-    platforms = platforms.linux;
+    platforms = lib.platforms.linux;
   };
 }
