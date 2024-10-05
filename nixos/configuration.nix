@@ -10,6 +10,7 @@
     ./services.nix
     ./system.nix
     ./user.nix
+    ./system/wm/hyprland.nix
   ];
 
   # homeConfigurations."dan" = inputs.home-manager.lib.homeManagerConfiguration {
