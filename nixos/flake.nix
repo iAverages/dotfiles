@@ -27,6 +27,7 @@
   } @ inputs: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    # abby = pkgs.callPackage ./abby.nix {};
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
       specialArgs = {
@@ -38,6 +39,10 @@
         ./machines/izanami/hardware-configuration.nix
         ./machines/izanami/configuration.nix
         ./configuration.nix
+        ./abby.nix
+        # ({...}: {
+        #   environment.systemPackages = [abby];
+        # })
         ({pkgs, ...}: {
           nixpkgs.overlays = [
             rust-overlay.overlays.default
