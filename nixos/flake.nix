@@ -32,13 +32,13 @@
       pname = "abby";
       version = "0.5.4";
 
-      src = /home/dan/Downloads/abby/bundle/deb;
+      src = /home/dan/Downloads/abby/bundle/deb/abby.deb;
 
+      nativeBuildInputs = [pkgs.dpkg];
       buildInputs = [pkgs.webkitgtk]; # Add webkitgtk to the build inputs
 
       installPhase = ''
-        mkdir -p $out/
-        cp -r * $out/
+        dpkg-deb -x $src $out
       '';
     };
     # abby = pkgs.callPackage ./abby.nix {};
