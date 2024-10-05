@@ -22,7 +22,6 @@
     starship
     alacritty
     google-chrome
-    htop
     btop
     bat
     wget
@@ -38,20 +37,16 @@
     openssl
     gcc
     tilt
-    distrobox
     alejandra
     tig
     libnotify
     mpv
-    wofi
-    teams-for-linux
     stripe-cli
     waybar
     (waybar.overrideAttrs (oldAttrs: {
       meson = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     }))
     dunst
-    libnotify
     swww
     rofi-wayland
     networkmanagerapplet
@@ -62,11 +57,9 @@
     termius
     yt-dlp
     ffmpeg
-    docker_26
     gnumake
     jq
     ncdu
-    postman
     unzip
     ripgrep
     luarocks

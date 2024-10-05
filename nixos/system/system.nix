@@ -7,9 +7,6 @@
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_6_10;
 
@@ -30,10 +27,6 @@
   # Enable virtualbox
   virtualisation.virtualbox.host.enable = true;
 
-  # Enable Docker
-  virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_27;
-
   # Set your time zone.
   time.timeZone = "Europe/London";
 
@@ -50,11 +43,6 @@
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
-
-  # Install Jetbrians Mono nerdfont
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

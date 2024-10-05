@@ -5,6 +5,7 @@
 }: {
   virtualisation.docker = {
     enable = true;
+    package = pkgs.docker_27;
     enableOnBoot = true;
     autoPrune.enable = true;
   };
