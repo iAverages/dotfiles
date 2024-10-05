@@ -101,4 +101,6 @@ mkdir ~/.bin 2>/dev/null``
 add_to_path ~/.bin
 add_to_path ~/.cargo/bin
 
-source <(fzf --zsh)
+
+zvm_after_init_commands+=('source <(fzf --zsh)')
+
