@@ -48,6 +48,20 @@
         ./configuration.nix
       ];
     };
+
+    nixosConfigurations.kirsi = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs pkgs settings;
+        system = settings.system;
+        meta = {hostname = "kirsi";};
+      };
+      modules = [
+        ./machines/kirsi/hardware-configuration.nix
+        ./machines/kirsi/configuration.nix
+        ./configuration.nix
+      ];
+    };
+
     homeConfigurations = {
       ${settings.user} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
