@@ -7,15 +7,10 @@
 
   imports = [
     inputs.home-manager.nixosModules.default
-    # Include the results of the hardware scan.
-    # ./hardware.nix
     ./packages.nix
-    # ./services.nix
-    # ./system.nix
-    # ./user.nix
+
     ./system/user.nix
     ./system/system.nix
-    ./system/wm/hyprland.nix
     ./system/hardware/opengl.nix
     ./system/hardware/bluetooth.nix
     ./apps/docker.nix

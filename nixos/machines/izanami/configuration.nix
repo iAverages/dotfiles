@@ -3,10 +3,12 @@
   meta,
   ...
 }: {
+  # Configuration specific to this machine
+
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+    ../../system/wm/hyprland.nix
   ];
-  # Configuration specific to this machine
 
   # Set hostname of the machine
   networking.hostName = meta.hostname;
