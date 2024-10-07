@@ -10,6 +10,7 @@
     ./packages.nix
 
     ./system/user.nix
+    ./system/firewall.nix
     ./system/system.nix
     ./system/hardware/opengl.nix
     ./system/hardware/bluetooth.nix
