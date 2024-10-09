@@ -51,7 +51,7 @@ eval "$(starship init zsh)"
 
 # Start SSH Agent
 eval $(ssh-agent) &>/dev/null
-ssh-add -q ~/.ssh/github_rsa 
+ssh-add -q ~/.ssh/$(hostname)_ed25519
 
 # Fixes bug being unable to sign commit with git
 export GPG_TTY=$(tty)
@@ -73,11 +73,10 @@ if [ -f ~/.localrc ]; then
 fi
 
 alias ls='ls --color'
-alias c='code'
 alias editnix='~/dotfiles/rebuild-nix.sh'
 alias editdots='~/dotfiles/editdots.sh'
 alias res='source ~/dotfiles/.zshrc'
-alias rebuild='sudo nixos-rebuild switch --flake ~/dotfiles/nixos/#$(hostname) &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)'
+alias rebuild='sudo nixos-rebuild switch --flake ~/dotfiles/nixos/#$(hostname) &>~/dotfiles/nixos/nixos-switch.log || (cat ~/dotfiles/nixos/nixos-switch.log | grep --color error && exit 1)'
 alias zsource='source ~/.zshrc'
 
 if command -v "batcat" >/dev/null 2>&1; then
