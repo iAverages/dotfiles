@@ -99,6 +99,7 @@
     wl-clipboard
     wofi
     zenity
+    gnome.nautilus
     gnome.networkmanager-openvpn
     gnome.gnome-shell-extensions
     gnomeExtensions.tiling-assistant

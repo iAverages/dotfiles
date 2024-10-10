@@ -1,5 +1,5 @@
 {settings, ...}: {
-  imports = [./wm/hyprland.nix ];
+  imports = [./wm/hyprland.nix];
   home.username = settings.user;
   home.homeDirectory = "/home/${settings.user}";
 
