@@ -74,7 +74,7 @@ fi
 
 alias ls='ls --color'
 alias editnix='~/dotfiles/rebuild-nix.sh'
-alias editdots='~/dotfiles/editdots.sh'
+alias editdots='~/dotfiles/editdots.sh && source ~/dotfiles/.zshrc'
 alias res='source ~/dotfiles/.zshrc'
 alias rebuild='sudo nixos-rebuild switch --flake ~/dotfiles/nixos/#$(hostname) &>~/dotfiles/nixos/nixos-switch.log || (cat ~/dotfiles/nixos/nixos-switch.log | grep --color error && exit 1)'
 alias zsource='source ~/.zshrc'
@@ -90,6 +90,7 @@ fi
 alias g='git'
 alias gs='git status'
 alias ga='git add .'
+alias gp='git push'
 alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml'"
 
 export NVM_DIR="$HOME/.nvm"
