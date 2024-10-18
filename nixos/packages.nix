@@ -106,6 +106,7 @@
     gnomeExtensions.window-calls
     grim
     blueman
+    prismlauncher
   ];
 
   environment.variables = {
