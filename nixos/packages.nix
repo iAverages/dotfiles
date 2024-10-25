@@ -107,6 +107,7 @@
     grim
     blueman
     prismlauncher
+    vesktop
   ];
 
   environment.variables = {

@@ -9,6 +9,7 @@
     inputs.home-manager.nixosModules.default
     ./packages.nix
 
+    # ./system/private.nix
     ./system/user.nix
     ./system/firewall.nix
     ./system/system.nix
