@@ -23,8 +23,6 @@ return {
             "LineNr",
             "NonText",
             "SignColumn",
-            "CursorLine",
-            "CursorLineNr",
             "StatusLine",
             "StatusLineNC",
             "EndOfBuffer",
