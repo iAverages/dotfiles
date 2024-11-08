@@ -8,6 +8,7 @@
     package = pkgs.docker_27;
     enableOnBoot = true;
     autoPrune.enable = true;
+    liveRestore = false;
   };
   users.users.${settings.user}.extraGroups = ["docker"];
   environment.systemPackages = with pkgs; [

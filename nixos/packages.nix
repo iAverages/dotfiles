@@ -29,7 +29,7 @@
     discord
     spotify
     gh
-    mysql
+    mariadb
     libreoffice
     yarn
     nodePackages.pnpm
@@ -60,11 +60,12 @@
     gnumake
     jq
     ncdu
-    unzip
+    # unzip
     ripgrep
     luarocks
     fd
     lua
+    lua5_1
     prettierd
     playerctl
     inotify-tools
@@ -108,6 +109,8 @@
     blueman
     prismlauncher
     vesktop
+    helvum
+    kanata
   ];
 
   environment.variables = {
