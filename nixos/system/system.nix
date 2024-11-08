@@ -17,6 +17,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.hosts = {
+    "127.0.0.1" = ["test-grafana-f06ed3-127-0-0-1.traefik.me"];
+  };
 
   # Use local dns server
   networking.nameservers = ["192.168.1.179" "1.1.1.1"];
