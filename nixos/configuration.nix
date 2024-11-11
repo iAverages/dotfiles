@@ -16,6 +16,7 @@
     ./system/system.nix
     ./system/hardware/opengl.nix
     ./system/hardware/bluetooth.nix
+    ./system/hardware/razer.nix
     ./apps/docker.nix
     ./apps/steam.nix
   ];
