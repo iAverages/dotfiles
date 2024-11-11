@@ -10,7 +10,7 @@
     ./packages.nix
 
     # ./system/private.nix
-    ./system/kanata.nix
+    # ./system/kanata.nix
     ./system/user.nix
     ./system/firewall.nix
     ./system/system.nix
