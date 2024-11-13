@@ -111,6 +111,7 @@
     vesktop
     helvum
     kanata
+    wf-recorder
   ];
 
   environment.variables = {
