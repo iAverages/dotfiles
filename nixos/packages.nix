@@ -112,7 +112,6 @@
     helvum
     kanata
     wf-recorder
-    wob
   ];
 
   environment.variables = {
