@@ -16,6 +16,10 @@ if [ ! -f "$SCREENSHOT_PATH" ]; then
   exit 1
 fi
 
+if command -v wl-copy &>/dev/null; then
+  wl-copy < "$SCREENSHOT_PATH"
+fi
+
 UPLOAD_URL="https://avrg.dev/api/upload"
 RESPONSE=$(curl -s -X POST \
   -F "file=@$SCREENSHOT_PATH" \
