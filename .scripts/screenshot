@@ -35,7 +35,7 @@ if echo "$RESPONSE" | grep -q "http"; then
 notify-send "Upload successful! Link copied to clipboard" \
     -u normal -i "$SCREENSHOT_PATH" -a "Screenshot Upload"
 else
-  notify-send "Screenshot Upload" "Upload failed: $RESPONSE" -u critical
+  notify-send -a "Screenshot Upload" "Upload failed: $RESPONSE" -u critical
 fi
 
 rm "$SCREENSHOT_PATH"
