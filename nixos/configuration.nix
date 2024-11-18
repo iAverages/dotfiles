@@ -14,6 +14,7 @@
     ./system/user.nix
     ./system/firewall.nix
     ./system/system.nix
+    ./system/default-apps.nix
     ./system/hardware/opengl.nix
     ./system/hardware/bluetooth.nix
     ./system/hardware/razer.nix
