@@ -32,8 +32,9 @@ if echo "$RESPONSE" | grep -q "http"; then
   if command -v wl-copy &>/dev/null; then
     echo -n "$UPLOAD_LINK" | wl-copy
   fi
-notify-send "Upload successful! Link copied to clipboard" \
+    notify-send "Upload successful! Link copied to clipboard" \
     -u normal -i "$SCREENSHOT_PATH" -a "Screenshot Upload"
+    pw-play ~/dotfiles/.scripts/TaskCompletedSound.wav
 else
   notify-send -a "Screenshot Upload" "Upload failed: $RESPONSE" -u critical
 fi
