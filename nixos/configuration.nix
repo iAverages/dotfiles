@@ -11,6 +11,7 @@
 
     # ./system/private.nix
     # ./system/kanata.nix
+    ./system/packages.nix
     ./system/user.nix
     ./system/firewall.nix
     ./system/system.nix
