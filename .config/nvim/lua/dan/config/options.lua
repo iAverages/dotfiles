@@ -14,6 +14,7 @@ opt.smartcase = true
 opt.cursorline = true
 opt.termguicolors = true
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+vim.api.nvim_set_option("clipboard", "unnamed")
 opt.scrolloff = 8
 
 -- Undercurl

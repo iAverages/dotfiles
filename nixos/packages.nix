@@ -72,6 +72,7 @@
     killall
     fzf
     obs-studio
+    rose-pine-cursor
     inputs.rose-pine-hyprcursor.packages.${system}.default
     bun
     steam
@@ -100,9 +101,9 @@
     wl-clipboard
     wofi
     zenity
-    gnome.nautilus
-    gnome.networkmanager-openvpn
-    gnome.gnome-shell-extensions
+    nautilus
+    networkmanager-openvpn
+    gnome-shell-extensions
     gnomeExtensions.tiling-assistant
     gnomeExtensions.window-calls
     grim

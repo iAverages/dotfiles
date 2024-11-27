@@ -10,6 +10,7 @@
     autoPrune.enable = true;
     liveRestore = false;
   };
+  virtualisation.docker.extraOptions = "--insecure-registry=\"ctr.dan.local\"";
   users.users.${settings.user}.extraGroups = ["docker"];
   environment.systemPackages = with pkgs; [
     docker
