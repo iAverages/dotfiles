@@ -10,7 +10,7 @@
     kubectl
     inputs.ghostty.packages.x86_64-linux.default
     lens
-    xclip
+    deno
   ];
 
   nixpkgs.config.allowUnfree = true;
