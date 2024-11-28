@@ -79,6 +79,7 @@ alias res='source ~/dotfiles/.zshrc'
 alias rebuild='sudo nixos-rebuild switch --flake ~/dotfiles/nixos/#$(hostname) &>~/dotfiles/nixos/nixos-switch.log || (cat ~/dotfiles/nixos/nixos-switch.log | grep --color error && exit 1)'
 alias zsource='source ~/.zshrc'
 alias k='kubectl'
+alias p='pnpm'
 
 if command -v "batcat" >/dev/null 2>&1; then
     alias cat='batcat'
