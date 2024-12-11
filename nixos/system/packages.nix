@@ -12,6 +12,7 @@
     lens
     deno
     qview
+    dive
   ];
 
   nixpkgs.config.allowUnfree = true;

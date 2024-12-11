@@ -88,6 +88,14 @@ return {
                     })
                 end,
 
+                ["vtsls"] = function()
+                    lspconfig["vtsls"].setup({
+                        settings = {
+                            autoUseWorkspaceTsdk = true,
+                        },
+                    })
+                end,
+
                 -- rust_analyzer is installed via rustaceanvim
                 ["rust_analyzer"] = function() end,
 
