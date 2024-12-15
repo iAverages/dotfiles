@@ -13,6 +13,7 @@
     deno
     qview
     dive
+    cosmic-files
   ];
 
   nixpkgs.config.allowUnfree = true;
