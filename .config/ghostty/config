@@ -1,0 +1,7 @@
+font-family = "JetBrainsMono Nerd Font"
+background = #181818
+background-opacity = 0.8
+scrollback-limit = 0
+window-decoration = false
+shell-integration = zsh
+
