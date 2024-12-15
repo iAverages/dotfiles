@@ -5,8 +5,13 @@
 }: {
   # Configuration specific to this machine
 
+  imports = [
+    ../../system/wm/hyprland.nix
+  ];
+
   # Use the NVIDIA driver
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.open = true;
   services.xserver.videoDrivers = ["nvidia"];
 
   # Set hostname of the machine

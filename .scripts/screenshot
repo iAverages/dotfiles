@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+TOKEN_FILE="$HOME/.scripts/.screenshot-token"
+if [ ! -f "$TOKEN_FILE" ]; then
+  notify-send "Screenshot Upload" "Auth token file not found at $TOKEN_FILE!" -u critical
+  exit 1
+fi
+
+AUTH_TOKEN=$(cat "$TOKEN_FILE")
+RANDOM_NAME=$(tr -dc 'a-zA-Z0-9' </dev/urandom | head -c 6)
+SCREENSHOT_PATH="/tmp/${RANDOM_NAME}.png"
+grim -g "$(slurp)" "$SCREENSHOT_PATH"
+
+if [ ! -f "$SCREENSHOT_PATH" ]; then
+  notify-send "Screenshot Upload" "Screenshot failed!" -u critical
+  exit 1
+fi
+
+if command -v wl-copy &>/dev/null; then
+  wl-copy < "$SCREENSHOT_PATH"
+fi
+
+UPLOAD_URL="https://avrg.dev/api/upload"
+RESPONSE=$(curl -s -X POST \
+  -F "file=@$SCREENSHOT_PATH" \
+  -H "Authorization: $AUTH_TOKEN" \
+  "$UPLOAD_URL")
+
+UPLOAD_LINK=$(echo "$RESPONSE" | jq -r '.link')
+
+if echo "$RESPONSE" | grep -q "http"; then
+  if command -v wl-copy &>/dev/null; then
+    echo -n "$UPLOAD_LINK" | wl-copy
+  fi
+    notify-send "Upload successful! Link copied to clipboard" \
+    -u normal -i "$SCREENSHOT_PATH" -a "Screenshot Upload"
+    pw-play ~/dotfiles/.scripts/TaskCompletedSound.wav
+else
+  notify-send -a "Screenshot Upload" "Upload failed: $RESPONSE" -u critical
+fi
+
+rm "$SCREENSHOT_PATH"
+

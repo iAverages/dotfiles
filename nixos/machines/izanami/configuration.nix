@@ -1,8 +1,17 @@
-{...}: {
+{
+  inputs,
+  meta,
+  ...
+}: {
   # Configuration specific to this machine
 
+  imports = [
+    inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+    ../../system/wm/hyprland.nix
+  ];
+
   # Set hostname of the machine
-  networking.hostName = "izanami";
+  networking.hostName = meta.hostname;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

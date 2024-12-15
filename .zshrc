@@ -51,7 +51,7 @@ eval "$(starship init zsh)"
 
 # Start SSH Agent
 eval $(ssh-agent) &>/dev/null
-ssh-add -q ~/.ssh/github_rsa 
+ssh-add -q ~/.ssh/$(hostname)_ed25519
 
 # Fixes bug being unable to sign commit with git
 export GPG_TTY=$(tty)
@@ -73,12 +73,13 @@ if [ -f ~/.localrc ]; then
 fi
 
 alias ls='ls --color'
-alias c='code'
 alias editnix='~/dotfiles/rebuild-nix.sh'
-alias editdots='~/dotfiles/editdots.sh'
+alias editdots='~/dotfiles/editdots.sh && source ~/dotfiles/.zshrc'
 alias res='source ~/dotfiles/.zshrc'
-alias rebuild='sudo nixos-rebuild switch --flake ~/dotfiles/nixos/#$(hostname) &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)'
+alias rebuild='sudo nixos-rebuild switch --flake ~/dotfiles/nixos/#$(hostname) &>~/dotfiles/nixos/nixos-switch.log || (cat ~/dotfiles/nixos/nixos-switch.log | grep --color error && exit 1)'
 alias zsource='source ~/.zshrc'
+alias k='kubectl'
+alias p='pnpm'
 
 if command -v "batcat" >/dev/null 2>&1; then
     alias cat='batcat'
@@ -91,7 +92,8 @@ fi
 alias g='git'
 alias gs='git status'
 alias ga='git add .'
-alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml'"
+alias gp='git push'
+alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml' ':!*flake.lock'"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -101,4 +103,6 @@ mkdir ~/.bin 2>/dev/null``
 add_to_path ~/.bin
 add_to_path ~/.cargo/bin
 
-source <(fzf --zsh)
+
+zvm_after_init_commands+=('source <(fzf --zsh)')
+
