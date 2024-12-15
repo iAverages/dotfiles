@@ -74,10 +74,6 @@
     obs-studio
     rose-pine-cursor
     inputs.rose-pine-hyprcursor.packages.${system}.default
-<<<<<<< HEAD
-    ags
-=======
->>>>>>> rewrite
     bun
     steam
     home-manager
