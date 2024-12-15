@@ -93,7 +93,7 @@ alias g='git'
 alias gs='git status'
 alias ga='git add .'
 alias gp='git push'
-alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml'"
+alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml' ':!*flake.lock'"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
