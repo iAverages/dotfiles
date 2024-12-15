@@ -14,6 +14,7 @@
     qview
     dive
     cosmic-files
+    jetbrains.datagrip
   ];
 
   nixpkgs.config.allowUnfree = true;
