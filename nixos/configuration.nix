@@ -7,10 +7,9 @@
 
   imports = [
     inputs.home-manager.nixosModules.default
+    # TOOD: Replace this
     ./packages.nix
 
-    # ./system/private.nix
-    # ./system/kanata.nix
     ./system/packages.nix
     ./system/user.nix
     ./system/firewall.nix
