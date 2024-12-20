@@ -23,6 +23,10 @@
       inputs.nixpkgs-stable.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
+
+    private = {
+      url = "git+ssh://git@github.com/iAverages/nixos-private?ref=main";
+    };
   };
 
   outputs = {

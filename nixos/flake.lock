@@ -70,11 +70,11 @@
         "zig": "zig"
       },
       "locked": {
-        "lastModified": 1732680272,
-        "narHash": "sha256-BZUACx9gGiTNpm5g/sJpvMtJDg8DeHFiRkQC9L7LfG8=",
+        "lastModified": 1734717495,
+        "narHash": "sha256-HXEqZkohPCMHFBeqHSYCk7QjcKm4lLROyqSsGtRLbeA=",
         "ref": "main",
-        "rev": "466d094c18729fc49501f48dc6b283aed72362af",
-        "revCount": 8124,
+        "rev": "ef56fe879691550ec9a1bdb97e91d18cd53800d5",
+        "revCount": 8342,
         "type": "git",
         "url": "ssh://git@github.com/ghostty-org/ghostty"
       },
@@ -91,11 +91,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732482255,
-        "narHash": "sha256-GUffLwzawz5WRVfWaWCg78n/HrBJrOG7QadFY6rtV8A=",
+        "lastModified": 1734622215,
+        "narHash": "sha256-OOfI0XhSJGHblfdNDhfnn8QnZxng63rWk9eeJ2tCbiI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a9953635d7f34e7358d5189751110f87e3ac17da",
+        "rev": "1395379a7a36e40f2a76e7b9936cc52950baa1be",
         "type": "github"
       },
       "original": {
@@ -128,11 +128,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1732483221,
-        "narHash": "sha256-kF6rDeCshoCgmQz+7uiuPdREVFuzhIorGOoPXMalL2U=",
+        "lastModified": 1734352517,
+        "narHash": "sha256-mfv+J/vO4nqmIOlq8Y1rRW8hVsGH3M+I2ESMjhuebDs=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "45348ad6fb8ac0e8415f6e5e96efe47dd7f39405",
+        "rev": "b12e314726a4226298fe82776b4baeaa7bcf3dcd",
         "type": "github"
       },
       "original": {
@@ -160,11 +160,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1732521221,
-        "narHash": "sha256-2ThgXBUXAE1oFsVATK1ZX9IjPcS4nKFOAjhPNKuiMn0=",
+        "lastModified": 1734424634,
+        "narHash": "sha256-cHar1vqHOOyC7f1+tVycPoWTfKIaqkoe1Q6TnKzuti4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4633a7c72337ea8fd23a4f2ba3972865e3ec685d",
+        "rev": "d3c42f187194c26d9f0309a8ecc469d6c878ce33",
         "type": "github"
       },
       "original": {
@@ -175,6 +175,22 @@
       }
     },
     "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1734424634,
+        "narHash": "sha256-cHar1vqHOOyC7f1+tVycPoWTfKIaqkoe1Q6TnKzuti4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d3c42f187194c26d9f0309a8ecc469d6c878ce33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1710272261,
         "narHash": "sha256-g0bDwXFmTE7uGDOs9HcJsfLFhH7fOsASbAuOzDC+fhQ=",
@@ -190,6 +206,25 @@
         "type": "github"
       }
     },
+    "private": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1734716732,
+        "narHash": "sha256-GwewVjUjiwUcLqTI9HKmoV+bucANigNHYkZS0L2y7wQ=",
+        "ref": "main",
+        "rev": "05ab21c2ff8bdb97cea1183e9aee61b429f2ee76",
+        "revCount": 3,
+        "type": "git",
+        "url": "ssh://git@github.com/iAverages/nixos-private"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/iAverages/nixos-private"
+      }
+    },
     "root": {
       "inputs": {
         "ags": "ags",
@@ -197,6 +232,7 @@
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "private": "private",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "rust-overlay": "rust-overlay"
       }
@@ -204,15 +240,15 @@
     "rose-pine-hyprcursor": {
       "inputs": {
         "hyprlang": "hyprlang",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1718180692,
-        "narHash": "sha256-J5IYvKcdGRL/sBuST5WaoESEIl7KPv8aJK8aLY6C91E=",
+        "lastModified": 1733265112,
+        "narHash": "sha256-FdO+2X7TeIAW73hiyFKZbCjlAskb4xMmYYPX97mo9RE=",
         "owner": "ndom91",
         "repo": "rose-pine-hyprcursor",
-        "rev": "40ce26cb29206722ff73839ead0d871d94751e90",
+        "rev": "89dc9e347ce8da26766ad421b0899536f9f87639",
         "type": "github"
       },
       "original": {
@@ -228,11 +264,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732674798,
-        "narHash": "sha256-oM1gjCv9R4zxDFO3as9wqQ4FI3+pDA9MKZ72L7tTIII=",
+        "lastModified": 1734661750,
+        "narHash": "sha256-BI58NBdimxu1lnpOrG9XxBz7Cwqy+qIf99zunWofX5w=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "1d569430326b0a7807ccffdb2a188b814091976c",
+        "rev": "7d3d910d5fd575e6e8c5600d83d54e5c47273bfe",
         "type": "github"
       },
       "original": {
