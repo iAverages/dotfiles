@@ -2,8 +2,7 @@
 
 TOKEN_FILE="$HOME/.scripts/.screenshot-token"
 if [ ! -f "$TOKEN_FILE" ]; then
-  notify-send "Screenshot Upload" "Auth token file not found at $TOKEN_FILE!" -u critical
-  exit 1
+  notify-send "Screenshot Upload" "Auth token file not found at $TOKEN_FILE! Will not upload screenshot" -u critical
 fi
 
 AUTH_TOKEN=$(cat "$TOKEN_FILE")
