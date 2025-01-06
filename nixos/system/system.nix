@@ -18,8 +18,15 @@
   # Enable networking
   networking.networkmanager = {
     enable = true;
-    dns = "none"; # prevents networkmanager from managing DNS
+    # dns = "none"; # prevents networkmanager from managing DNS
   };
+  # Disable NetworkManager's internal DNS resolution
+  networking.networkmanager.dns = "none";
+
+  # These options are unnecessary when managing DNS ourselves
+  networking.useDHCP = false;
+  networking.dhcpcd.enable = false;
+
   networking.hosts = {
     "192.168.1.179" = ["ctr.dan.local"];
   };
