@@ -18,17 +18,12 @@
   # Enable networking
   networking.networkmanager = {
     enable = true;
-    # dns = "none"; # prevents networkmanager from managing DNS
+    dns = "none"; # prevents networkmanager from managing DNS
   };
-  # Disable NetworkManager's internal DNS resolution
-  networking.networkmanager.dns = "none";
 
-  # These options are unnecessary when managing DNS ourselves
-  networking.useDHCP = false;
-  networking.dhcpcd.enable = false;
-
-  networking.hosts = {
-    "192.168.1.179" = ["ctr.dan.local"];
+  # fix: for whatever reason my ips dns is being included in config, first
+  environment.etc = {
+    "resolv.conf".text = "nameserver 192.168.1.179\nnameserver 1.1.1.1\n";
   };
 
   # Use local dns server
