@@ -16,6 +16,7 @@
     dive
     cosmic-files
     jetbrains.datagrip
+    python3
   ];
 
   nixpkgs.config.allowUnfree = true;
