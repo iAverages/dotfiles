@@ -18,6 +18,7 @@
     jetbrains.datagrip
     python3
     go
+    sleek
   ];
 
   nixpkgs.config.allowUnfree = true;
