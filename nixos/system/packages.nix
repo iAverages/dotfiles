@@ -17,6 +17,7 @@
     cosmic-files
     jetbrains.datagrip
     python3
+    go
   ];
 
   nixpkgs.config.allowUnfree = true;
