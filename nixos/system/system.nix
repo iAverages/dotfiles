@@ -16,7 +16,10 @@
   ];
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "none"; # prevents networkmanager from managing DNS
+  };
   networking.hosts = {
     "192.168.1.179" = ["ctr.dan.local"];
   };

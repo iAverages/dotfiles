@@ -6,10 +6,12 @@ return {
         dependencies = {
             "JoosepAlviste/nvim-ts-context-commentstring",
             "windwp/nvim-ts-autotag",
+            "IndianBoy42/tree-sitter-just",
         },
         config = function()
             -- import nvim-treesitter plugin
             local treesitter = require("nvim-treesitter.configs")
+            require("tree-sitter-just").setup({})
 
             -- configure treesitter
             treesitter.setup({ -- enable syntax highlighting
