@@ -23,11 +23,11 @@
 
   # fix: for whatever reason my ips dns is being included in config, first
   environment.etc = {
-    "resolv.conf".text = "nameserver 192.168.1.179\nnameserver 1.1.1.1\n";
+    "resolv.conf".text = "nameserver 1.1.1.1\n";
   };
 
   # Use local dns server
-  networking.nameservers = ["192.168.1.179" "1.1.1.1"];
+  # networking.nameservers = ["192.168.1.179" "1.1.1.1"];
 
   # Workaround for SuspendThenHibernate: https://lore.kernel.org/linux-kernel/20231106162310.85711-1-mario.limonciello@amd.com/
   boot.kernelParams = lib.optionals (lib.versionOlder config.boot.kernelPackages.kernel.version "6.8") ["rtc_cmos.use_acpi_alarm=1"];
