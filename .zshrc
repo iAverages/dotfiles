@@ -93,7 +93,8 @@ alias g='git'
 alias gs='git status'
 alias ga='git add .'
 alias gp='git push'
-alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml' ':!*flake.lock'"
+alias changed="git diff -w HEAD --staged -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml' ':!*flake.lock' ':!*build/*'"
+alias changes="git diff -- . ':!yarn.lock' ':!*package-lock.json' ':!*pnpm-lock.yaml' ':!*flake.lock' ':!*build/*'"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -106,3 +107,11 @@ add_to_path ~/.cargo/bin
 
 zvm_after_init_commands+=('source <(fzf --zsh)')
 
+
+# pnpm
+export PNPM_HOME="/home/dan/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
