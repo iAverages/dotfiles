@@ -30,4 +30,6 @@
       package = pkgs.sddm;
     };
   };
+
+  environment.variables.NIXOS_OZONE_WL = "1";
 }

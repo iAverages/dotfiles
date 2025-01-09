@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "nixpkgs/nixos-24.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     ags.url = "github:aylur/ags";
@@ -34,6 +35,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     nixos-hardware,
     rust-overlay,
     home-manager,
@@ -50,10 +52,17 @@
         allowUnfreePredicate = _: true;
       };
     };
+    pkgs-stable = import nixpkgs-stable {
+      system = settings.system;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
+    };
   in {
     nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs pkgs settings;
+        inherit inputs pkgs settings pkgs-stable;
         system = settings.system;
         meta = {hostname = "izanami";};
       };

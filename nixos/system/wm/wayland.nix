@@ -23,6 +23,10 @@
   #       };})
   #   ];
 
+  environment.variables = {
+    OZONE_PLATFORM = "wayland";
+  };
+
   environment.systemPackages = with pkgs; [
     wl-clipboard
   ];
