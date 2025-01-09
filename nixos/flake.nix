@@ -6,6 +6,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     ags.url = "github:aylur/ags";
+    xremap-flake.url = "github:xremap/nix-flake";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
