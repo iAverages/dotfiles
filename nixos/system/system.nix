@@ -30,6 +30,8 @@
     192.168.1.179 ctr.dan.local
   '';
 
+  networking.firewall.allowedTCPPorts = [9003];
+
   # Use local dns server
   # networking.nameservers = ["192.168.1.179" "1.1.1.1"];
 
