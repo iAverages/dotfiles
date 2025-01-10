@@ -8,6 +8,7 @@
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     ags.url = "github:aylur/ags";
     xremap-flake.url = "github:xremap/nix-flake";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     home-manager = {
       url = "github:nix-community/home-manager";
