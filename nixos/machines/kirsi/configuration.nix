@@ -10,8 +10,8 @@
   ];
 
   # Use the NVIDIA driver
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.open = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  hardware.nvidia.open = false;
   services.xserver.videoDrivers = ["nvidia"];
 
   # Set hostname of the machine
