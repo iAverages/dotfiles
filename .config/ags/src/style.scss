@@ -1,12 +1,12 @@
 $bg: rgba(30, 30, 46, 0.5);
 $fg: #f4d9e1;
 $border-color: #282828;
+$item-bg: #282828;
 
 .bar {
   background: $bg;
   border-bottom: 1px solid $border-color;
   color: $fg;
-  // height: 12px;
 }
 
 button {
@@ -16,9 +16,9 @@ button {
 }
 
 .workspaces {
-  background: #282828;
-  margin: 5px 5px 5px 5px;
-  padding: 0px 5px 0px 5px;
+  background: $item-bg;
+  margin: 0px 8px;
+  padding: 2px 5px 2px 5px;
   border-radius: 16px;
   border: solid 0px #f4d9e1;
   font-weight: normal;
@@ -39,6 +39,12 @@ button {
   }
 }
 
+.music {
+  // margin: 10px 0px 10px 0px;
+  padding: 2px 5px 2px 5px;
+}
+
+
 .taskbar {
   .app {
     font-size: 16px;
@@ -53,9 +59,15 @@ button {
   }
 }
 
+.right-bg {
+  background: $item-bg;
+}
+
 .date-time {
+  background: $item-bg;
+
   label {
     font-size: 12px;
-    margin: 0px 2px;
+    // margin: 0px 2px;
   }
 }
