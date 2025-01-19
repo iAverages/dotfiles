@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
-    ags.url = "github:aylur/ags/v2";
+    ags.url = "github:aylur/ags";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
