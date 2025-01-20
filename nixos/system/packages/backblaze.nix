@@ -4,6 +4,6 @@
   ];
 
   environment.shellAliases = {
-    b2 = pkgs.backblaze-b2;
+    b2 = "b2v4";
   };
 }
