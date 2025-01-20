@@ -3,6 +3,10 @@
   inputs,
   ...
 }: {
+  imports = [
+    ./backblaze.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     zsh
     starship
@@ -19,7 +23,6 @@
     python3
     go
     sleek
-    backblaze-b2
   ];
 
   nixpkgs.config.allowUnfree = true;

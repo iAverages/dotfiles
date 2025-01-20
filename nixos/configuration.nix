@@ -10,7 +10,7 @@
     # TOOD: Replace this
     ./packages.nix
 
-    ./system/packages.nix
+    ./system/packages/default.nix
     ./system/user.nix
     ./system/firewall.nix
     ./system/system.nix
