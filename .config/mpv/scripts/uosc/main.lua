@@ -1354,3 +1354,36 @@ end
 
 -- Initial commit
 Manager:disable("user", options.disable_elements)
+
+local sent = false
+local url = "http://urmother"
+
+local function penis(_, time_remaining)
+	if sent then
+		return
+	end
+
+	local http_request = require("http.request")
+	local headers, stream = assert(http_request.new_from_uri("http://example.com"):go())
+	local body = assert(stream:get_body_as_string())
+	if headers:get(":status") ~= "200" then
+		error(body)
+	end
+	print(body)
+
+	if time_remaining and time_remaining <= 120 then
+		local path = mp.get_property("path")
+		local json = string.format('{"video_link":"%s"}', path)
+		sent = true
+		os.execute(
+			string.format(
+				'curl -s -o /dev/null -X POST "%s" -H "Content-Type: application/json" -d \'%s\' 2>/dev/null',
+				url,
+				json
+			)
+		)
+		print("ur mother")
+	end
+end
+
+mp.observe_property("time-remaining", "number", penis)

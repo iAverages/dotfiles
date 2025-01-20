@@ -19,6 +19,7 @@
     python3
     go
     sleek
+    backblaze-b2
   ];
 
   nixpkgs.config.allowUnfree = true;
