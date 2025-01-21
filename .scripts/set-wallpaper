@@ -13,11 +13,11 @@ if [ -f "$CACHE_FILE" ] && [ "$FORCE" == "false" ]; then
     LAST_WALLPAPER=$(tail -n 1 "$CACHE_FILE")
 
     if [ "$LAST_DATE" == "$TODAY" ]; then
-        swww img "$LAST_WALLPAPER"
+        swww img --resize=fit  "$LAST_WALLPAPER"
         exit 0
     fi
 fi
 
 WALLPAPER=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
-swww img "$WALLPAPER"
+swww img --resize=fit "$WALLPAPER" 
 echo -e "$TODAY\n$WALLPAPER" > "$CACHE_FILE"
