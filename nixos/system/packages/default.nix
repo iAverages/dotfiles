@@ -23,6 +23,7 @@
     python3
     go
     sleek
+    wireguard-tools
   ];
 
   nixpkgs.config.allowUnfree = true;
