@@ -20,6 +20,7 @@
     dive
     cosmic-files
     jetbrains.datagrip
+    jetbrains.webstorm
     python3
     go
     sleek
