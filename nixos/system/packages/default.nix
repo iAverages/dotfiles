@@ -25,6 +25,7 @@
     go
     sleek
     wireguard-tools
+    tailscale
   ];
 
   nixpkgs.config.allowUnfree = true;
