@@ -21,6 +21,7 @@
     ./system/gvfs.nix
     ./apps/docker.nix
     ./apps/steam.nix
+    ./apps/tailscale.nix
   ];
 
   # This value determines the NixOS release from which the default
