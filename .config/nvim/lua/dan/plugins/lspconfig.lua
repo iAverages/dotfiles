@@ -180,6 +180,8 @@ return {
                 typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
                 javascriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
                 typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+                json = { "biome", "prettierd", "prettier", stop_after_first = true },
+                jsonc = { "biome", "prettierd", "prettier", stop_after_first = true },
                 astro = { "biome", "prettierd", "prettier", stop_after_first = true },
                 sql = { "sleek" },
                 nix = { "alejandra" },
