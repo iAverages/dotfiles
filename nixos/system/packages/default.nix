@@ -27,6 +27,7 @@
     wireguard-tools
     tailscale
     k9s
+    kubectx
   ];
 
   nixpkgs.config.allowUnfree = true;
