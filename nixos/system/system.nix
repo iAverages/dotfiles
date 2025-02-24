@@ -28,6 +28,7 @@
 
   networking.extraHosts = ''
     192.168.1.179 ctr.dan.local
+    192.168.1.179 git.dan.local
   '';
 
   networking.firewall.allowedTCPPorts = [9003];

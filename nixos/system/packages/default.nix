@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./backblaze.nix
+    # ./backblaze.nix
   ];
 
   environment.systemPackages = with pkgs; [
