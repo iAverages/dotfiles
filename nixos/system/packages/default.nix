@@ -28,6 +28,7 @@
     tailscale
     k9s
     kubectx
+    obsidian
   ];
 
   nixpkgs.config.allowUnfree = true;
