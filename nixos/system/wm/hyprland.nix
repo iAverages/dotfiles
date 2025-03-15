@@ -39,11 +39,13 @@ in {
 
   services.xserver.excludePackages = [pkgs.xterm];
 
-  # services.displayManager.sddm = {
-  #   enable = true;
-  #   wayland.enable = true;
-  #   enableHidpi = true;
-  #   theme = "chili";
-  #   package = pkgs.sddm;
-  # };
+  services.xserver = {
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      enableHidpi = true;
+      theme = "chili";
+      package = pkgs.kdePackages.sddm;
+    };
+  };
 }
