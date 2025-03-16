@@ -39,13 +39,28 @@ in {
 
   services.xserver.excludePackages = [pkgs.xterm];
 
+  environment.systemPackages = with pkgs; [
+    (
+      sddm-chili-theme.override {
+        themeConfig = {
+          # background = "/home/dan/dotfiles/wallpapers/raana-01.png";
+          # ScreenWidth = 1920;
+          # ScreenHeight = 1080;
+          # blur = true;
+          # recursiveBlurLoops = 3;
+          # recursiveBlurRadius = 5;
+        };
+      }
+    )
+  ];
+
   services.xserver = {
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
       enableHidpi = true;
       theme = "chili";
-      package = pkgs.kdePackages.sddm;
+      package = pkgs.libsForQt5.sddm;
     };
   };
 }
