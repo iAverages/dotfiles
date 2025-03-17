@@ -8,6 +8,7 @@ return {
             "hrsh7th/cmp-nvim-lsp",
             { "antosha417/nvim-lsp-file-operations", config = true },
             { "folke/neodev.nvim", opts = {} },
+            "towolf/vim-helm",
         },
         opts = {
             setup = {
@@ -92,6 +93,18 @@ return {
                     lspconfig["vtsls"].setup({
                         settings = {
                             autoUseWorkspaceTsdk = true,
+                        },
+                    })
+                end,
+
+                ["helm-ls"] = function()
+                    lspconfig["helm_ls"].setup({
+                        settings = {
+                            ["helm-ls"] = {
+                                yamlls = {
+                                    path = "yaml-language-server",
+                                },
+                            },
                         },
                     })
                 end,
