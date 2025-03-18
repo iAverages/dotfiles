@@ -19,6 +19,7 @@
     ./system/hardware/bluetooth.nix
     ./system/hardware/razer.nix
     ./system/gvfs.nix
+    ./system/openvpn.nix
     ./apps/docker.nix
     ./apps/steam.nix
     ./apps/tailscale.nix
