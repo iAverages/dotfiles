@@ -29,6 +29,7 @@
     k9s
     kubectx
     obsidian
+    nixd
   ];
 
   nixpkgs.config.allowUnfree = true;

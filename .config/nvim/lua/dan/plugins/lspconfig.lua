@@ -109,6 +109,10 @@ return {
                     })
                 end,
 
+                ["nixd"] = function()
+                    lspconfig["nixd"].setup({})
+                end,
+
                 -- rust_analyzer is installed via rustaceanvim
                 ["rust_analyzer"] = function() end,
 
