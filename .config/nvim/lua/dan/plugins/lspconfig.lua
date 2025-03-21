@@ -82,6 +82,17 @@ return {
                 vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
             end
 
+            lspconfig["helm_ls"].setup({
+                settings = {
+                    ["helm-ls"] = {
+                        yamlls = {
+                            path = "yaml-language-server",
+                        },
+                    },
+                },
+            })
+            lspconfig["nixd"].setup({})
+
             mason_lspconfig.setup_handlers({
                 function(server_name)
                     lspconfig[server_name].setup({
@@ -95,22 +106,6 @@ return {
                             autoUseWorkspaceTsdk = true,
                         },
                     })
-                end,
-
-                ["helm-ls"] = function()
-                    lspconfig["helm_ls"].setup({
-                        settings = {
-                            ["helm-ls"] = {
-                                yamlls = {
-                                    path = "yaml-language-server",
-                                },
-                            },
-                        },
-                    })
-                end,
-
-                ["nixd"] = function()
-                    lspconfig["nixd"].setup({})
                 end,
 
                 -- rust_analyzer is installed via rustaceanvim
