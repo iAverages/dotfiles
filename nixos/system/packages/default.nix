@@ -13,7 +13,7 @@
     neovim
     kubectl
     inputs.ghostty.packages.x86_64-linux.default
-    # inputs.private.packages.x86_64-linux.default
+    inputs.private.packages.x86_64-linux.default
     lens
     deno
     qview
@@ -30,6 +30,7 @@
     kubectx
     obsidian
     nixd
+    yaak
   ];
 
   nixpkgs.config.allowUnfree = true;

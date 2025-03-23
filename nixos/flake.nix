@@ -28,17 +28,14 @@
       inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
 
-    # private = {
-    #   url = "git+ssh://git@github.com/iAverages/nixos-private?ref=main";
-    # };
+    private = {
+      url = "git+ssh://git@github.com/iAverages/nixos-private?ref=main";
+    };
   };
 
   outputs = {
-    self,
     nixpkgs,
     nixpkgs-stable,
-    nixos-hardware,
-    rust-overlay,
     home-manager,
     ...
   } @ inputs: let
