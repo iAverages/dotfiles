@@ -1154,11 +1154,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1742681540,
-        "narHash": "sha256-pxe/SVUHjCGpx04v3FXhUk1CnhD8R2keTC/1nFeasKc=",
+        "lastModified": 1743710977,
+        "narHash": "sha256-NjokE8k/vxZaPFCBgYZniSe8jg9tKa7VJjAbDRTf4n8=",
         "ref": "main",
-        "rev": "bb593732d8de8599d7c03ba9e122dad47ecb6d7b",
-        "revCount": 9,
+        "rev": "fd4e8ee878b48876ef5bfdec01d46fa566e5d64a",
+        "revCount": 10,
         "type": "git",
         "url": "ssh://git@github.com/iAverages/nixos-private"
       },
