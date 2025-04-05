@@ -24,10 +24,10 @@ in {
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
-  hardware.opengl = {
-    package = hypr-pkgs-unstable.mesa.drivers;
-    driSupport32Bit = true;
-    package32 = hypr-pkgs-unstable.pkgsi686Linux.mesa.drivers;
+  hardware.graphics = {
+    package = hypr-pkgs-unstable.mesa;
+    enable32Bit = true;
+    package32 = hypr-pkgs-unstable.pkgsi686Linux.mesa;
   };
 
   # Open keyring on loging
@@ -54,13 +54,11 @@ in {
     )
   ];
 
-  services.xserver = {
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      enableHidpi = true;
-      theme = "chili";
-      package = pkgs.libsForQt5.sddm;
-    };
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    enableHidpi = true;
+    theme = "chili";
+    package = pkgs.libsForQt5.sddm;
   };
 }

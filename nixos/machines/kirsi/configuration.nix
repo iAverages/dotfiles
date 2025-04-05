@@ -31,7 +31,7 @@
 
   # Enable SSH server
   services.openssh.enable = true;
-  services.openssh.permitRootLogin = "no";
+  services.openssh.settings.PermitRootLogin = "no";
 
   environment.systemPackages = with pkgs; [
     xclip

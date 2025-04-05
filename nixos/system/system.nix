@@ -12,8 +12,7 @@
 
   # Something something fixes libraries
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-  ];
+  programs.nix-ld.libraries = [];
 
   # Enable networking
   networking.networkmanager = {

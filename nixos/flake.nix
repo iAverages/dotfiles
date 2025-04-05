@@ -73,7 +73,7 @@
 
     nixosConfigurations.kirsi = nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs pkgs settings;
+        inherit inputs pkgs settings pkgs-stable;
         system = settings.system;
         meta = {hostname = "kirsi";};
       };

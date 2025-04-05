@@ -4,7 +4,8 @@
   ...
 }: {
   imports = [
-    # ./backblaze.nix
+    ./backblaze.nix
+    ./nh.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -32,6 +33,4 @@
     nixd
     yaak
   ];
-
-  nixpkgs.config.allowUnfree = true;
 }
