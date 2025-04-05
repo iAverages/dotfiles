@@ -30,7 +30,7 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
     defaults = {
-        lazy = true,
+        lazy = false,
     },
     spec = {
         { import = "dan.plugins" },

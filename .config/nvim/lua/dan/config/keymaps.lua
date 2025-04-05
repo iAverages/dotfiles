@@ -17,7 +17,7 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
 -- Cut without yanking
-map("n", "x", "\"_x", "Cut without yanking")
+map("n", "x", '"_x', "Cut without yanking")
 
 -- Toggle neo tree
 map("n", "<leader>e", ":Neotree filesystem toggle<Return>", "Toggle file tree")
