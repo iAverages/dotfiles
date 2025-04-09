@@ -6,6 +6,7 @@
   imports = [
     ./backblaze.nix
     ./nh.nix
+    ./thunar.nix
   ];
 
   environment.systemPackages = with pkgs; [

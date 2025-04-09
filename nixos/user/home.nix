@@ -2,6 +2,7 @@
   imports = [
     ./wm/hyprland.nix
     ./cursor.nix
+    ./gtk.nix
   ];
   home.username = settings.user;
   home.homeDirectory = "/home/${settings.user}";
