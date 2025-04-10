@@ -8,7 +8,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
-  boot.kernelPackages = pkgs.linuxPackages_6_11;
+  boot.kernelPackages = pkgs.linuxPackages_6_14;
 
   # Something something fixes libraries
   programs.nix-ld.enable = true;
