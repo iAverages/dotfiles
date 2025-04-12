@@ -1,25 +1,15 @@
 {
-    "$schema": "https://json.schemastore.org/tsconfig",
-    "compilerOptions": {
-        "target": "ES2023",
-        "module": "ES2022",
-        "lib": [
-            "ES2023"
-        ],
-        "strict": true,
-        "moduleResolution": "Bundler",
-        "skipLibCheck": true,
-        "checkJs": true,
-        "allowJs": true,
-        "jsx": "react-jsx",
-        "jsxImportSource": "/home/dan/.local/share/ags/src/jsx",
-        "paths": {
-            "astal": [
-                "/home/dan/.local/share/ags"
-            ],
-            "astal/*": [
-                "/home/dan/.local/share/ags/src/*"
-            ]
-        },
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "strict": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "jsxImportSource": "astal/gtk3",
+    "paths": {
+      "~/*": ["./src/*"]
     }
+  }
 }

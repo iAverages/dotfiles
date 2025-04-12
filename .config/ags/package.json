@@ -1,5 +1,6 @@
 {
-	"devDependencies": {
-		"prettier": "^3.3.3"
-	}
+    "name": "astal-shell",
+    "dependencies": {
+        "astal": "/home/dan/.local/share/ags"
+    }
 }
