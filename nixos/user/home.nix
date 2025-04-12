@@ -4,6 +4,7 @@
     ./cursor.nix
     ./gtk.nix
     ./ghostty.nix
+    ./fastfetch.nix
   ];
   home.username = settings.user;
   home.homeDirectory = "/home/${settings.user}";
