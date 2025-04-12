@@ -3,6 +3,7 @@
     ./wm/hyprland.nix
     ./cursor.nix
     ./gtk.nix
+    ./ghostty.nix
   ];
   home.username = settings.user;
   home.homeDirectory = "/home/${settings.user}";
