@@ -33,5 +33,6 @@
     obsidian
     nixd
     yaak
+    kitty # for fastfetch
   ];
 }
