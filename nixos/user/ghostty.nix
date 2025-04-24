@@ -13,6 +13,8 @@
       scrollback-limit = 0;
       window-decoration = false;
       mouse-scroll-multiplier = 0.5;
+
+      keybind = ["ctrl+shift+left=unbind" "ctrl+shift+right=unbind"];
     };
   };
 }
