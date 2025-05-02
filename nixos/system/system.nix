@@ -10,6 +10,16 @@
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_6_14;
 
+  # virtual camera
+  boot.kernelModules = ["v4l2loopback"];
+  boot.extraModulePackages = with config.boot.kernelPackages; [v4l2loopback.out];
+  boot.extraModprobeConfig = ''
+    # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming
+    # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
+    # https://github.com/umlaeute/v4l2loopback
+    options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+  '';
+
   # Something something fixes libraries
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = [];
