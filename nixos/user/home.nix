@@ -1,5 +1,10 @@
-{settings, ...}: {
+{
+  settings,
+  inputs,
+  ...
+}: {
   imports = [
+    inputs.mirai.homeManagerModules.default
     ./cursor.nix
     ./fastfetch.nix
     ./ghostty.nix
@@ -9,6 +14,8 @@
   ];
   home.username = settings.user;
   home.homeDirectory = "/home/${settings.user}";
+
+  services.mirai.enable = true;
 
   # TODO: Move from Stow to this
   home.file = {
