@@ -924,11 +924,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1746478075,
-        "narHash": "sha256-CwRhgBd9+nTLpl0Vnfom0DA1ryxUNLqlvr4FB/lH0Us=",
+        "lastModified": 1746556655,
+        "narHash": "sha256-Yjksun/Ou1exhoK3265dIUNL/SSikiEI/mwV6/cJJHA=",
         "owner": "iaverages",
         "repo": "mirai",
-        "rev": "616e187d0a58e137fa337521e2fe2402691834cf",
+        "rev": "75ef8c4ceb24b0bf7f964e052d8637779c098363",
         "type": "github"
       },
       "original": {
