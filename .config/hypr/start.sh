@@ -10,6 +10,6 @@ nm-applet &
 ~/.scripts/launch-waybar &
 
 # Sets random wallpaper from folder
-~/.scripts/set-wallpaper &
+# ~/.scripts/set-wallpaper &
 
 dunst
