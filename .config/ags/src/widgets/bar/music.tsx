@@ -13,11 +13,11 @@ export const Music = () => {
       halign={Gtk.Align.START}
     >
       {bind(mpris, "players").as((ps) =>
-        ps[1] ? (
+        ps[0] ? (
           <box>
             <label
-              label={bind(ps[1], "title").as(
-                () => `${ps[1].artist} - ${ps[1].title}`,
+              label={bind(ps[0], "title").as(
+                () => `${ps[0].artist} - ${ps[0].title}`,
               )}
             />
           </box>
