@@ -18,6 +18,7 @@
     ./system/hardware/opengl.nix
     ./system/hardware/bluetooth.nix
     ./system/hardware/razer.nix
+    ./system/gc.nix
     ./system/gvfs.nix
     ./apps/docker.nix
     ./apps/steam.nix
