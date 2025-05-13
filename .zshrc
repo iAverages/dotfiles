@@ -46,6 +46,7 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zinit cdreplay -q
 
 export EDITOR=nvim
+export MANPAGER="nvim +Man!"
 
 eval "$(starship init zsh)"
 
