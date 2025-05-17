@@ -75,6 +75,7 @@
       izanami = {
         monitors = {
           " " = {
+            scale = "1.5";
             hyprland = {workspaces = builtins.genList (i: i + 1) 10;};
           };
         };
