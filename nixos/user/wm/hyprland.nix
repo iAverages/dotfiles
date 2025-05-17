@@ -3,22 +3,55 @@
   meta,
   ...
 }: let
-  mkMonitors = {monitors}: let
+  mkMonitors = monitors: let
     formatMonitor = name: cfg: let
-      res = cfg.res;
-      hertz = cfg.hertz;
-      pos = cfg.pos;
-      scale =
-        if cfg ? scale
-        then cfg.scale
-        else "1";
+      res = cfg.res or "preferred";
+      hertz =
+        if cfg?hertz
+        then "@${cfg.hertz}"
+        else "";
+      pos = cfg.pos or "auto";
+      scale = cfg.scale or "1";
       extra =
         if cfg ? extra
-        then ", " + cfg.extra
+        then ", ${cfg.extra}"
         else "";
-    in "${name}, ${res}@${hertz},${pos},${scale}${extra}";
+    in "${name}, ${res}${hertz},${pos},${scale}${extra}";
   in
     builtins.attrValues (builtins.mapAttrs formatMonitor monitors);
+
+  mkWorkspaces = monitors:
+    builtins.concatLists (
+      builtins.attrValues (
+        builtins.mapAttrs
+        (
+          monitorName: monitorCfg:
+            builtins.map
+            (ws: "${toString ws},monitor:${monitorName}")
+            monitorCfg.hyprland.workspaces
+        )
+        monitors
+      )
+    );
+
+  generateWorkspaceBinds = {
+    lib,
+    mainMod,
+    action ? "workspace",
+    offset ? 0,
+  }:
+    lib.range 1 10
+    |> (list:
+      lib.map (
+        i: let
+          workspaceNum = i + offset;
+          key =
+            if i == 10
+            then "0"
+            else toString i;
+        in "${mainMod}, ${key}, ${action}, ${toString workspaceNum}"
+      )
+      list);
 in {
   imports = [
     ./ags.nix
@@ -45,26 +78,9 @@ in {
 
       exec-once = ["$terminal" "~/dotfiles/.config/hypr/start.sh"];
 
-      monitor = mkMonitors {monitors = meta.monitors;};
-      # desktop monitors
+      monitor = mkMonitors meta.monitors;
 
-      workspace = [
-        "1,monitor:HDMI-A-1"
-
-        "2,monitor:DP-2"
-
-        "3,monitor:DP-1"
-        "4,monitor:DP-1"
-        "5,monitor:DP-1"
-        "6,monitor:DP-1"
-        "7,monitor:DP-1"
-        "9,monitor:DP-1"
-        "8,monitor:DP-1"
-        "10,monitor:DP-1"
-        "11,monitor:DP-1"
-        "12,monitor:DP-1"
-        "13,monitor:DP-1"
-      ];
+      workspace = mkWorkspaces meta.monitors;
 
       env = [
         "XCURSOR_SIZE,24"
@@ -134,69 +150,69 @@ in {
 
       gestures = {workspace_swipe = false;};
 
-      bind = [
-        "$mainMod, Enter, exec, $terminal"
-        "$mainMod, C, killactive,"
-        "$mainMod, M, exit,"
-        "$mainMod, E, exec, $fileManager"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, R, exec, $menu"
-        "$mainMod, P, pseudo,"
-        "$mainMod, J, togglesplit,"
+      bind =
+        [
+          "$mainMod, Enter, exec, $terminal"
+          "$mainMod, C, killactive,"
+          "$mainMod, M, exit,"
+          "$mainMod, E, exec, $fileManager"
+          "$mainMod, V, togglefloating,"
+          "$mainMod, R, exec, $menu"
+          "$mainMod, P, pseudo,"
+          "$mainMod, J, togglesplit,"
 
-        # Move focus with mainMod + arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
-        "$mainMod, h, movefocus, l"
-        "$mainMod, l, movefocus, r"
-        "$mainMod, j, movefocus, u"
-        "$mainMod, k, movefocus, d"
+          # Move focus with mainMod + arrow keys
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
+          "$mainMod, h, movefocus, l"
+          "$mainMod, l, movefocus, r"
+          "$mainMod, j, movefocus, u"
+          "$mainMod, k, movefocus, d"
 
-        # resize
-        "SUPER CTRL, left, resizeactive, -20 0"
-        "SUPER CTRL, right, resizeactive, 20 0"
-        "SUPER CTRL, up, resizeactive, 0 -20"
-        "SUPER CTRL, down, resizeactive, 0 20"
+          # resize
+          "SUPER CTRL, h, resizeactive, -20 0"
+          "SUPER CTRL, l, resizeactive, 20 0"
+          "SUPER CTRL, j, resizeactive, 0 -20"
+          "SUPER CTRL, k, resizeactive, 0 20"
 
-        # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+          # Example special workspace (scratchpad)
+          "$mainMod, S, togglespecialworkspace, magic"
+          "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
+          # Scroll through existing workspaces with mainMod + scroll
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
 
-        # Example special workspace (scratchpad)
-        "$mainMod, S, togglespecialworkspace, magic"
-        "$mainMod SHIFT, S, movetoworkspace, special:magic"
+          "$mainMod SHIFT, a, exec, ~/dotfiles/.scripts/screenshot"
+          "CTRL_SHIFT, a, exec, ${pkgs.grim} -g ${pkgs.slurp} - | ${pkgs.wl-clipboard}"
 
-        # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-
-        "$mainMod SHIFT, a, exec, ~/dotfiles/.scripts/screenshot"
-        "CTRL_SHIFT, a, exec, grim -g ${pkgs.slurp} - | wl-copy"
-
-        "$mainMod SHIFT, e, exec, ~/dotfiles/.scripts/screenrecord"
-      ];
+          "$mainMod SHIFT, e, exec, ~/dotfiles/.scripts/screenrecord"
+        ]
+        # main monitor workspace binds
+        ++ generateWorkspaceBinds {
+          lib = pkgs.lib;
+          mainMod = "$mainMod";
+        }
+        # move to workspace
+        ++ generateWorkspaceBinds {
+          lib = pkgs.lib;
+          mainMod = "$mainMod SHIFT";
+          action = "movetoworkspace";
+        }
+        # second monitor (normally left) binds
+        ++ generateWorkspaceBinds {
+          lib = pkgs.lib;
+          mainMod = "$mainMod CTRL";
+          offset = 10;
+        }
+        # third monitor (normally right) binds
+        ++ generateWorkspaceBinds {
+          lib = pkgs.lib;
+          mainMod = "$mainMod ALT";
+          offset = 20;
+        };
 
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging

@@ -54,30 +54,27 @@
             res = "1920x1080";
             hertz = "60";
             pos = "0x0";
-            scale = "1";
-            hyprland = {workspaces = builtins.genList (i: i + 1) 9;};
+            hyprland = {workspaces = [1] ++ builtins.genList (i: i + 11) 10;};
           };
           "DP-1" = {
             res = "1920x1080";
             hertz = "240";
             pos = "1920x0";
-            scale = "1";
-            hyprland = {workspaces = builtins.genList (i: i + 10) 9;};
+            hyprland = {workspaces = builtins.genList (i: i + 3) 8;};
           };
           "DP-2" = {
             res = "1920x1080";
             hertz = "60";
             pos = " 3840x0";
-            scale = "1";
             extra = "transform,3";
-            hyprland = {workspaces = builtins.genList (i: i + 19) 9;};
+            hyprland = {workspaces = [2] ++ builtins.genList (i: i + 21) 9;};
           };
         };
       };
 
       izanami = {
-        "_" = {
-          hyprland = {workspaces = builtins.genList (i: i + 19) 9;};
+        " " = {
+          hyprland = {workspaces = builtins.genList (i: i + 1) 10;};
         };
       };
     };
