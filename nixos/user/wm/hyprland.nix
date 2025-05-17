@@ -72,7 +72,7 @@ in {
       "$fileManager" = "thunar";
       "$menu" = "wofi --show drun -I -a -n -W 500 -H 376";
 
-      exec-once = ["$terminal" "~/dotfiles/.config/hypr/start.sh"];
+      exec-once = ["$terminal" "swww-daemon" "nm-applet" "~/.scripts/launch-waybar" "dunst"];
 
       monitor = mkMonitors meta.monitors;
 
