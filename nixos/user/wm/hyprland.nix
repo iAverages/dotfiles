@@ -21,18 +21,14 @@
     builtins.attrValues (builtins.mapAttrs formatMonitor monitors);
 
   mkWorkspaces = monitors:
-    builtins.concatLists (
-      builtins.attrValues (
-        builtins.mapAttrs
-        (
-          monitorName: monitorCfg:
-            builtins.map
-            (ws: "${toString ws},monitor:${monitorName}")
-            monitorCfg.hyprland.workspaces
-        )
-        monitors
-      )
-    );
+    monitors
+    |> builtins.mapAttrs (
+      monitorName: monitorCfg:
+        monitorCfg.hyprland.workspaces
+        |> builtins.map (ws: "${toString ws},monitor:${monitorName}")
+    )
+    |> builtins.attrValues
+    |> builtins.concatLists;
 
   generateWorkspaceBinds = {
     lib,
