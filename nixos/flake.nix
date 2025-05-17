@@ -43,8 +43,45 @@
   } @ inputs: let
     settings = {
       user = "dan";
+      # TODO: set this correctly for the system being used to support
+      # different types in the future (i.e if i ever get my pi on nixos)
       system = "x86_64-linux";
     };
+    hosts = {
+      kirsi = {
+        monitors = {
+          "HDMI-A-1" = {
+            res = "1920x1080";
+            hertz = "60";
+            pos = "0x0";
+            scale = "1";
+            hyprland = {workspaces = builtins.genList (i: i + 1) 9;};
+          };
+          "DP-1" = {
+            res = "1920x1080";
+            hertz = "240";
+            pos = "1920x0";
+            scale = "1";
+            hyprland = {workspaces = builtins.genList (i: i + 10) 9;};
+          };
+          "DP-2" = {
+            res = "1920x1080";
+            hertz = "60";
+            pos = " 3840x0";
+            scale = "1";
+            extra = "transform,3";
+            hyprland = {workspaces = builtins.genList (i: i + 19) 9;};
+          };
+        };
+      };
+
+      izanami = {
+        "_" = {
+          hyprland = {workspaces = builtins.genList (i: i + 19) 9;};
+        };
+      };
+    };
+
     pkgs = import nixpkgs {
       system = settings.system;
       config = {
@@ -59,35 +96,25 @@
         allowUnfreePredicate = _: true;
       };
     };
-  in {
-    nixosConfigurations.izanami = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs pkgs settings pkgs-stable;
-        system = settings.system;
-        meta = {hostname = "izanami";};
-      };
-      modules = [
-        ./machines/izanami/hardware-configuration.nix
-        ./machines/izanami/configuration.nix
-        ./configuration.nix
-      ];
-    };
 
-    nixosConfigurations.kirsi = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs pkgs settings pkgs-stable;
-        system = settings.system;
-        meta = {hostname = "kirsi";};
+    mkHost = hostname: attrs:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs pkgs settings pkgs-stable;
+          system = settings.system;
+          meta = {
+            inherit hostname;
+            monitors = attrs.monitors;
+          };
+        };
+        modules = [
+          ./machines/${hostname}/hardware-configuration.nix
+          ./machines/${hostname}/configuration.nix
+          ./configuration.nix
+        ];
       };
-      modules = [
-        ./machines/kirsi/hardware-configuration.nix
-        ./machines/kirsi/configuration.nix
-        ./configuration.nix
-      ];
-    };
-
-    homeConfigurations = {
-      ${settings.user} = home-manager.lib.homeManagerConfiguration {
+    mkHome = hostname: attrs:
+      home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./user/home.nix
@@ -96,8 +123,24 @@
           inherit settings;
           inherit pkgs;
           inherit inputs;
+          meta = {
+            inherit hostname;
+            monitors = attrs.monitors;
+          };
         };
       };
-    };
+  in {
+    nixosConfigurations =
+      hosts
+      |> nixpkgs.lib.mapAttrs (hostname: attrs: mkHost hostname attrs);
+
+    homeConfigurations =
+      builtins.attrNames hosts
+      |> builtins.map (hostname: {
+        name = "${settings.user}@${hostname}";
+        value = hosts.${hostname};
+      })
+      |> builtins.listToAttrs
+      |> builtins.mapAttrs (hostname: attrs: mkHome hostname attrs);
   };
 }

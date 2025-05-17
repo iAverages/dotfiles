@@ -1,4 +1,25 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  meta,
+  ...
+}: let
+  mkMonitors = {monitors}: let
+    formatMonitor = name: cfg: let
+      res = cfg.res;
+      hertz = cfg.hertz;
+      pos = cfg.pos;
+      scale =
+        if cfg ? scale
+        then cfg.scale
+        else "1";
+      extra =
+        if cfg ? extra
+        then ", " + cfg.extra
+        else "";
+    in "${name}, ${res}@${hertz},${pos},${scale}${extra}";
+  in
+    builtins.attrValues (builtins.mapAttrs formatMonitor monitors);
+in {
   imports = [
     ./ags.nix
   ];
@@ -24,14 +45,8 @@
 
       exec-once = ["$terminal" "~/dotfiles/.config/hypr/start.sh"];
 
+      monitor = mkMonitors {monitors = meta.monitors;};
       # desktop monitors
-      monitor = [
-        "HDMI-A-1, 1920x1080@60,0x0,1" # left
-        "DP-1,     1920x1080@240,1920x0,1" # middle
-        "DP-2,     1920x1080@60, 3840x0, 1, transform,3" # right
-
-        ",preferred,auto,auto" # default if new monitor / device
-      ];
 
       workspace = [
         "1,monitor:HDMI-A-1"

@@ -5,7 +5,11 @@
   ...
 }: {
   # Enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+    "pipe-operators"
+  ];
 
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_6_14;
