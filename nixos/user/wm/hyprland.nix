@@ -235,6 +235,8 @@ in {
       misc = {vfr = 0;};
 
       debug = {damage_tracking = 0;};
+
+      ecosystem = {no_update_news = true;};
     };
   };
 }
