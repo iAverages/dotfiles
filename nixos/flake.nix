@@ -73,8 +73,10 @@
       };
 
       izanami = {
-        " " = {
-          hyprland = {workspaces = builtins.genList (i: i + 1) 10;};
+        monitors = {
+          " " = {
+            hyprland = {workspaces = builtins.genList (i: i + 1) 10;};
+          };
         };
       };
     };
