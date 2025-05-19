@@ -40,6 +40,14 @@ return {
             require("mini.move").setup()
         end,
     },
+    {
+        "echasnovski/mini.pairs",
+        version = false,
+        event = "VeryLazy",
+        config = function()
+            require("mini.pairs").setup()
+        end,
+    },
     -- Better buffer closing actions. Available via the buffers helper.
     {
         "kazhala/close-buffers.nvim",
@@ -47,7 +55,7 @@ return {
             preserve_window_layout = { "this", "nameless" },
         },
         config = function()
-            vim.keymap.set("n", "<leader>bc", function()
+            vim.keymap.set("n", "<leader>q", function()
                 -- close the current buffer
                 require("close_buffers").delete({ type = "this" })
             end, { desc = "Close current buffer" })
@@ -70,7 +78,15 @@ return {
         end,
     },
 
+    {
+        "echasnovski/mini.surround",
+        version = false,
+        event = "VeryLazy",
+        config = function()
+            require("mini.surround").setup()
+        end,
+    },
+
     "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-    "tpope/vim-surround", -- Surround stuff with the ys-, cs-, ds- commands
     "wuelnerdotexe/vim-astro",
 }

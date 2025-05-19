@@ -6,9 +6,20 @@ return {
     branch = "0.1.x",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
         "folke/todo-comments.nvim",
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
+            event = "VeryLazy",
+            config = function()
+                require("telescope").load_extension("ui-select")
+            end,
+        },
+        {
+            "nvim-telescope/telescope-ui-select.nvim",
+            event = "VeryLazy",
+        },
     },
     config = function()
         local telescope = require("telescope")
@@ -35,6 +46,17 @@ return {
                         ["<C-j>"] = actions.move_selection_next, -- move to next result
                         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
                     },
+                },
+            },
+            extensions = {
+                fzf = {
+                    fuzzy = true,
+                    override_generic_sorter = true,
+                    override_file_sorter = true,
+                    case_mode = "smart_case",
+                },
+                ["ui-select"] = {
+                    require("telescope.themes").get_dropdown({}),
                 },
             },
         })

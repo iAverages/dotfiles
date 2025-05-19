@@ -26,6 +26,8 @@ return {
             "StatusLine",
             "StatusLineNC",
             "EndOfBuffer",
+            "NormalFloat",
+            "FloatBorder",
         },
     },
 }
