@@ -15,6 +15,10 @@
     mpv
     stripe-cli
     eza
+    du-dust
+    hyperfine
+    cargo-info
     delta
+    tokei
   ];
 }
