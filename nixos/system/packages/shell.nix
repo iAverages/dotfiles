@@ -15,5 +15,6 @@
     mpv
     stripe-cli
     eza
+    delta
   ];
 }
