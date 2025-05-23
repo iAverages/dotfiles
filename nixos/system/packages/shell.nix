@@ -14,5 +14,6 @@
     libnotify
     mpv
     stripe-cli
+    eza
   ];
 }

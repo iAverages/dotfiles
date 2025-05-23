@@ -73,7 +73,7 @@ if [ -f ~/.localrc ]; then
     source ~/.localrc
 fi
 
-alias ls='ls --color'
+alias ls='eza'
 alias editnix='~/dotfiles/rebuild-nix.sh'
 alias editdots='~/dotfiles/editdots.sh && source ~/dotfiles/.zshrc'
 alias res='source ~/dotfiles/.zshrc'
