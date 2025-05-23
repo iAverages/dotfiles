@@ -13,35 +13,12 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    vscode
-    neovim
     git
-    fastfetch
-    zsh
-    stow
-    starship
-    alacritty
     google-chrome
-    btop
-    bat
-    wget
-    tmux
     discord
     spotify
-    gh
-    mariadb
     libreoffice
     yarn
-    nodePackages.pnpm
-    nodejs_20
-    openssl
-    gcc
-    tilt
-    alejandra
-    tig
-    libnotify
-    mpv
-    stripe-cli
     waybar
     (waybar.overrideAttrs (oldAttrs: {
       meson = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
@@ -52,8 +29,6 @@
     networkmanagerapplet
     thunderbird
     lazygit
-    php
-    php82Packages.composer
     termius
     yt-dlp
     ffmpeg

@@ -14,5 +14,6 @@
   users.users.${settings.user}.extraGroups = ["docker"];
   environment.systemPackages = with pkgs; [
     docker
+    dive
   ];
 }
