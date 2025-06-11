@@ -11,6 +11,10 @@
     "pipe-operators"
   ];
 
+  security.sudo-rs = {
+    enable = true;
+  };
+
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_6_14;
 
