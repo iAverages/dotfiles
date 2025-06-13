@@ -89,4 +89,17 @@ return {
 
     "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
     "wuelnerdotexe/vim-astro",
+    {
+        "ojroques/nvim-osc52",
+        config = function()
+            require("osc52").setup({
+                silent = true,
+                trim = false,
+            })
+
+            vim.api.nvim_set_keymap("v", "<leader>y", '<cmd>lua require("osc52").copy_visual()<CR>', { noremap = true, silent = true })
+            vim.api.nvim_set_keymap("n", "<leader>y", '<cmd>lua require("osc52").copy_operator()<CR>', { noremap = true, silent = true })
+            vim.api.nvim_set_keymap("n", "<leader>yy", '<cmd>lua require("osc52").copy_line()<CR>', { noremap = true, silent = true })
+        end,
+    },
 }
