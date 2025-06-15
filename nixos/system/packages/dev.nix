@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    deno
     jetbrains.datagrip
     jetbrains.webstorm
     python3
