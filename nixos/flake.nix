@@ -2,36 +2,31 @@
   description = "dan nixos configuration";
 
   inputs = {
-    mirai.url = "github:iaverages/mirai";
+    mirai = {
+      url = "github:iaverages/mirai";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    private.url = "git+ssh://git@github.com/iAverages/nixos-private?ref=main";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "nixpkgs/nixos-25.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
-    ags.url = "github:aylur/ags";
-    xremap-flake.url = "github:xremap/nix-flake";
     hyprland.url = "github:hyprwm/Hyprland";
+
+    ags = {
+      url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
-
-      # NOTE: The below 2 lines are only required on nixos-unstable,
-      # if you're on stable, they may break your build
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.nixpkgs-unstable.follows = "nixpkgs";
-    };
-
-    private = {
-      url = "git+ssh://git@github.com/iAverages/nixos-private?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
