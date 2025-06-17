@@ -47,6 +47,7 @@ zinit cdreplay -q
 
 export EDITOR=nvim
 export MANPAGER="nvim +Man!"
+export ZVM_VI_EDITOR=nvim
 
 eval "$(starship init zsh)"
 
