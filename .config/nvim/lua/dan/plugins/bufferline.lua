@@ -13,17 +13,6 @@ return {
                 truncate_names = true,
                 show_buffer_close_icons = false,
                 show_close_icon = false,
-                custom_filter = function(bufnr)
-                    if vim.bo[bufnr].modified then
-                        return true
-                    end
-
-                    if bufnr == vim.api.nvim_get_current_buf() then
-                        return true
-                    end
-
-                    return false
-                end,
             },
         },
     },

@@ -1,5 +1,9 @@
 -- Miscelaneous fun stuff
 return {
+    {
+        "iAverages/auto-buffer-close.nvim",
+        opts = {},
+    },
     -- Comment with haste
     {
         "numToStr/Comment.nvim",
