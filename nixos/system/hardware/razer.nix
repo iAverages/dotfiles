@@ -1,7 +1,12 @@
 {pkgs, ...}: {
-  hardware.openrazer.enable = true;
+  hardware = {
+    openrazer = {
+      enable = true;
+      users = ["dan"];
+      batteryNotifier.enable = false;
+    };
+  };
 
-  hardware.openrazer.users = ["dan"];
   environment.systemPackages = with pkgs; [
     polychromatic
   ];
