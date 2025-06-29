@@ -110,6 +110,9 @@ return {
                         settings = {
                             autoUseWorkspaceTsdk = true,
                             javascript = {
+                                tsserver = {
+                                    maxTsServerMemory = 8192,
+                                },
                                 inlayHints = {
                                     includeInlayEnumMemberValueHints = true,
                                     includeInlayFunctionLikeReturnTypeHints = true,
@@ -122,6 +125,9 @@ return {
                             },
 
                             typescript = {
+                                tsserver = {
+                                    maxTsServerMemory = 8192,
+                                },
                                 inlayHints = {
                                     includeInlayEnumMemberValueHints = true,
                                     includeInlayFunctionLikeReturnTypeHints = true,
