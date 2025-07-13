@@ -22,7 +22,7 @@ fi
 UPLOAD_URL="https://avrg.dev/api/upload"
 RESPONSE=$(curl -s -X POST \
   -F "file=@$SCREENSHOT_PATH" \
-  -H "Authorization: $AUTH_TOKEN" \
+  -u "$AUTH_TOKEN" \
   "$UPLOAD_URL")
 
 UPLOAD_LINK=$(echo "$RESPONSE" | jq -r '.link')
