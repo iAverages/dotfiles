@@ -106,4 +106,6 @@ return {
             vim.api.nvim_set_keymap("n", "<leader>yy", '<cmd>lua require("osc52").copy_line()<CR>', { noremap = true, silent = true })
         end,
     },
+
+    { "akinsho/git-conflict.nvim", version = "*", config = true },
 }
