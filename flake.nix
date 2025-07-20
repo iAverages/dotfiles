@@ -6,7 +6,7 @@
       url = "github:iaverages/mirai";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    private.url = "github:iaverages/nixos-private";
+    private.url = "git+ssh://git@github.com/iAverages/nixos-private?ref=main";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-25.05";
