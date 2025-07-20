@@ -103,9 +103,9 @@
           };
         };
         modules = [
-          ./machines/${hostname}/hardware-configuration.nix
-          ./machines/${hostname}/configuration.nix
-          ./configuration.nix
+          ./nixos/machines/${hostname}/hardware-configuration.nix
+          ./nixos/machines/${hostname}/configuration.nix
+          ./nixos/configuration.nix
         ];
       };
     mkHome = hostname: attrs:
