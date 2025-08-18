@@ -16,7 +16,7 @@
   };
 
   # Bootloader.
-  boot.kernelPackages = pkgs.linuxPackages_6_14;
+  boot.kernelPackages = pkgs.linuxPackages_6_16;
 
   # virtual camera
   boot.kernelModules = ["v4l2loopback"];
