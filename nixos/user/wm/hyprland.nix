@@ -221,11 +221,6 @@ in {
       # fixes issues with nvidia
       xwayland = {force_zero_scaling = true;};
 
-      render = {
-        explicit_sync = 2;
-        explicit_sync_kms = 0;
-      };
-
       opengl = {nvidia_anti_flicker = 0;};
 
       misc = {vfr = 0;};
