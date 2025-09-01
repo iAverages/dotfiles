@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: {
   # Enable flakes
@@ -14,6 +15,8 @@
   security.sudo-rs = {
     enable = true;
   };
+
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_6_16;
