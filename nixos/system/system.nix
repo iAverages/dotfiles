@@ -12,6 +12,10 @@
     "pipe-operators"
   ];
 
+  system.disableInstallerTools = true;
+  services.userborn.enable = true;
+  boot.initrd.systemd.enable = true;
+
   security.sudo-rs = {
     enable = true;
   };

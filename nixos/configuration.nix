@@ -20,6 +20,7 @@
     ./system/hardware/razer.nix
     ./system/gc.nix
     ./system/gvfs.nix
+    ./system/plymouth.nix
     ./apps/docker.nix
     ./apps/steam.nix
     ./apps/tailscale.nix
