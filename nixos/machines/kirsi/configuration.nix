@@ -12,14 +12,17 @@
 
   networking.hostName = "kirsi";
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      devices = ["nodev"];
-      efiSupport = true;
-      useOSProber = true;
-      default = "saved";
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        devices = ["nodev"];
+        efiSupport = true;
+        useOSProber = true;
+        default = "saved";
+        theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
+      };
     };
   };
 

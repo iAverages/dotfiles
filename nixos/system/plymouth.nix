@@ -2,7 +2,7 @@
   boot = {
     plymouth = {
       enable = true;
-      logo = ../../wallpapers/2fgHR.png;
+      logo = ../../wallpapers/feQrU.png;
     };
 
     # Enable "Silent boot"

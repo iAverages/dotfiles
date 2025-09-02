@@ -28,6 +28,11 @@
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -51,13 +56,13 @@
             pos = "0x0";
             hyprland = {workspaces = [1] ++ builtins.genList (i: i + 11) 10;};
           };
-          "DP-1" = {
+          "DP-2" = {
             res = "1920x1080";
             hertz = "240";
             pos = "1920x0";
             hyprland = {workspaces = builtins.genList (i: i + 3) 8;};
           };
-          "DP-2" = {
+          "DP-1" = {
             res = "1920x1080";
             hertz = "60";
             pos = " 3840x0";

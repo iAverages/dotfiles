@@ -4,6 +4,9 @@
   ...
 }: let
   hypr-pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  sddm-theme = inputs.silentSDDM.packages.${pkgs.system}.default.override {
+    theme = "rei";
+  };
 in {
   imports = [
     ./wayland.nix
@@ -39,26 +42,28 @@ in {
 
   services.xserver.excludePackages = [pkgs.xterm];
 
-  environment.systemPackages = with pkgs; [
-    (
-      sddm-chili-theme.override {
-        themeConfig = {
-          # background = "/home/dan/dotfiles/wallpapers/raana-01.png";
-          # ScreenWidth = 1920;
-          # ScreenHeight = 1080;
-          # blur = true;
-          # recursiveBlurLoops = 3;
-          # recursiveBlurRadius = 5;
-        };
-      }
-    )
+  environment.systemPackages = [
+    sddm-theme
+    sddm-theme.test
   ];
+  qt.enable = true;
 
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
     enableHidpi = true;
-    theme = "chili";
-    package = pkgs.libsForQt5.sddm;
+    theme = sddm-theme.pname;
+    package = pkgs.kdePackages.sddm;
+    extraPackages = sddm-theme.propagatedBuildInputs;
+
+    settings = {
+      Wayland = {
+        EnableHiDPI = true;
+      };
+      General = {
+        GreeterEnvironment = "QML2_IMPORT_PATH=${sddm-theme}/share/sddm/themes/${sddm-theme.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard";
+        InputMethod = "qtvirtualkeyboard";
+      };
+    };
   };
 }
