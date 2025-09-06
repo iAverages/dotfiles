@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -127,7 +132,9 @@
           # ./nixos/user/wm/hyprland.nix
           # ./nixos/user/screenshot.nix
           (_: {
-            config.environment.wallpaper.enable = true;
+            environment.wallpaper.enable = true;
+            programs.chromium.enable = true;
+            programs.firefox.enable = true;
             # config.environment.terminal.program = "ghostty";
           })
         ];
