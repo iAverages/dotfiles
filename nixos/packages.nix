@@ -29,7 +29,7 @@
     networkmanagerapplet
     thunderbird
     lazygit
-    termius
+    # termius
     yt-dlp
     ffmpeg
     gnumake

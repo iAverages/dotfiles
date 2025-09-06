@@ -22,6 +22,7 @@
     ./system/gvfs.nix
     ./system/plymouth.nix
     ./apps/docker.nix
+    ./apps/proton.nix
     ./apps/steam.nix
     ./apps/tailscale.nix
   ];

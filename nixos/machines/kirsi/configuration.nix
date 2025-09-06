@@ -21,7 +21,7 @@
         efiSupport = true;
         useOSProber = true;
         default = "saved";
-        theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
+        theme = "${pkgs.kdePackages.breeze-grub}/grub/themes/breeze";
       };
     };
   };
