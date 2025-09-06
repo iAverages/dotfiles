@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ../../system/wm/hyprland.nix
+    ../../system-old/wm/hyprland.nix
   ];
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.open = false;
@@ -34,4 +34,11 @@
   environment.systemPackages = with pkgs; [
     xclip
   ];
+
+  # config.environment.terminal = {
+  #   enable = true;
+  #   program = "ghostty";
+  # };
+  #
+  # config.environment.wallpaper.enable = false;
 }

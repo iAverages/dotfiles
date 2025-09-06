@@ -24,7 +24,6 @@
       meson = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     }))
     dunst
-    swww
     rofi-wayland
     networkmanagerapplet
     thunderbird
@@ -54,7 +53,6 @@
     home-manager
     webkitgtk_4_1
     swaynotificationcenter
-    swww
     grim # screenshot functionality
     gtk3
     hyprpaper

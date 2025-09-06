@@ -50,28 +50,21 @@
       )
       list);
 in {
-  imports = [
-    ./ags.nix
-  ];
-
-  home.packages = with pkgs; [
-    swaynotificationcenter
-    swww
-    hyprpicker
-    dunst
-    nil
-    wofi
-  ];
-
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       "$mainMod" = "SUPER";
-      "$terminal" = "ghostty";
-      "$fileManager" = "thunar";
-      "$menu" = "wofi --show drun -I -a -n -W 500 -H 376";
+      # TODO: make these configurable
+      "$terminal" = "${pkgs.lib.getExe pkgs.${config.environment.terminal.program}}";
+      "$fileManager" = "${pkgs.lib.getExe pkgs.xfce.thunar}";
+      "$menu" = "${pkgs.lib.getExe pkgs.wofi} --show drun -I -a -n -W 500 -H 376";
 
-      exec-once = ["$terminal" "swww-daemon" "nm-applet" "~/.scripts/launch-waybar" "dunst"];
+      exec-once = [
+        "$terminal"
+        "nm-applet"
+        "~/.scripts/launch-waybar"
+        "dunst"
+      ];
 
       monitor = mkMonitors meta.monitors;
 

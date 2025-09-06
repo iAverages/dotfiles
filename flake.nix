@@ -117,7 +117,19 @@
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./nixos/user/home.nix
+          # ./nixos/user/home.nix
+          ./nixos/home
+          # ./nixos/user/cursor.nix
+          # ./nixos/user/fastfetch.nix
+          # ./nixos/user/ghostty.nix
+          # ./nixos/user/git.nix
+          # ./nixos/user/gtk.nix
+          # ./nixos/user/wm/hyprland.nix
+          # ./nixos/user/screenshot.nix
+          (_: {
+            config.environment.wallpaper.enable = true;
+            # config.environment.terminal.program = "ghostty";
+          })
         ];
         extraSpecialArgs = {
           inherit settings;

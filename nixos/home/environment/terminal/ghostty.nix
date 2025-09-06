@@ -1,6 +1,13 @@
-{...}: {
+{
+  config,
+  platform,
+  pkgs,
+  ...
+}: let
+  cfg = config.environment.terminal;
+in {
   programs.ghostty = {
-    enable = true;
+    enable = cfg.enable && cfg.program == "ghostty";
     enableZshIntegration = true;
     installBatSyntax = true;
     installVimSyntax = true;

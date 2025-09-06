@@ -37,7 +37,7 @@
       fi
       ${pkgs.libnotify}/bin/notify-send "Upload successful! Link copied to clipboard" \
         -u normal -i "$SCREENSHOT_PATH" -a "Screenshot Upload"
-      ${pkgs.pipewire}/bin/pw-play ${./../../.scripts/TaskCompletedSound.wav}
+      ${pkgs.pipewire}/bin/pw-play ${./../../../../.scripts/TaskCompletedSound.wav}
     else
       ${pkgs.libnotify}/bin/notify-send -a "Screenshot Upload" "Upload failed: $RESPONSE" -u critical
     fi
