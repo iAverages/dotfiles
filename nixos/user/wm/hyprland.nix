@@ -1,6 +1,7 @@
 {
   pkgs,
   meta,
+  config,
   ...
 }: let
   mkMonitors = monitors: let
@@ -56,11 +57,9 @@ in {
   home.packages = with pkgs; [
     swaynotificationcenter
     swww
-    grim
     hyprpicker
     dunst
     nil
-    slurp
     wofi
   ];
 
@@ -181,7 +180,7 @@ in {
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
 
-          "$mainMod SHIFT, a, exec, ~/dotfiles/.scripts/screenshot"
+          "$mainMod SHIFT, a, exec, ${pkgs.lib.getExe config.scripts.screenshot}"
           "CTRL_SHIFT, a, exec, ${pkgs.grim} -g ${pkgs.slurp} - | ${pkgs.wl-clipboard}"
 
           "$mainMod SHIFT, e, exec, ~/dotfiles/.scripts/screenrecord"

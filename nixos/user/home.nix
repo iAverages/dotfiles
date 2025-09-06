@@ -11,6 +11,7 @@
     ./git.nix
     ./gtk.nix
     ./wm/hyprland.nix
+    ./screenshot.nix
   ];
   home.username = settings.user;
   home.homeDirectory = "/home/${settings.user}";
