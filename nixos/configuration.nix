@@ -10,17 +10,17 @@
     # TOOD: Replace this
     ./packages.nix
 
-    ./system/packages/default.nix
-    ./system/user.nix
-    ./system/firewall.nix
-    ./system/system.nix
-    ./system/default-apps.nix
-    ./system/hardware/opengl.nix
-    ./system/hardware/bluetooth.nix
-    ./system/hardware/razer.nix
-    ./system/gc.nix
-    ./system/gvfs.nix
-    ./system/plymouth.nix
+    ./system-old/packages/default.nix
+    ./system-old/user.nix
+    ./system-old/firewall.nix
+    ./system-old/system.nix
+    ./system-old/default-apps.nix
+    ./system-old/hardware/opengl.nix
+    ./system-old/hardware/bluetooth.nix
+    ./system-old/hardware/razer.nix
+    ./system-old/gc.nix
+    ./system-old/gvfs.nix
+    ./system-old/plymouth.nix
     ./apps/docker.nix
     ./apps/proton.nix
     ./apps/steam.nix
