@@ -1,5 +1,5 @@
 {
   imports = [
-    ./steam.nix
+    ./nix-ld.nix
   ];
 }

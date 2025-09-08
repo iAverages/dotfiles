@@ -6,7 +6,8 @@
   networking.hostName = meta.hostname;
 
   imports = [
-    inputs.home-manager.nixosModules.default
+    # inputs.home-manager.nixosModules.default
+    ./system
     # TOOD: Replace this
     ./packages.nix
 

@@ -8,6 +8,8 @@
     stow
     unzip
 
+    starship
+
     # where to put these?
     networkmanager-openvpn
 

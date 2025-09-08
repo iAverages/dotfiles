@@ -1,6 +1,7 @@
 {
   config = {
     programs.vesktop = {
+      enable = true;
       settings = {
         frameless = true;
         autoUpdate = false;

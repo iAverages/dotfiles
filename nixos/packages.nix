@@ -4,7 +4,7 @@
   ...
 }: {
   programs.hyprland.enable = true;
-  programs.zsh.enable = true;
+  # programs.zsh.enable = true;
   programs.direnv.enable = true;
   programs.gnupg.agent.enable = true;
 
@@ -35,7 +35,7 @@
     # jq
     # ncdu
     # unzip
-    # ripgrep
+    ripgrep
     # luarocks
     # fd
     lua
@@ -46,9 +46,9 @@
     killall
     fzf
     obs-studio
-    # rose-pine-cursor
-    # inputs.rose-pine-hyprcursor.packages.${system}.default
-    bun
+    rose-pine-cursor
+    inputs.rose-pine-hyprcursor.packages.${system}.default
+    # bun
     # steam
     # home-manager
     # webkitgtk_4_1
@@ -57,7 +57,7 @@
     # gtk3
     # hyprpaper
     # hyprpicker
-    # dunst
+    dunst
     # mm-common
     # nil
     # nwg-look
@@ -82,7 +82,7 @@
     # grim
     # blueman
     # prismlauncher
-    # vesktop
+    vesktop
     # helvum
     # kanata
     wf-recorder

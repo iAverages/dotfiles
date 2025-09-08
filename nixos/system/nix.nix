@@ -1,10 +1,12 @@
-{
+{inputs, ...}: {
+  system.stateVersion = "23.11";
   nix = {
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
-        "pipe-operator"
+        "pipe-operators"
       ];
       auto-optimise-store = true;
       substituters = [

@@ -8,7 +8,7 @@
 in {
   programs.ghostty = {
     enable = cfg.enable && cfg.program == "ghostty";
-    enableZshIntegration = true;
+    # enableZshIntegration = true;
     installBatSyntax = true;
     installVimSyntax = true;
     settings = {

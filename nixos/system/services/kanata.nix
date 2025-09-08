@@ -1,9 +1,8 @@
-{...}: {
+{
   services.kanata = {
     enable = true;
     keyboards = {
       internalKeyboard = {
-        # extraDefCfg = "process-unmapped-keys yes";
         config = ''
           (defsrc
             caps

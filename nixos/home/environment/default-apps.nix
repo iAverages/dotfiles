@@ -1,5 +1,5 @@
-{...}: {
-  xdg.mime.defaultApplications = {
+{
+  xdg.mimeApps.defaultApplications = {
     "application/pdf" = "google-chrome.desktop";
     "image/jpeg" = "qview.desktop";
     "image/png" = "qview.desktop";

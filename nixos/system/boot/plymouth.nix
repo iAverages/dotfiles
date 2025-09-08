@@ -1,8 +1,8 @@
-{...}: {
+{
   boot = {
     plymouth = {
       enable = true;
-      logo = ../../wallpapers/feQrU.png;
+      logo = ../../../wallpapers/feQrU.png;
     };
 
     # Enable "Silent boot"
@@ -15,10 +15,5 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
     ];
-
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key
-    # It will just not appear on screen unless a key is pressed
-    # loader.timeout = 0;
   };
 }
