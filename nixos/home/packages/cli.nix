@@ -7,11 +7,13 @@
     fzf
     stow
     unzip
+    playerctl
 
     starship
 
     # where to put these?
     networkmanager-openvpn
+    networkmanagerapplet
 
     # development
     bun

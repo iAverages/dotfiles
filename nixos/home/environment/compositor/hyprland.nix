@@ -169,7 +169,7 @@ in {
           "$mainMod SHIFT, a, exec, ${pkgs.lib.getExe config.scripts.screenshot}"
           "CTRL_SHIFT, a, exec, ${pkgs.grim} -g ${pkgs.slurp} - | ${pkgs.wl-clipboard}"
 
-          "$mainMod SHIFT, e, exec, ~/dotfiles/.scripts/screenrecord"
+          "$mainMod SHIFT, e, exec, ${pkgs.lib.getExe config.scripts.screenrecord}"
         ]
         # main monitor workspace binds
         ++ generateWorkspaceBinds {

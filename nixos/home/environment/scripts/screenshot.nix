@@ -23,7 +23,7 @@
       ${pkgs.wl-clipboard}/bin/wl-copy < "$SCREENSHOT_PATH"
     fi
 
-    UPLOAD_URL="https://avrg.dev/api/upload"
+    UPLOAD_URL="https://avrg.dev/api/upload?wait=true"
     RESPONSE=$(${pkgs.curl}/bin/curl -s -X POST \
       -F "file=@$SCREENSHOT_PATH" \
       -u "$AUTH_TOKEN" \

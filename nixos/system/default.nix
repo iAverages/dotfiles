@@ -2,6 +2,7 @@
   imports = [
     ./boot
     ./gaming
+    ./network
     ./programs
     ./security
     ./services

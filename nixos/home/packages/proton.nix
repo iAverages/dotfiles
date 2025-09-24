@@ -1,6 +1,6 @@
 {pkgs, ...}
 : {
-  environment.systemPackages = [
+  home.packages = [
     # refused to open on wayland, use x11 for now
     (pkgs.protonmail-desktop.overrideAttrs
       (oldAttrs: {

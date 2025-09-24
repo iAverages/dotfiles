@@ -9,6 +9,7 @@
     ./git.nix
     ./gtk.nix
     ./jj.nix
+    ./proton.nix
     ./vesktop.nix
     ./yt-dlp.nix
   ];
