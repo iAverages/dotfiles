@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./browser
+    ./games
     ./shell
     ./cli.nix
     ./cursor.nix
