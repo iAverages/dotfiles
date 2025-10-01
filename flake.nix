@@ -76,9 +76,6 @@
           ./nixos/machines/${hostname}/hardware-configuration.nix
           ./nixos/machines/${hostname}/configuration.nix
           ./nixos/system
-
-          ./nixos/system-old/packages/default.nix
-          # ./nixos/configuration.nix
         ];
       };
     mkHome = hostname: attrs: let

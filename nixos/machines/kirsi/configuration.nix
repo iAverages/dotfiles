@@ -3,9 +3,6 @@
   config,
   ...
 }: {
-  imports = [
-    ../../system-old/wm/hyprland.nix
-  ];
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.open = false;
   services.xserver.videoDrivers = ["nvidia"];

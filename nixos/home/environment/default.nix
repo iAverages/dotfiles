@@ -8,5 +8,6 @@ _: {
     ./terminal
     ./wallpaper
     ./default-apps.nix
+    ./fonts.nix
   ];
 }

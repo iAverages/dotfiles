@@ -5,15 +5,13 @@
       internalKeyboard = {
         config = ''
           (defsrc
+            esc
             caps
           )
 
-          (defalias
-            capsesc esc
-          )
-
           (deflayer base
-            @capsesc
+            grave
+            esc
           )
         '';
       };

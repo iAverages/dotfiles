@@ -1,6 +1,5 @@
 {pkgs, ...}: {
-  fonts = {
-    packages = with pkgs; [
+      home.packages = with pkgs; [
       nerd-fonts.jetbrains-mono
       inter
       noto-fonts
@@ -8,6 +7,7 @@
       noto-fonts-emoji
     ];
 
+  fonts = {
     fontconfig.defaultFonts = {
       serif = ["Noto Serif" "Noto Serif CJK SC"];
       sansSerif = ["Inter" "Noto Sans" "Noto Sans CJK SC"];

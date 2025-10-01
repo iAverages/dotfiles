@@ -7,7 +7,6 @@
     ./pipewire.nix
     ./dbus.nix
     ./gnome-keyring.nix
-    ./fonts.nix
   ];
 
   environment.sessionVariables = {

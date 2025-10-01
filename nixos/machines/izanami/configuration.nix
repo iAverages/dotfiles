@@ -7,7 +7,6 @@
 
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
-    ../../system/wm/hyprland.nix
   ];
 
   # Set hostname of the machine

@@ -12,6 +12,7 @@
 
   # options I havent worked out a good place for yet
   boot.initrd.systemd.enable = true;
+  system.disableInstallerTools = true;
 
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
