@@ -7,6 +7,7 @@
     ./cursor.nix
     ./direnv.nix
     ./fastfetch.nix
+    ./gh.nix
     ./git.nix
     ./gtk.nix
     ./jj.nix
