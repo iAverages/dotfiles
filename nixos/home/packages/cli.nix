@@ -68,7 +68,6 @@
     zsh
     starship
     fastfetch
-    alacritty
     stow
     kitty # for fastfetch image preview
     btop

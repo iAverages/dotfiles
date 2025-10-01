@@ -7,6 +7,8 @@
   hardware.nvidia.open = false;
   services.xserver.videoDrivers = ["nvidia"];
 
+  environment.terminal.program = "alacritty";
+
   networking.hostName = "kirsi";
 
   boot = {

@@ -95,7 +95,6 @@
             environment.wallpaper.enable = true;
             programs.chromium.enable = true;
             programs.firefox.enable = true;
-            # config.environment.terminal.program = "ghostty";
           })
         ];
         extraSpecialArgs = {

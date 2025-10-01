@@ -1,9 +1,4 @@
-{
-  config,
-  platform,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   cfg = config.environment.terminal;
 in {
   programs.ghostty = {

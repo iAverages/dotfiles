@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./ghostty.nix
+    ./alacritty.nix
   ];
 
   options.environment.terminal = {
@@ -11,6 +12,7 @@
     program = lib.mkOption {
       type = lib.types.enum [
         "ghostty"
+        "alacritty"
       ];
       default = "ghostty";
     };
