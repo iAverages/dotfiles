@@ -1,0 +1,27 @@
+{lib, ...}: {
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      format = lib.concatStrings [
+        "$directory"
+        "$git_branch"
+        "$character"
+      ];
+      directory = {
+        style = "fg:#8a38d2 bold";
+        fish_style_pwd_dir_length = 1;
+        truncate_to_repo = true;
+      };
+      character = {
+        success_symbol = "[❯](fg:#6d28a5 )";
+        error_symbol = "[❯](red)";
+      };
+      git_branch = {
+        symbol = " ";
+        format = "([$symbol$branch]($style)) ";
+        style = "fg:#b887e4";
+      };
+    };
+  };
+}
