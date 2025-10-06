@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       global = {
-        font = "IosevkaTerm Nerd Font 16";
+        font = "JetBrainsMono Nerd Font";
         format = "<b>%a</b>\n<i>%s</i>%p %n\n%b";
         sort = true;
         indicate_hidden = true;
