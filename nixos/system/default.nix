@@ -1,11 +1,11 @@
 {
   imports = [
-    ./boot
-    ./gaming
+    # ./boot
+    # ./gaming
     ./network
-    ./programs
+    # ./programs
     ./security
-    ./services
+    # ./services
     ./nix.nix
     ./user.nix
   ];
@@ -13,6 +13,8 @@
   # options I havent worked out a good place for yet
   boot.initrd.systemd.enable = true;
   # system.disableInstallerTools = true;
+
+  programs.dconf.enable = true;
 
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
