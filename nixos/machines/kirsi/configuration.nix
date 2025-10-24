@@ -8,6 +8,9 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   networking.hostName = "kirsi";
+  networking.firewall = {
+    allowedTCPPorts = [3000 3001 22];
+  };
 
   boot = {
     loader = {

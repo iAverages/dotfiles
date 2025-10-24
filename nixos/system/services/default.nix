@@ -6,6 +6,7 @@
     ./gnupg-agent.nix
     ./gvfs.nix
     ./kanata.nix
+    ./pipewire.nix
     ./printd.nix
     ./razer.nix
     ./userborn.nix
