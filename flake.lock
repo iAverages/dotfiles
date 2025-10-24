@@ -680,6 +680,22 @@
     },
     "nixpkgs_6": {
       "locked": {
+        "lastModified": 1734424634,
+        "narHash": "sha256-cHar1vqHOOyC7f1+tVycPoWTfKIaqkoe1Q6TnKzuti4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d3c42f187194c26d9f0309a8ecc469d6c878ce33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_7": {
+      "locked": {
         "lastModified": 1710272261,
         "narHash": "sha256-g0bDwXFmTE7uGDOs9HcJsfLFhH7fOsASbAuOzDC+fhQ=",
         "owner": "NixOS",
@@ -717,6 +733,25 @@
         "type": "github"
       }
     },
+    "private": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_6"
+      },
+      "locked": {
+        "lastModified": 1753018391,
+        "narHash": "sha256-29KhB9oTnVw8PuyOUiGRJHmQlDkOqloCgSbmwdq8rZE=",
+        "ref": "main",
+        "rev": "b67c9f79b200e4ee10c11dcadf12e5826da8e8f4",
+        "revCount": 16,
+        "type": "git",
+        "url": "ssh://git@github.com/iAverages/nixos-private"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/iAverages/nixos-private"
+      }
+    },
     "root": {
       "inputs": {
         "ags": "ags",
@@ -729,6 +764,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-stable": "nixpkgs-stable",
+        "private": "private",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "silentSDDM": "silentSDDM"
       }
@@ -736,7 +772,7 @@
     "rose-pine-hyprcursor": {
       "inputs": {
         "hyprlang": "hyprlang_2",
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_7",
         "utils": "utils"
       },
       "locked": {

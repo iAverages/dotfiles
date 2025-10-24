@@ -23,6 +23,14 @@ in {
       general = {
         live_config_reload = true;
       };
+      key_bindings = [
+        # conflicts with nvim keybind i use
+        {
+          key = "E";
+          mods = "Control";
+          action = "None";
+        }
+      ];
     };
   };
 }
