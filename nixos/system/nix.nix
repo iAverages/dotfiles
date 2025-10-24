@@ -1,5 +1,6 @@
 {inputs, ...}: {
   system.stateVersion = "23.11";
+  nixpkgs.config.allowUnfree = true;
   nix = {
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     settings = {

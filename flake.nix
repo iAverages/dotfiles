@@ -65,7 +65,7 @@
     in
       nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs pkgs settings pkgs-stable;
+          inherit inputs settings pkgs-stable;
           system = settings.system;
           meta = {
             inherit hostname;
@@ -76,6 +76,9 @@
           ./nixos/machines/${hostname}/hardware-configuration.nix
           ./nixos/machines/${hostname}/configuration.nix
           ./nixos/system
+          {
+            gaming.steam.enable = true;
+          }
         ];
       };
     mkHome = hostname: attrs: let
