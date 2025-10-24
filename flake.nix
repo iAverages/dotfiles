@@ -73,8 +73,7 @@
           };
         };
         modules = [
-          ./nixos/machines/${hostname}/hardware-configuration.nix
-          ./nixos/machines/${hostname}/configuration.nix
+          ./nixos/machines/${hostname}
           ./nixos/system
           {
             gaming.steam.enable = true;
