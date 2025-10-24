@@ -4,6 +4,7 @@
   outputs = {
     nixpkgs,
     nixpkgs-stable,
+    nixos-wsl,
     home-manager,
     ...
   } @ inputs: let
@@ -11,6 +12,11 @@
       user = "dan";
     };
     hosts = {
+      kirsi-wsl = {
+        system = "x86_64-linux";
+        monitors = {
+        };
+      };
       kirsi = {
         system = "x86_64-linux";
         monitors = {
@@ -75,9 +81,6 @@
         modules = [
           ./nixos/machines/${hostname}
           ./nixos/system
-          {
-            gaming.steam.enable = true;
-          }
         ];
       };
     mkHome = hostname: attrs: let
@@ -135,6 +138,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-25.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     hyprland.url = "github:hyprwm/Hyprland";
 
