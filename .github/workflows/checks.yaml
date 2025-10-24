@@ -1,7 +1,9 @@
 name: "checks"
 
 on:
-  workflow_call:
+  push:
+    branches:
+      - '**'
 
 jobs:
   build:
