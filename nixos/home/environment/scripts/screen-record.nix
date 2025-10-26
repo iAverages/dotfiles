@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   screenrecordScript = pkgs.writeShellScriptBin "screenshot" ''
     #!/usr/bin/env bash
 
@@ -8,7 +12,7 @@
     UPLOAD_URL="https://avrg.dev/api/upload"
     RANDOM_NAME=$(tr -dc 'a-zA-Z0-9' </dev/urandom | head -c 6)
     RECORDING_PATH="$RECORDINGS_DIR/$RANDOM_NAME.mp4"
-    TOKEN_FILE="$HOME/.scripts/.screenshot-token"
+    TOKEN_FILE="${config.sops.secrets.avrgApiToken.path}"
 
     mkdir -p "$RECORDINGS_DIR"
 

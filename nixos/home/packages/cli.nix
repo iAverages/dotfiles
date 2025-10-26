@@ -84,6 +84,5 @@
     cargo-info
     delta
     tokei
-    age
   ];
 }

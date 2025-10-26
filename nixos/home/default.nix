@@ -7,6 +7,7 @@
     ./environment
     ./packages
     ./services
+    ./security
   ];
 
   xdg.configFile."environment.d/envvars.conf" = {

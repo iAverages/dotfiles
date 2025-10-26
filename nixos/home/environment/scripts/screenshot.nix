@@ -1,9 +1,12 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   screenshotScript = pkgs.writeShellScriptBin "screenshot" ''
     #!/usr/bin/env bash
 
-    # TODO: setup sops for this secret
-    TOKEN_FILE="$HOME/.scripts/.screenshot-token"
+    TOKEN_FILE="${config.sops.secrets.avrgApiToken.path}"
     if [ ! -f "$TOKEN_FILE" ]; then
       ${pkgs.libnotify}/bin/notify-send "Screenshot Upload" "Auth token file not found at $TOKEN_FILE! Will not upload screenshot" -u critical
       exit 1
