@@ -4,7 +4,6 @@
   outputs = {
     nixpkgs,
     nixpkgs-stable,
-    nixos-wsl,
     home-manager,
     ...
   } @ inputs: let
@@ -141,6 +140,11 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     hyprland.url = "github:hyprwm/Hyprland";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ags = {
       url = "github:aylur/ags";

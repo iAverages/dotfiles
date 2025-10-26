@@ -34,7 +34,7 @@
 
     neovim
     # inputs.ghostty.packages.x86_64-linux.default
- #   inputs.private.packages.x86_64-linux.default
+    #   inputs.private.packages.x86_64-linux.default
     qview
     obsidian
     jetbrains.datagrip
@@ -84,5 +84,6 @@
     cargo-info
     delta
     tokei
+    age
   ];
 }
