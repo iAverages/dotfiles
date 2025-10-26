@@ -1,11 +1,11 @@
 {
   imports = [
-    # ./boot
-    # ./gaming
+    ./boot
+    ./gaming
     ./network
-    # ./programs
+    ./programs
     ./security
-    # ./services
+    ./services
     ./nix.nix
     ./user.nix
   ];
