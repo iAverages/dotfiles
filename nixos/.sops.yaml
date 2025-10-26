@@ -1,7 +1,11 @@
 keys:
-  - &root age13f3kzht5m3awmqp54c2wgkd482z5m0f34z00lcklc3nsq7z383esea20py
+  - &izanami age10rdeh7dwmtz2ka6urw4ufp566la0epu25yp2j0xk2zdrc9lg7g7qa0y4n6
+  - &kirsi age13f3kzht5m3awmqp54c2wgkd482z5m0f34z00lcklc3nsq7z383esea20py
+  - &kirsi-wsl age1whyxxr2zdn3gc8meu0jr4tugdcmw6xg8asxa00gqwx5yy3mfv9esw2p74a
 creation_rules:
   - path_regex: secrets.yaml$
     key_groups:
       - age:
-          - *root
+          - *izanami
+          - *kirsi
+          - *kirsi-wsl
