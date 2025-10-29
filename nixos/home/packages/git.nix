@@ -1,20 +1,42 @@
 {
+  lib,
   pkgs,
   meta,
+  config,
   ...
-}: {
+}: let
+  userEmail = "me@danielraybone.com";
+  allowedSignersFilePath = ".config/git/allowed_signers";
+  machinesPath = ../../machines;
+  allowedSigners =
+    builtins.readDir machinesPath
+    |> lib.filterAttrs (name: type: type == "directory")
+    |> lib.attrNames
+    |> map (hostname: let
+      keyPath = machinesPath + "/${hostname}/${hostname}_ed25519.pub";
+    in
+      if builtins.pathExists keyPath
+      then "${userEmail} ${lib.removeSuffix "\n" (builtins.readFile keyPath)}"
+      else null)
+    |> lib.filter (x: x != null)
+    |> lib.concatStringsSep "\n";
+in {
   programs.git = {
     enable = true;
 
     userName = "iAverages";
-    userEmail = "me@danielraybone.com";
+    inherit userEmail;
     signing = {
       format = "ssh";
-      key = builtins.readFile ../../machines/${meta.hostname}/${meta.hostname}_ed25519.pub;
+      key = (builtins.toString machinesPath) + "/${meta.hostname}/${meta.hostname}_ed25519.pub";
       signByDefault = true;
     };
 
     extraConfig = {
+      gpg = {
+        format = "ssh";
+        ssh.allowedSignersFile = "${config.home.homeDirectory}/${allowedSignersFilePath}";
+      };
       init.defaultBranch = "main";
       core.pager = "${pkgs.delta}/bin/delta";
       interactive.diffFilter = "${pkgs.delta}/bin/delta --color-only";
@@ -30,4 +52,6 @@
       };
     };
   };
+
+  home.file.${allowedSignersFilePath}.text = allowedSigners;
 }
