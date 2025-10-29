@@ -1,12 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  meta,
+  ...
+}: {
   programs.git = {
     enable = true;
 
     userName = "iAverages";
     userEmail = "me@danielraybone.com";
     signing = {
-      #     key = "53300CDDBF4B6CF4";
-      #    signByDefault = true;
+      format = "ssh";
+      key = builtins.readFile ../../machines/${meta.hostname}/${meta.hostname}_ed25519.pub;
+      signByDefault = true;
     };
 
     extraConfig = {

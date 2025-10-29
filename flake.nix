@@ -124,7 +124,7 @@
         value = hosts.${hostname};
       })
       |> builtins.listToAttrs
-      |> builtins.mapAttrs (hostname: attrs: mkHome hostname attrs);
+      |> builtins.mapAttrs (configName: attrs: mkHome (builtins.elemAt (builtins.match "[^@\n]*@(.+)" configName) 0) attrs);
   };
 
   inputs = {
