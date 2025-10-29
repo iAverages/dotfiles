@@ -7,4 +7,6 @@
   networking.hosts = {
     "192.168.1.179" = ["ctr.dan.local"];
   };
+
+  security.pki.certificateFiles = [../../ssl/dan.local.crt];
 }

@@ -38,6 +38,7 @@ return {
                     "vendor", -- php packages
                     ".direnv", -- nix shit
                     ".git",
+                    ".jj",
                 },
                 path_display = { "truncate" },
                 mappings = {
