@@ -7,6 +7,8 @@
   hardware.nvidia.open = false;
   services.xserver.videoDrivers = ["nvidia"];
 
+  programs.coolercontrol.enable = true;
+
   networking.hostName = "kirsi";
   networking.firewall = {
     allowedTCPPorts = [3000 3001 22];
