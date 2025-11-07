@@ -33,11 +33,6 @@
     fsType = "ntfs";
   };
 
-  fileSystems."/mnt/chonky" = {
-    device = "/dev/disk/by-uuid/E85E1C125E1BD7E0";
-    fsType = "ntfs";
-  };
-
   fileSystems."/mnt/flushed" = {
     device = "/dev/disk/by-uuid/14C4A611C4A5F560";
     fsType = "ntfs";
