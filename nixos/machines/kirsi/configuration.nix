@@ -30,6 +30,7 @@
 
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "no";
+  services.auth-usb-mount.enable = true;
 
   boot.tmp.useTmpfs = true;
 

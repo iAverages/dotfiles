@@ -1,5 +1,6 @@
 {
   imports = [
+    ./auto-usb-mount.nix
     ./bluetooth.nix
     ./dbus.nix
     ./gnome-keyring.nix
