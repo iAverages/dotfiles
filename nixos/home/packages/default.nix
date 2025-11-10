@@ -3,6 +3,7 @@
     ./browser
     ./games
     ./shell
+    ./atuin.nix
     ./cli.nix
     ./cursor.nix
     ./direnv.nix

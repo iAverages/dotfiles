@@ -121,3 +121,5 @@ esac
 # pnpm end
 #
 source <(direnv hook zsh)
+
+eval "$(atuin init zsh)"
