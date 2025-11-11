@@ -9,5 +9,5 @@
     # "192.168.1.179" = ["ctr.dan.local" "paperless.dan.local"];
   };
 
-  security.pki.certificateFiles = [../../ssl/dan.local.crt];
+  security.pki.certificateFiles = [../../ssl/ca.crt];
 }
