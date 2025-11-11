@@ -16,6 +16,26 @@
     '';
   };
 
+  programs.rclone = {
+    enable = true;
+    remotes = {
+      kurumi = {
+        config = {
+          type = "sftp";
+          host = "192.168.1.167";
+          user = "root";
+          key_file = "/home/${settings.user}/.ssh/${meta.hostname}_ed25519";
+        };
+        mounts = {
+          "/opt/data" = {
+            enable = true;
+            mountPoint = "/home/${settings.user}/nas";
+          };
+        };
+      };
+    };
+  };
+
   home.username = settings.user;
   home.homeDirectory = "/home/${settings.user}";
 
