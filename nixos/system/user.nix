@@ -5,6 +5,10 @@
   ...
 }: {
   programs.zsh.enable = true;
+  environment.variables = {
+    NH_FLAKE = "/home/${settings.user}/dotfiles";
+  };
+
   users.users.${settings.user} = {
     isNormalUser = true;
     description = "dan";
