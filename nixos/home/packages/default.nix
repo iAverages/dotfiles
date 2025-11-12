@@ -9,9 +9,7 @@
     ./direnv.nix
     ./fastfetch.nix
     ./gh.nix
-    ./git.nix
     ./gtk.nix
-    ./jj.nix
     ./nh.nix
     ./proton.nix
     ./vesktop.nix
