@@ -23,7 +23,7 @@
       kurumi = {
         config = {
           type = "sftp";
-          host = "192.168.1.167";
+          host = "192.168.1.202";
           user = "root";
           key_file = "/home/${settings.user}/.ssh/${meta.hostname}_ed25519";
         };
