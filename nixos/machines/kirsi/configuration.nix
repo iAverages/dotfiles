@@ -17,13 +17,20 @@
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
-      grub = {
+      limine = {
         enable = true;
-        devices = ["nodev"];
-        efiSupport = true;
-        useOSProber = true;
-        default = "saved";
-        theme = "${pkgs.kdePackages.breeze-grub}/grub/themes/breeze";
+        maxGenerations = 10;
+        secureBoot = {
+          enable = true;
+        };
+        extraConfig = ''
+          remember_last_entry: yes
+        '';
+        extraEntries = ''
+          /Windows
+            protocol: efi
+            path: uuid(27f1d4c8-a7d2-4728-8a89-5cc298c0b642):/EFI/Microsoft/Boot/bootmgfw.efi
+        '';
       };
     };
   };
@@ -37,11 +44,4 @@
   environment.systemPackages = with pkgs; [
     xclip
   ];
-
-  # config.environment.terminal = {
-  #   enable = true;
-  #   program = "ghostty";
-  # };
-  #
-  # config.environment.wallpaper.enable = false;
 }
