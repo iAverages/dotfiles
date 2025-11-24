@@ -17,7 +17,12 @@
 
   config = lib.mkIf config.programs.mirai.enable {
     home.packages = [pkgs.swww];
-    services.mirai.enable = true;
     services.swww.enable = true;
+    services.mirai = {
+      enable = true;
+      settings = {
+        local.path = "/home/dan/wallpapers/anime";
+      };
+    };
   };
 }
