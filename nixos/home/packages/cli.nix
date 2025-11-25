@@ -79,7 +79,7 @@
     mpv
     stripe-cli
     eza
-    du-dust
+    dust
     hyperfine
     cargo-info
     delta

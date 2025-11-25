@@ -128,8 +128,6 @@ in {
         };
       };
 
-      gestures = {workspace_swipe = false;};
-
       bind =
         [
           "$mainMod, Enter, exec, $terminal"

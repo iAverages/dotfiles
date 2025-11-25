@@ -11,15 +11,12 @@ in {
   programs.git = {
     enable = true;
 
-    userName = "iAverages";
-    inherit userEmail;
-    signing = {
-      format = "ssh";
-      key = (builtins.toString machinesPath) + "/${meta.hostname}/${meta.hostname}_ed25519.pub";
-      signByDefault = true;
-    };
+    settings = {
+      user = {
+        name = "iAverages";
+        email = userEmail;
+      };
 
-    extraConfig = {
       gpg = {
         format = "ssh";
         ssh.allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
@@ -37,6 +34,11 @@ in {
       url."ssh://git@github.com/" = {
         insteadOf = "https://github.com/";
       };
+    };
+    signing = {
+      format = "ssh";
+      key = (builtins.toString machinesPath) + "/${meta.hostname}/${meta.hostname}_ed25519.pub";
+      signByDefault = true;
     };
   };
 }
