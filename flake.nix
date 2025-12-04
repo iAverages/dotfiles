@@ -97,6 +97,7 @@
           ./nixos/home
           (_: {
             environment.wallpaper.enable = true;
+            environment.desktop-shell.enable = true;
             programs.chromium.enable = true;
             programs.firefox.enable = true;
           })
@@ -173,6 +174,11 @@
 
     starship-jj = {
       url = "gitlab:lanastara_foss/starship-jj";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }

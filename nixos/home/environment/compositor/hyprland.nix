@@ -57,7 +57,8 @@ in {
       # TODO: make these configurable
       "$terminal" = "${pkgs.lib.getExe pkgs.${config.environment.terminal.program}}";
       "$fileManager" = "${pkgs.lib.getExe pkgs.xfce.thunar}";
-      "$menu" = "${pkgs.lib.getExe pkgs.wofi} --show drun -I -a -n -W 500 -H 376";
+      "$menu" = "noctalia-shell ipc call launcher toggle";
+      "$sessionMenu" = ";noctalia-shell ipc call sessionMenu toggle";
 
       exec-once = [
         "$terminal"
@@ -135,6 +136,7 @@ in {
           "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating,"
           "$mainMod, R, exec, $menu"
+          "$mainMod, L, exec, $sessionMenu"
           "$mainMod, P, pseudo,"
           "$mainMod, J, togglesplit,"
 
