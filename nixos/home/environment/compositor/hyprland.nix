@@ -136,7 +136,7 @@ in {
           "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating,"
           "$mainMod, R, exec, $menu"
-          "$mainMod, L, exec, $sessionMenu"
+          "$mainMod, I, exec, $sessionMenu"
           "$mainMod, P, pseudo,"
           "$mainMod, J, togglesplit,"
 
