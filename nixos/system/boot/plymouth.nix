@@ -1,7 +1,7 @@
 {
   boot = {
     plymouth = {
-      logo = ../../../wallpapers/feQrU.png;
+      logo = ../../assets/plymouth.png;
     };
 
     # Enable "Silent boot"
