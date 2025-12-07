@@ -63,7 +63,6 @@ in {
       exec-once = [
         "$terminal"
         "nm-applet"
-        "~/.scripts/launch-waybar"
         "dunst"
       ];
 
