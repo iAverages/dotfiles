@@ -57,8 +57,8 @@ in {
       # TODO: make these configurable
       "$terminal" = "${pkgs.lib.getExe pkgs.${config.environment.terminal.program}}";
       "$fileManager" = "${pkgs.lib.getExe pkgs.xfce.thunar}";
-      "$menu" = "noctalia-shell ipc call launcher toggle";
-      "$sessionMenu" = ";noctalia-shell ipc call sessionMenu toggle";
+      "$menu" = "${pkgs.lib.getExe pkgs.wofi} --show drun -I -a -n -W 500 -H 376";
+      "$sessionMenu" = "noctalia-shell ipc call sessionMenu toggle";
 
       exec-once = [
         "$terminal"
@@ -76,7 +76,6 @@ in {
         border_size = 2;
         "col.active_border" = "rgb(7e22ce) rgb(3f1167) 45deg";
         "col.inactive_border" = "0xff382D2E";
-        no_border_on_floating = false;
         layout = "dwindle";
       };
 
