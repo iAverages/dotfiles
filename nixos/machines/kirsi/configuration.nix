@@ -7,6 +7,8 @@
   hardware.nvidia.open = false;
   services.xserver.videoDrivers = ["nvidia"];
 
+  programs.streamcontroller.enable = true;
+
   programs.coolercontrol.enable = true;
 
   networking.hostName = "kirsi";

@@ -699,11 +699,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1765536040,
-        "narHash": "sha256-u9z7Z2te+jy37JhwPq2krpr4/5n0pZdZVWbPaWVdBHQ=",
+        "lastModified": 1767566521,
+        "narHash": "sha256-JM+ZyAfo7wz1bQKIRds7AVE8U4LPXx/RwwY00qlILhs=",
         "owner": "iaverages",
         "repo": "mirai",
-        "rev": "1bb494bf3ec5888d6cd04932f1ca3ebc3d7fd398",
+        "rev": "05eaa460949ee5381f62cade02475872a8a4f824",
         "type": "github"
       },
       "original": {
