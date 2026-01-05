@@ -16,6 +16,12 @@
     allowedTCPPorts = [3000 3001 22];
   };
 
+  fileSystems."/mnt/games" = {
+    device = "/dev/disk/by-uuid/14C4A611C4A5F560";
+    fsType = "ntfs3";
+    options = ["uid=1000" "nofail"];
+  };
+
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
