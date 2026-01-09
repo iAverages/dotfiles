@@ -47,6 +47,9 @@
   services.openssh.settings.PermitRootLogin = "no";
   services.auth-usb-mount.enable = false;
 
+  hardware.sane.enable = true;
+  users.users.dan.extraGroups = ["scanner" "lp"];
+
   boot.tmp.useTmpfs = true;
 
   environment.systemPackages = with pkgs; [
