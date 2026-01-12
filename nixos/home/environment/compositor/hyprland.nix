@@ -52,6 +52,10 @@
 in {
   wayland.windowManager.hyprland = {
     enable = true;
+    # fix for portals
+    # https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#using-the-home-manager-module-with-nixos
+    package = null;
+    portalPackage = null;
     settings = {
       "$mainMod" = "SUPER";
       # TODO: make these configurable

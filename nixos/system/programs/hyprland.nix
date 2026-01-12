@@ -24,6 +24,21 @@ in {
   config = lib.mkIf (cfg.enable
     && cfg.program
     == "hyprland") {
+    xdg = {
+      portal = {
+        enable = true;
+        xdgOpenUsePortal = true;
+        extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome];
+        config = {
+          Hyprland = {
+            default = [
+              "hyprland"
+              "gtk"
+            ];
+          };
+        };
+      };
+    };
     programs.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
