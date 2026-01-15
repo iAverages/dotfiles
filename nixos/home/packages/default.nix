@@ -2,6 +2,7 @@
   imports = [
     ./browser
     ./games
+    ./rofi
     ./shell
     ./vcs
     ./atuin.nix

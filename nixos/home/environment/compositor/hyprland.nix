@@ -57,7 +57,7 @@ in {
       # TODO: make these configurable
       "$terminal" = "${pkgs.lib.getExe pkgs.${config.environment.terminal.program}}";
       "$fileManager" = "${pkgs.lib.getExe pkgs.xfce.thunar}";
-      "$menu" = "${pkgs.lib.getExe pkgs.wofi} --show drun -I -a -n -W 500 -H 376";
+      "$menu" = "${pkgs.lib.getExe pkgs.rofi} -show drun -show-icons -width 500 -height 376";
       "$sessionMenu" = "noctalia-shell ipc call sessionMenu toggle";
 
       exec-once = [
@@ -197,7 +197,7 @@ in {
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      windowrulev2 = "suppressevent maximize, class:.*";
+      # windowrulev2 = "suppressevent maximize, class:.*";
 
       # fixes issues with nvidia
       xwayland = {force_zero_scaling = true;};
