@@ -12,6 +12,12 @@
         email = "me@danielraybone.com";
       };
 
+      aliases = {
+        # removes all "orphaned side branches", helps when branches are squashed on github from a PR
+        # this will remove all changes not inline with main or not tracked by a bookmark
+        cleanup = ["abandon" "-r" "mutable() ~ ::main ~ main:: ~ ::bookmarks()"];
+      };
+
       ui = {
         paginate = "never";
         default-command = "log";
