@@ -12,10 +12,16 @@
         email = "me@danielraybone.com";
       };
 
-      aliases = {
+      aliases = let
+        # move x branch to newest change that isnt empty
+        move-branch = ["bookmark" "set" "--revision" "(@ ~ empty()) | parents(@ & empty())"];
+      in {
         # removes all "orphaned side branches", helps when branches are squashed on github from a PR
         # this will remove all changes not inline with main or not tracked by a bookmark
         cleanup = ["abandon" "-r" "mutable() ~ ::main ~ main:: ~ ::bookmarks()"];
+
+        inherit move-branch;
+        mb = move-branch;
       };
 
       ui = {
