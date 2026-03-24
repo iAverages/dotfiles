@@ -80,10 +80,10 @@
       pkgs.alsa-lib
       # input/display
       pkgs.udev
-      pkgs.xorg.libX11
-      pkgs.xorg.libXcursor
-      pkgs.xorg.libXrandr
-      pkgs.xorg.libXi
+      pkgs.libx11
+      pkgs.libxcursor
+      pkgs.libxrandr
+      pkgs.libxi
       # .NET runtime dependencies :(
       pkgs.icu
       pkgs.openssl

@@ -26,7 +26,7 @@
     |> builtins.mapAttrs (
       monitorName: monitorCfg:
         monitorCfg.hyprland.workspaces
-        |> builtins.map (ws: "${toString ws},monitor:${monitorName}")
+        |> map (ws: "${toString ws},monitor:${monitorName}")
     )
     |> builtins.attrValues
     |> builtins.concatLists;
@@ -60,7 +60,7 @@ in {
       "$mainMod" = "SUPER";
       # TODO: make these configurable
       "$terminal" = "${pkgs.lib.getExe pkgs.${config.environment.terminal.program}}";
-      "$fileManager" = "${pkgs.lib.getExe pkgs.xfce.thunar}";
+      "$fileManager" = "${pkgs.lib.getExe pkgs.thunar}";
       "$menu" = "${pkgs.lib.getExe pkgs.rofi} -show drun -show-icons -width 500 -height 376";
       "$sessionMenu" = "noctalia-shell ipc call sessionMenu toggle";
 
@@ -140,7 +140,7 @@ in {
           "$mainMod, R, exec, $menu"
           "$mainMod, I, exec, $sessionMenu"
           "$mainMod, P, pseudo,"
-          "$mainMod, J, togglesplit,"
+          "$mainMod, J, layoutmsg, togglesplit"
 
           # Move focus with mainMod + arrow keys
           "$mainMod, left, movefocus, l"

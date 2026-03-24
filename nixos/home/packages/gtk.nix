@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   gtk = {
     enable = true;
     cursorTheme = {
@@ -6,6 +10,8 @@
       package = pkgs.rose-pine-cursor;
       size = 24;
     };
+
+    gtk4.theme = config.gtk.theme;
 
     iconTheme = {
       name = "breeze-dark";

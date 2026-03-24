@@ -1,12 +1,11 @@
 {
   inputs,
   pkgs,
-  system,
   ...
 }: {
   home.packages = with pkgs; [
     rose-pine-cursor
-    inputs.rose-pine-hyprcursor.packages.${system}.default
+    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   wayland.windowManager.hyprland.settings.env = [
