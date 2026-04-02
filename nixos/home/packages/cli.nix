@@ -54,7 +54,7 @@
     alejandra
 
     # node
-    nodePackages.pnpm
+    pnpm
     nodejs_20
 
     # make "kube" module with option to enable these
