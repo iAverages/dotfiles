@@ -16,8 +16,8 @@
   };
 
   config = lib.mkIf config.programs.mirai.enable {
-    home.packages = [pkgs.swww];
-    services.swww.enable = true;
+    home.packages = [pkgs.awww];
+    services.awww.enable = true;
     services.mirai = {
       enable = true;
       settings = {
