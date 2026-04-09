@@ -62,8 +62,6 @@ return {
             },
         })
 
-        telescope.load_extension("fzf")
-
         map("n", "<C-e>", "<cmd>Telescope find_files<cr>", "Fuzzy find files in cwd")
         map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", "Fuzzy find recent files")
         map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", "Find string in cwd")
@@ -71,5 +69,7 @@ return {
         map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", "Find buffer")
         map("n", "<leader>ft", "<cmd>TodoTelescope<cr>", "Find todos")
         map("n", "<leader>fg", "<cmd>Telescope spell_suggest<cr>", "Find Correct Spelling")
+
+        telescope.load_extension("fzf")
     end,
 }
