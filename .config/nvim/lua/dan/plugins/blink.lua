@@ -26,5 +26,13 @@ return {
             fuzzy = { implementation = "prefer_rust_with_warning" },
         },
         opts_extend = { "sources.default" },
+
+        config = function(_, opts)
+            require("blink.cmp").setup(opts)
+            -- setup capabilities from blink
+            vim.lsp.config("*", {
+                capabilities = require("blink.cmp").get_lsp_capabilities(nil, true),
+            })
+        end,
     },
 }

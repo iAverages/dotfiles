@@ -9,18 +9,14 @@ return {
             "IndianBoy42/tree-sitter-just",
         },
         config = function()
-            -- import nvim-treesitter plugin
             local treesitter = require("nvim-treesitter.configs")
             require("tree-sitter-just").setup({})
 
-            -- configure treesitter
-            treesitter.setup({ -- enable syntax highlighting
+            treesitter.setup({
                 highlight = {
                     enable = true,
                 },
-                -- enable indentation
                 indent = { enable = true },
-                -- ensure these language parsers are installed
                 ensure_installed = {
                     "json",
                     "javascript",
@@ -39,7 +35,6 @@ return {
                     "sql",
                     "gitignore",
                     "python",
-                    "java",
                     "rust",
                     "go",
                     "php",
@@ -53,6 +48,13 @@ return {
                         node_decremental = "<bs>",
                     },
                 },
+
+                -- default values to make lsp shut up
+                modules = {},
+                sync_install = false,
+                auto_install = false,
+                ignore_install = {},
+                parser_install_dir = nil,
             })
 
             require("nvim-ts-autotag").setup({
@@ -70,6 +72,7 @@ return {
         config = function()
             require("treesitter-context").setup({
                 separator = "─",
+                max_lines = 10,
             })
             vim.keymap.set("n", "[c", function()
                 require("treesitter-context").go_to_context(vim.v.count1)

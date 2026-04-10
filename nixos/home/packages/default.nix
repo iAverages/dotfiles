@@ -12,6 +12,7 @@
     ./fastfetch.nix
     ./gh.nix
     ./gtk.nix
+    ./lsp.nix
     ./nh.nix
     ./proton.nix
     ./vesktop.nix

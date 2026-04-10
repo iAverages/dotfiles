@@ -1,3 +1,5 @@
+local map = require("dan.helpers.keys").map
+
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -27,5 +29,7 @@ return {
                 },
             },
         })
+
+        map("n", "<leader>e", ":Neotree filesystem toggle<Return>", "Toggle file tree")
     end,
 }

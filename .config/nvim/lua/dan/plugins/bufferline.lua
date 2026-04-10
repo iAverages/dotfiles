@@ -7,7 +7,6 @@ return {
             { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
         },
         opts = {
-
             options = {
                 diagnostics = "nvim_lsp",
                 truncate_names = true,
