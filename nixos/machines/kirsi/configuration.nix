@@ -6,6 +6,13 @@
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.open = false;
   services.xserver.videoDrivers = ["nvidia"];
+ 
+virtualisation.libvirtd = {
+    enable = true;
+
+ #   defaultNetwork.enable = true;
+qemu.swtpm.enable = true;
+  };
 
   programs.streamcontroller.enable = true;
 
@@ -48,11 +55,14 @@
   services.auth-usb-mount.enable = false;
 
   hardware.sane.enable = true;
-  users.users.dan.extraGroups = ["scanner" "lp"];
+  users.users.dan.extraGroups = ["scanner" "lp" "libvirtd"];
 
   boot.tmp.useTmpfs = true;
 
   environment.systemPackages = with pkgs; [
+
+    pkgs.swtpm
     xclip
+        virt-manager
   ];
 }

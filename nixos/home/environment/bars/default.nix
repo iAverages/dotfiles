@@ -1,4 +1,5 @@
 {lib, ...}: {
+
   imports = [./waybar.nix];
 
   options.environment.bar = {
