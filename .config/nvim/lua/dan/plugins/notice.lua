@@ -2,8 +2,12 @@ return {
     {
         "folke/noice.nvim",
         event = "VeryLazy",
+        ---@type noice.Config
         opts = {
             views = {
+                notify = {
+                    max_width = 100,
+                },
                 cmdline_popup = {
                     position = {
                         row = 5,
@@ -46,7 +50,22 @@ return {
         },
         dependencies = {
             "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
+
+            {
+                "rcarriga/nvim-notify",
+                opts = {
+                    max_width = 100,
+                },
+            },
+        },
+        keys = {
+            {
+                "eh",
+                function()
+                    require("noice").cmd("telescope")
+                end,
+                desc = "Open noice history",
+            },
         },
     },
 }

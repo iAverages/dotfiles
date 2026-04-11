@@ -6,5 +6,6 @@
     lua-language-server
     statix
     ghalint
+    stylua
   ];
 }
