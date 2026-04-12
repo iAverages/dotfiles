@@ -1,13 +1,18 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   system.stateVersion = "23.11";
   nixpkgs.config.allowUnfree = true;
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
-        "pipe-operators"
+        "pipe-operator"
       ];
       auto-optimise-store = true;
       substituters = [
