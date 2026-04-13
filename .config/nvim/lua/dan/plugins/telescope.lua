@@ -3,7 +3,7 @@ local map = require("dan.helpers.keys").map
 return {
     "nvim-telescope/telescope.nvim",
     lazy = false,
-    branch = "0.1.x",
+    version = "*",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",

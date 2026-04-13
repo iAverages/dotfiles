@@ -84,5 +84,6 @@
     cargo-info
     delta
     tokei
+    tree-sitter
   ];
 }
