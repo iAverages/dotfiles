@@ -111,7 +111,7 @@ in {
       };
 
       dwindle = {
-        pseudotile = true;
+        # pseudotile = true;
         preserve_split = true;
       };
 
@@ -124,7 +124,8 @@ in {
         kb_model = "";
         kb_rules = "";
         follow_mouse = 1;
-        sensitivity = -0.6;
+        sensitivity = -0.35;
+        accel_profile = "flat";
 
         touchpad = {
           natural_scroll = true;
@@ -207,8 +208,6 @@ in {
       xwayland = {force_zero_scaling = true;};
 
       opengl = {nvidia_anti_flicker = 0;};
-
-      misc = {vfr = 0;};
 
       debug = {damage_tracking = 0;};
 

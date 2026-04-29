@@ -60,7 +60,7 @@ return {
         },
         keys = {
             {
-                "eh",
+                "<leader>nh",
                 function()
                     require("noice").cmd("telescope")
                 end,

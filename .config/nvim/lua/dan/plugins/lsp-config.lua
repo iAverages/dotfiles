@@ -9,7 +9,7 @@ return {
         vim.lsp.enable("cssls")
         vim.lsp.enable("bashls")
         vim.lsp.enable("tailwindcss")
-        -- vim.lsp.enable("rust_analyze
+        vim.lsp.enable("rust_analyzer")
 
         -- custom configs / setting changes
         vim.lsp.config["luals"] = {
@@ -130,7 +130,7 @@ return {
 
         local hostname = vim.fn.hostname()
         local username = vim.env.USER
-        local flake_path = string.format("/home/%s/opensource/nixdots", username)
+        local flake_path = string.format("/home/%s/dotfiles", username)
 
         vim.lsp.config["nixd"] = {
             cmd = { "nixd" },
@@ -147,12 +147,10 @@ return {
                     },
                     options = {
                         nixos = {
-                            expr = string.format('(builtins.getFlake "%s").nixosConfigurations.%s.options', flake_path,
-                                hostname),
+                            expr = string.format('(builtins.getFlake "%s").nixosConfigurations.%s.options', flake_path, hostname),
                         },
                         home_manager = {
-                            expr = string.format('(builtins.getFlake "%s").homeConfigurations."%s".options', flake_path,
-                                username),
+                            expr = string.format('(builtins.getFlake "%s").homeConfigurations."%s".options', flake_path, username),
                         },
                         flake_parts = {
                             expr = string.format('(builtins.getFlake "%s").debug.options', flake_path),
@@ -206,10 +204,14 @@ return {
                 keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
                 opts.desc = "Go to previous diagnostic"
-                keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, opts)
+                keymap.set("n", "[d", function()
+                    vim.diagnostic.jump({ count = -1 })
+                end, opts)
 
                 opts.desc = "Go to next diagnostic"
-                keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, opts)
+                keymap.set("n", "]d", function()
+                    vim.diagnostic.jump({ count = 1 })
+                end, opts)
 
                 opts.desc = "Show documentation for what is under cursor"
                 keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -234,5 +236,5 @@ return {
             underline = true,
             update_in_insert = false,
         })
-    end
+    end,
 }

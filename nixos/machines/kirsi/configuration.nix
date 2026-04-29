@@ -6,18 +6,19 @@
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.open = false;
   services.xserver.videoDrivers = ["nvidia"];
- 
-virtualisation.libvirtd = {
+
+  virtualisation.libvirtd = {
     enable = true;
 
- #   defaultNetwork.enable = true;
-qemu.swtpm.enable = true;
+    #   defaultNetwork.enable = true;
+    qemu.swtpm.enable = true;
   };
 
   programs.streamcontroller.enable = true;
 
   programs.coolercontrol.enable = true;
 
+  networking.resolvconf.enable = false;
   networking.hostName = "kirsi";
   networking.firewall = {
     allowedTCPPorts = [3000 3001 22];
@@ -60,9 +61,8 @@ qemu.swtpm.enable = true;
   boot.tmp.useTmpfs = true;
 
   environment.systemPackages = with pkgs; [
-
     pkgs.swtpm
     xclip
-        virt-manager
+    virt-manager
   ];
 }

@@ -24,8 +24,10 @@ return {
             require("mini.indentscope").setup({
                 draw = {
                     delay = 25,
-                    animation = function(s, n) return 10 end,
-                }
+                    animation = function(s, n)
+                        return 10
+                    end,
+                },
             })
             require("mini.basics").setup({
                 mapings = {

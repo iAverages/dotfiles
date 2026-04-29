@@ -25,6 +25,7 @@
     libreoffice
     obs-studio
     blueman
-    (pkgs.callPackage ./hytale.nix {})
+    bruno
+    # (pkgs.callPackage ./hytale.nix {})
   ];
 }

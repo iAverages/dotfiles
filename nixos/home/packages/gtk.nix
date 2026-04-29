@@ -6,8 +6,8 @@
   gtk = {
     enable = true;
     cursorTheme = {
-      name = "BreezeX-RosePine-Linux";
-      package = pkgs.rose-pine-cursor;
+      name = "ZhuangFangyi";
+      # package = pkgs.rose-pine-cursor;
       size = 24;
     };
 
@@ -20,7 +20,7 @@
 
     theme = {
       name = "rose-pine";
-      package = pkgs.rose-pine-gtk-theme;
+      # package = pkgs.rose-pine-gtk-theme;
     };
   };
 }

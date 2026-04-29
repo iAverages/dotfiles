@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   inputs,
   ...
 }: {
@@ -13,7 +14,7 @@
 
   environment.systemPackages = with pkgs; [
     wine
-    (lutris.override {
+    (pkgs-stable.lutris.override {
       extraLibraries = pkgs: [
         gtk4
         libadwaita
