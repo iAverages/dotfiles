@@ -3,8 +3,61 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  toml = pkgs.formats.toml {};
+in {
   home.packages = [inputs.starship-jj.packages."${pkgs.stdenv.hostPlatform.system}".starship-jj];
+
+  home.file.".config/starship-jj/starship-jj.toml".source = toml.generate "starship-jj" {
+    module_separator = " ";
+
+    bookmarks = {
+      exclude = [];
+    };
+
+    module = [
+      {
+        type = "Bookmarks";
+        separator = " ";
+        color = "Magenta";
+        behind_symbol = "⇡";
+      }
+      {
+        type = "State";
+        separator = " ";
+        conflict = {
+          text = "(CONFLICT)";
+          color = "Red";
+        };
+        divergent = {
+          text = "(DIVERGENT)";
+          color = "Cyan";
+        };
+        hidden = {
+          text = "(HIDDEN)";
+          color = "Yellow";
+        };
+        immutable = {
+          disabled = false;
+          text = "(IMMUTABLE)";
+          color = "Yellow";
+        };
+        empty = {
+          disabled = false;
+          text = "(EMPTY)";
+          color = "Yellow";
+        };
+        added_lines = {
+          prefix = "+";
+          color = "Green";
+        };
+        removed_lines = {
+          prefix = "-";
+          color = "Red";
+        };
+      }
+    ];
+  };
 
   programs.starship = {
     enable = true;
