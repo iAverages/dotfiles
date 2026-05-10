@@ -14,6 +14,7 @@
     ./gtk.nix
     ./lsp.nix
     ./nh.nix
+    ./opencode.nix
     ./proton.nix
     ./vesktop.nix
     ./yt-dlp.nix
@@ -26,6 +27,8 @@
     obs-studio
     blueman
     bruno
+    gparted
+    graphite-cli
     # (pkgs.callPackage ./hytale.nix {})
   ];
 }

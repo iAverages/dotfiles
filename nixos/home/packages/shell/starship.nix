@@ -21,6 +21,7 @@ in {
         separator = " ";
         color = "Magenta";
         behind_symbol = "⇡";
+        max_length = 20;
       }
       {
         type = "State";

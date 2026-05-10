@@ -40,7 +40,10 @@
         backends.ssh.allowed-signers = "${config.home.homeDirectory}/.config/git/allowed_signers";
       };
 
-      git.sign-on-push = true;
+      git = {
+        sign-on-push = true;
+        private-commits = "description('wip:*') | description('private:*')";
+      };
     };
   };
 }

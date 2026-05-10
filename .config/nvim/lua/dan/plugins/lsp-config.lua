@@ -96,7 +96,12 @@ return {
         vim.lsp.enable("yamlls")
 
         vim.lsp.config["tsserver"] = {
-            cmd = { "tsgo", "--lsp", "--stdio" },
+            cmd = {
+                -- "tsgo",
+                "./node_modules/.bin/tsgo",
+                "--lsp",
+                "--stdio",
+            },
             filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
             settings = {
                 typescript = {

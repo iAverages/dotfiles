@@ -182,5 +182,7 @@
     };
 
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+
+    nixpkgs-pr-453474.url = "github:NixOS/nixpkgs/pull/453474/head";
   };
 }
