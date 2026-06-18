@@ -29,6 +29,7 @@
     bruno
     gparted
     graphite-cli
+    attic-client
     # (pkgs.callPackage ./hytale.nix {})
   ];
 }

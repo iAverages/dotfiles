@@ -14,14 +14,5 @@
       http_unix_socket = "";
       browser = "";
     };
-    hosts = {
-      github_com = {
-        git_protocol = "ssh";
-        users = {
-          iAverages = {};
-        };
-        user = "iAverages";
-      };
-    };
   };
 }
