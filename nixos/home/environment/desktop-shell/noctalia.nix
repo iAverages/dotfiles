@@ -11,26 +11,26 @@ in {
   ];
 
   config = lib.mkIf cfg.enable {
-    programs.noctalia-shell = {
+    programs.noctalia = {
       systemd.enable = true;
       enable = true;
-      colors = {
-        "mPrimary" = "#b58fff";
-        "mOnPrimary" = "#000000";
-        "mSecondary" = "#c79aff";
-        "mOnSecondary" = "#000000";
-        "mTertiary" = "#d8b4ff";
-        "mOnTertiary" = "#000000";
-        "mError" = "#ff6f9b";
-        "mOnError" = "#000000";
-        "mSurface" = "#000000";
-        "mOnSurface" = "#e8d8ff";
-        "mSurfaceVariant" = "#110d1a";
-        "mOnSurfaceVariant" = "#b58fff";
-        "mOutline" = "#4c3a70";
-        "mShadow" = "#000000";
-      };
       settings = {
+        colors = {
+          "mPrimary" = "#b58fff";
+          "mOnPrimary" = "#000000";
+          "mSecondary" = "#c79aff";
+          "mOnSecondary" = "#000000";
+          "mTertiary" = "#d8b4ff";
+          "mOnTertiary" = "#000000";
+          "mError" = "#ff6f9b";
+          "mOnError" = "#000000";
+          "mSurface" = "#000000";
+          "mOnSurface" = "#e8d8ff";
+          "mSurfaceVariant" = "#110d1a";
+          "mOnSurfaceVariant" = "#b58fff";
+          "mOutline" = "#4c3a70";
+          "mShadow" = "#000000";
+        };
         appLauncher = {
           customLaunchPrefix = "";
           customLaunchPrefixEnabled = false;

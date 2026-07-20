@@ -55,7 +55,7 @@
 
     # node
     pnpm
-    nodejs_20
+    nodejs_26
 
     # make "kube" module with option to enable these
     kubectl

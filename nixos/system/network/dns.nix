@@ -1,8 +1,10 @@
 {
   # fix: for whatever reason my ips dns is being included in config, first
+  networking.resolvconf.enable = false;
+
   environment.etc = {
-    # "resolv.conf".text = "nameserver 1.1.1.1\n";
-    "resolv.conf".text = "nameserver 192.168.1.12";
+    "resolv.conf".text = "nameserver 1.1.1.1\n";
+    # "resolv.conf".text = "nameserver 192.168.1.12";
   };
 
   networking.hosts = {

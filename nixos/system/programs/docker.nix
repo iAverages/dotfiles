@@ -4,7 +4,7 @@
   ...
 }: {
   virtualisation.docker = {
-    package = pkgs.docker_28;
+    package = pkgs.docker_29;
     enableOnBoot = true;
     autoPrune.enable = true;
     liveRestore = false;
