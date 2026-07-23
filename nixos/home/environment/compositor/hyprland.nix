@@ -112,7 +112,8 @@ in {
       # TODO: make these configurable
       terminal = {_var = "${lib.getExe pkgs.${config.environment.terminal.program}}";};
       fileManager = {_var = "${lib.getExe pkgs.thunar}";};
-      menu = {_var = "${lib.getExe pkgs.rofi} -show drun -show-icons -width 500 -height 376";};
+      menu = {_var = "noctalia msg panel-toggle launcher";};
+
       sessionMenu = {_var = "noctalia-shell ipc call sessionMenu toggle";};
 
       on = {

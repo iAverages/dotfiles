@@ -30,6 +30,7 @@
     gparted
     graphite-cli
     attic-client
+    lens
     # (pkgs.callPackage ./hytale.nix {})
   ];
 }
