@@ -161,10 +161,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    starship-jj = {
-      url = "gitlab:lanastara_foss/starship-jj";
-    };
-
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";

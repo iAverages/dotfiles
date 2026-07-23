@@ -1,12 +1,11 @@
 {
   lib,
-  inputs,
   pkgs,
   ...
 }: let
   toml = pkgs.formats.toml {};
 in {
-  home.packages = [inputs.starship-jj.packages."${pkgs.stdenv.hostPlatform.system}".starship-jj];
+  home.packages = [pkgs.starship-jj];
 
   home.file.".config/starship-jj/starship-jj.toml".source = toml.generate "starship-jj" {
     module_separator = " ";
