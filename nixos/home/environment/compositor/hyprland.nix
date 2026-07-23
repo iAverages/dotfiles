@@ -4,6 +4,15 @@
   config,
   ...
 }: let
+  lib = pkgs.lib;
+  lua = lib.generators.mkLuaInline;
+  toLua = lib.generators.toLua {};
+
+  monitorOutputName = name:
+    if name == " "
+    then ""
+    else name;
+
   mkMonitors = monitors: let
     formatMonitor = name: cfg: let
       res = cfg.res or "preferred";
@@ -13,28 +22,61 @@
         else "";
       pos = cfg.pos or "auto";
       scale = cfg.scale or "1";
-      extra =
-        if cfg ? extra
-        then ", ${cfg.extra}"
-        else "";
-    in "${name}, ${res}${hertz},${pos},${scale}${extra}";
+    in
+      {
+        output = monitorOutputName name;
+        mode = "${res}${hertz}";
+        position = pos;
+        inherit scale;
+      }
+      // lib.optionalAttrs (cfg ? transform) {
+        inherit (cfg) transform;
+      };
   in
     builtins.attrValues (builtins.mapAttrs formatMonitor monitors);
 
-  mkWorkspaces = monitors:
+  mkWorkspaceRules = monitors:
     monitors
     |> builtins.mapAttrs (
-      monitorName: monitorCfg:
-        monitorCfg.hyprland.workspaces
-        |> map (ws: "${toString ws},monitor:${monitorName}")
+      monitorName: monitorCfg: let
+        output = monitorOutputName monitorName;
+      in
+        if output == ""
+        then []
+        else
+          monitorCfg.hyprland.workspaces
+          |> map (ws: {
+            workspace = toString ws;
+            monitor = output;
+          })
     )
     |> builtins.attrValues
     |> builtins.concatLists;
 
+  mkBind = keys: dispatcher: {
+    _args = [
+      keys
+      (lua dispatcher)
+    ];
+  };
+
+  mkBindWithFlags = keys: dispatcher: flags: {
+    _args = [
+      keys
+      (lua dispatcher)
+      flags
+    ];
+  };
+
+  modKey = suffix: lua "mainMod .. \" + ${suffix}\"";
+  execCmd = command: "hl.dsp.exec_cmd(${toLua command})";
+
+  wlCopy = lib.getExe' pkgs.wl-clipboard "wl-copy";
+  regionScreenshotCommand = "${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${wlCopy}";
+
   generateWorkspaceBinds = {
-    lib,
-    mainMod,
-    action ? "workspace",
+    modifier ? "",
+    action ? "focus",
     offset ? 0,
   }:
     lib.range 1 10
@@ -46,172 +88,233 @@
             if i == 10
             then "0"
             else toString i;
-        in "${mainMod}, ${key}, ${action}, ${toString workspaceNum}"
+          keySuffix =
+            if modifier == ""
+            then key
+            else "${modifier} + ${key}";
+          dispatcher =
+            if action == "move"
+            then "hl.dsp.window.move({ workspace = ${toString workspaceNum} })"
+            else "hl.dsp.focus({ workspace = ${toString workspaceNum} })";
+        in
+          mkBind (modKey keySuffix) dispatcher
       )
       list);
 in {
   wayland.windowManager.hyprland = {
     enable = true;
     # fix for portals
-    # https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#using-the-home-manager-module-with-nixos
     package = null;
     portalPackage = null;
+    configType = "lua";
     settings = {
-      "$mainMod" = "SUPER";
+      mainMod = {_var = "SUPER";};
       # TODO: make these configurable
-      "$terminal" = "${pkgs.lib.getExe pkgs.${config.environment.terminal.program}}";
-      "$fileManager" = "${pkgs.lib.getExe pkgs.thunar}";
-      "$menu" = "${pkgs.lib.getExe pkgs.rofi} -show drun -show-icons -width 500 -height 376";
-      "$sessionMenu" = "noctalia-shell ipc call sessionMenu toggle";
+      terminal = {_var = "${lib.getExe pkgs.${config.environment.terminal.program}}";};
+      fileManager = {_var = "${lib.getExe pkgs.thunar}";};
+      menu = {_var = "${lib.getExe pkgs.rofi} -show drun -show-icons -width 500 -height 376";};
+      sessionMenu = {_var = "noctalia-shell ipc call sessionMenu toggle";};
 
-      exec-once = [
-        "$terminal"
-        "nm-applet"
-        "dunst"
-      ];
-
-      monitor = mkMonitors meta.monitors;
-
-      workspace = mkWorkspaces meta.monitors;
-
-      general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 2;
-        "col.active_border" = "rgb(7e22ce) rgb(3f1167) 45deg";
-        "col.inactive_border" = "0xff382D2E";
-        layout = "dwindle";
-      };
-
-      decoration = {
-        rounding = 10;
-
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
-
-        blur = {
-          enabled = true;
-          size = 1;
-          passes = 1;
-          vibrancy = 0.1696;
-        };
-      };
-
-      animations = {
-        enabled = true;
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
+      on = {
+        _args = [
+          "hyprland.start"
+          (lua ''
+            function()
+              hl.exec_cmd(terminal)
+              hl.exec_cmd("nm-applet")
+             -- hl.exec_cmd("dunst")
+            end
+          '')
         ];
       };
 
-      dwindle = {
-        # pseudotile = true;
-        preserve_split = true;
-      };
+      monitor = mkMonitors meta.monitors;
 
-      master = {new_status = "master";};
+      workspace_rule = mkWorkspaceRules meta.monitors;
 
-      misc = {disable_hyprland_logo = true;};
-      input = {
-        kb_layout = "gb";
-        kb_variant = "";
-        kb_model = "";
-        kb_rules = "";
-        follow_mouse = 1;
-        sensitivity = -0.35;
-        accel_profile = "flat";
-
-        touchpad = {
-          natural_scroll = true;
+      config = {
+        general = {
+          gaps_in = 5;
+          gaps_out = 10;
+          border_size = 2;
+          col = {
+            active_border = {
+              colors = [
+                "rgb(7e22ce)"
+                "rgb(3f1167)"
+              ];
+              angle = 45;
+            };
+            inactive_border = "#382D2E";
+          };
+          layout = "dwindle";
         };
+
+        decoration = {
+          rounding = 10;
+
+          active_opacity = 1.0;
+          inactive_opacity = 1.0;
+
+          blur = {
+            enabled = true;
+            size = 1;
+            passes = 1;
+            vibrancy = 0.1696;
+          };
+        };
+
+        animations = {enabled = true;};
+
+        dwindle = {
+          # pseudotile = true;
+          preserve_split = true;
+        };
+
+        master = {new_status = "master";};
+
+        misc = {disable_hyprland_logo = true;};
+        input = {
+          kb_layout = "gb";
+          kb_variant = "";
+          kb_model = "";
+          kb_rules = "";
+          follow_mouse = 1;
+          sensitivity = -0.35;
+          accel_profile = "flat";
+
+          touchpad = {
+            natural_scroll = true;
+          };
+        };
+
+        # fixes issues with nvidia
+        xwayland = {force_zero_scaling = true;};
+
+        opengl = {nvidia_anti_flicker = false;};
+
+        debug = {damage_tracking = 0;};
+
+        ecosystem = {no_update_news = true;};
       };
+
+      curve = {
+        _args = [
+          "myBezier"
+          {
+            type = "bezier";
+            points = [
+              [0.05 0.9]
+              [0.1 1.05]
+            ];
+          }
+        ];
+      };
+
+      animation = [
+        {
+          leaf = "windows";
+          enabled = true;
+          speed = 7;
+          bezier = "myBezier";
+        }
+        {
+          leaf = "windowsOut";
+          enabled = true;
+          speed = 7;
+          bezier = "default";
+          style = "popin 80%";
+        }
+        {
+          leaf = "border";
+          enabled = true;
+          speed = 10;
+          bezier = "default";
+        }
+        {
+          leaf = "borderangle";
+          enabled = true;
+          speed = 8;
+          bezier = "default";
+        }
+        {
+          leaf = "fade";
+          enabled = true;
+          speed = 7;
+          bezier = "default";
+        }
+        {
+          leaf = "workspaces";
+          enabled = true;
+          speed = 6;
+          bezier = "default";
+        }
+      ];
 
       bind =
         [
-          "$mainMod, Enter, exec, $terminal"
-          "$mainMod, C, killactive,"
-          "$mainMod, E, exec, $fileManager"
-          "$mainMod, V, togglefloating,"
-          "$mainMod, R, exec, $menu"
-          "$mainMod, I, exec, $sessionMenu"
-          "$mainMod, P, pseudo,"
-          "$mainMod, J, layoutmsg, togglesplit"
+          (mkBind (modKey "Return") "hl.dsp.exec_cmd(terminal)")
+          (mkBind (modKey "C") "hl.dsp.window.close()")
+          (mkBind (modKey "E") "hl.dsp.exec_cmd(fileManager)")
+          (mkBind (modKey "V") ''hl.dsp.window.float({ action = "toggle" })'')
+          (mkBind (modKey "R") "hl.dsp.exec_cmd(menu)")
+          (mkBind (modKey "I") "hl.dsp.exec_cmd(sessionMenu)")
+          (mkBind (modKey "P") "hl.dsp.window.pseudo()")
+          (mkBind (modKey "J") ''hl.dsp.layout("togglesplit")'')
 
           # Move focus with mainMod + arrow keys
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
-          "$mainMod, h, movefocus, l"
-          "$mainMod, l, movefocus, r"
-          "$mainMod, j, movefocus, u"
-          "$mainMod, k, movefocus, d"
+          (mkBind (modKey "left") ''hl.dsp.focus({ direction = "l" })'')
+          (mkBind (modKey "right") ''hl.dsp.focus({ direction = "r" })'')
+          (mkBind (modKey "up") ''hl.dsp.focus({ direction = "u" })'')
+          (mkBind (modKey "down") ''hl.dsp.focus({ direction = "d" })'')
+          (mkBind (modKey "h") ''hl.dsp.focus({ direction = "l" })'')
+          (mkBind (modKey "l") ''hl.dsp.focus({ direction = "r" })'')
+          (mkBind (modKey "j") ''hl.dsp.focus({ direction = "u" })'')
+          (mkBind (modKey "k") ''hl.dsp.focus({ direction = "d" })'')
 
           # resize
-          "SUPER CTRL, h, resizeactive, -20 0"
-          "SUPER CTRL, l, resizeactive, 20 0"
-          "SUPER CTRL, j, resizeactive, 0 -20"
-          "SUPER CTRL, k, resizeactive, 0 20"
+          (mkBind (modKey "CTRL + h") ''hl.dsp.window.resize({ x = -20, y = 0, relative = true })'')
+          (mkBind (modKey "CTRL + l") ''hl.dsp.window.resize({ x = 20, y = 0, relative = true })'')
+          (mkBind (modKey "CTRL + j") ''hl.dsp.window.resize({ x = 0, y = -20, relative = true })'')
+          (mkBind (modKey "CTRL + k") ''hl.dsp.window.resize({ x = 0, y = 20, relative = true })'')
 
           # Example special workspace (scratchpad)
-          "$mainMod, S, togglespecialworkspace, magic"
-          "$mainMod SHIFT, S, movetoworkspace, special:magic"
+          (mkBind (modKey "S") ''hl.dsp.workspace.toggle_special("magic")'')
+          (mkBind (modKey "SHIFT + S") ''hl.dsp.window.move({ workspace = "special:magic" })'')
 
           # Scroll through existing workspaces with mainMod + scroll
-          "$mainMod, mouse_down, workspace, e+1"
-          "$mainMod, mouse_up, workspace, e-1"
+          (mkBind (modKey "mouse_down") ''hl.dsp.focus({ workspace = "e+1" })'')
+          (mkBind (modKey "mouse_up") ''hl.dsp.focus({ workspace = "e-1" })'')
 
-          "$mainMod SHIFT, a, exec, ${pkgs.lib.getExe config.scripts.screenshot}"
-          "CTRL_SHIFT, a, exec, ${pkgs.grim} -g ${pkgs.slurp} - | ${pkgs.wl-clipboard}"
+          (mkBind (modKey "SHIFT + a") (execCmd (lib.getExe config.scripts.screenshot)))
+          (mkBind "CTRL + SHIFT + a" (execCmd regionScreenshotCommand))
 
-          "$mainMod SHIFT, e, exec, ${pkgs.lib.getExe config.scripts.screenrecord}"
+          (mkBind (modKey "SHIFT + e") (execCmd (lib.getExe config.scripts.screenrecord)))
         ]
         # main monitor workspace binds
-        ++ generateWorkspaceBinds {
-          lib = pkgs.lib;
-          mainMod = "$mainMod";
-        }
+        ++ generateWorkspaceBinds {}
         # move to workspace
         ++ generateWorkspaceBinds {
-          lib = pkgs.lib;
-          mainMod = "$mainMod SHIFT";
-          action = "movetoworkspace";
+          modifier = "SHIFT";
+          action = "move";
         }
         # second monitor (normally left) binds
         ++ generateWorkspaceBinds {
-          lib = pkgs.lib;
-          mainMod = "$mainMod CTRL";
+          modifier = "CTRL";
           offset = 10;
         }
         # third monitor (normally right) binds
         ++ generateWorkspaceBinds {
-          lib = pkgs.lib;
-          mainMod = "$mainMod ALT";
+          modifier = "ALT";
           offset = 20;
-        };
-
-      bindm = [
+        }
         # Move/resize windows with mainMod + LMB/RMB and dragging
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-      ];
+        ++ [
+          (mkBindWithFlags (modKey "mouse:272") "hl.dsp.window.drag()" {mouse = true;})
+          (mkBindWithFlags (modKey "mouse:273") "hl.dsp.window.resize()" {mouse = true;})
+        ];
 
       # windowrulev2 = "suppressevent maximize, class:.*";
-
-      # fixes issues with nvidia
-      xwayland = {force_zero_scaling = true;};
-
-      opengl = {nvidia_anti_flicker = 0;};
-
-      debug = {damage_tracking = 0;};
-
-      ecosystem = {no_update_news = true;};
     };
   };
 }

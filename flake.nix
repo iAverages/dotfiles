@@ -34,8 +34,8 @@
           "DP-1" = {
             res = "1920x1080";
             hertz = "60";
-            pos = " 3840x0";
-            extra = "transform,3";
+            pos = "3840x0";
+            transform = 3;
             hyprland = {workspaces = [2] ++ builtins.genList (i: i + 21) 9;};
           };
         };
@@ -99,7 +99,6 @@
             environment.wallpaper.enable = true;
             environment.desktop-shell.enable = true;
             programs.chromium.enable = true;
-            programs.firefox.enable = true;
           })
         ];
         extraSpecialArgs = {
@@ -147,16 +146,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags = {
-      url = "github:aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -182,7 +171,5 @@
     };
 
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-
-    nixpkgs-pr-453474.url = "github:NixOS/nixpkgs/pull/453474/head";
   };
 }
