@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.environment.bar;
+  defaultWallpaper = "${config.programs.noctalia.package}/share/noctalia/assets/noctalia-wallpaper.png";
 in {
   imports = [
     inputs.noctalia.homeModules.default
@@ -65,24 +66,28 @@ in {
           marginVertical = 0.25;
           monitors = [
           ];
+          order = [
+            "widgets"
+          ];
           outerCorners = true;
           position = "top";
           showCapsule = true;
           widgets = {
             center = [
-              {
-                hideMode = "hidden";
-                hideWhenIdle = false;
-                id = "MediaMini";
-                maxWidth = 600;
-                scrollingMode = "never";
-                showAlbumArt = false;
-                showArtistFirst = true;
-                showProgressRing = false;
-                showVisualizer = false;
-                useFixedWidth = false;
-                visualizerType = "mirrored";
-              }
+              "media"
+            ];
+            end = [
+              "tray"
+              "notifications"
+              "clipboard"
+              "network"
+              "bluetooth"
+              "volume"
+              "brightness"
+              "battery"
+              "date"
+              "clock"
+              "session"
             ];
             left = [
               {
@@ -119,6 +124,8 @@ in {
                 labelMode = "index";
               }
             ];
+            margin_edge = 10;
+            margin_ends = 10;
             right = [
               {
                 blacklist = [
@@ -155,6 +162,10 @@ in {
                 useCustomFont = false;
                 usePrimaryColor = false;
               }
+            ];
+            start = [
+              "control-center"
+              "workspaces"
             ];
           };
         };
@@ -239,6 +250,34 @@ in {
             ];
           };
         };
+        control_center = {
+          hidden_tabs = [
+            "weather"
+          ];
+          shortcuts = [
+            {
+              type = "wifi";
+            }
+            {
+              type = "bluetooth";
+            }
+            {
+              type = "nightlight";
+            }
+            {
+              type = "notification";
+            }
+            {
+              type = "power_profile";
+            }
+            {
+              type = "audio";
+            }
+          ];
+        };
+        desktop_widgets = {
+          enabled = false;
+        };
         dock = {
           backgroundOpacity = 1;
           colorizeIcons = false;
@@ -250,7 +289,9 @@ in {
           onlySameOutput = true;
           pinnedApps = [
           ];
+          reserve_space = false;
           size = 1;
+          smart_auto_hide = true;
         };
         general = {
           allowPanelsOnScreenWithoutBar = true;
@@ -279,6 +320,30 @@ in {
           enabled = false;
           wallpaperChange = "";
         };
+        idle = {
+          behavior_order = [
+            "lock"
+            "screen-off"
+            "lock-and-suspend"
+          ];
+          behavior = {
+            lock = {
+              action = "lock";
+              enabled = true;
+              timeout = 600.0;
+            };
+            lock-and-suspend = {
+              action = "lock_and_suspend";
+              enabled = false;
+              timeout = 900.0;
+            };
+            screen-off = {
+              action = "screen_off";
+              enabled = false;
+              timeout = 660.0;
+            };
+          };
+        };
         location = {
           analogClockInCalendar = false;
           firstDayOfWeek = -1;
@@ -290,6 +355,85 @@ in {
           useFahrenheit = false;
           weatherEnabled = true;
           weatherShowEffects = false;
+        };
+        lockscreen_widgets = {
+          enabled = false;
+          schema_version = 2;
+          widget_order = [
+            "lockscreen-login-box@DP-2"
+            "lockscreen-login-box@DP-1"
+            "lockscreen-login-box@HDMI-A-1"
+          ];
+          grid = {
+            cell_size = 16;
+            major_interval = 4;
+            visible = true;
+          };
+          widget = {
+            "lockscreen-login-box@DP-1" = {
+              box_height = 70.0;
+              box_width = 400.0;
+              cx = 540.0;
+              cy = 1801.0;
+              output = "DP-1";
+              rotation = 0.0;
+              type = "login_box";
+              settings = {
+                background_color = "surface_variant";
+                background_opacity = 0.88;
+                background_radius = 12.0;
+                center_password_text = false;
+                input_opacity = 1.0;
+                input_radius = 6.0;
+                show_caps_lock = true;
+                show_keyboard_layout = true;
+                show_login_button = true;
+                show_password_hint = true;
+              };
+            };
+            "lockscreen-login-box@DP-2" = {
+              box_height = 70.0;
+              box_width = 400.0;
+              cx = 960.0;
+              cy = 961.0;
+              output = "DP-2";
+              rotation = 0.0;
+              type = "login_box";
+              settings = {
+                background_color = "surface_variant";
+                background_opacity = 0.88;
+                background_radius = 12.0;
+                center_password_text = false;
+                input_opacity = 1.0;
+                input_radius = 6.0;
+                show_caps_lock = true;
+                show_keyboard_layout = true;
+                show_login_button = true;
+                show_password_hint = true;
+              };
+            };
+            "lockscreen-login-box@HDMI-A-1" = {
+              box_height = 70.0;
+              box_width = 400.0;
+              cx = 960.0;
+              cy = 961.0;
+              output = "HDMI-A-1";
+              rotation = 0.0;
+              type = "login_box";
+              settings = {
+                background_color = "surface_variant";
+                background_opacity = 0.88;
+                background_radius = 12.0;
+                center_password_text = false;
+                input_opacity = 1.0;
+                input_radius = 6.0;
+                show_caps_lock = true;
+                show_keyboard_layout = true;
+                show_login_button = true;
+                show_password_hint = true;
+              };
+            };
+          };
         };
         network = {
           wifiEnabled = true;
@@ -330,6 +474,9 @@ in {
           monitors = [
           ];
           overlayLayer = true;
+          kinds = {
+            media = false;
+          };
         };
         screenRecorder = {
           audioCodec = "opus";
@@ -386,6 +533,58 @@ in {
           ];
           showHeader = true;
         };
+        shell = {
+          avatar_path = "/home/dan/.face";
+          polkit_agent = true;
+          screen_time_enabled = true;
+          launcher = {
+            app_grid = true;
+            fetch_exchange_rates = false;
+          };
+          panel = {
+            launcher_placement = "attached";
+            open_near_click_session = true;
+          };
+          session = {
+            actions = [
+              {
+                action = "lock";
+                countdown_seconds = 0.0;
+                enabled = true;
+                shortcut = "1";
+                variant = "default";
+              }
+              {
+                action = "logout";
+                countdown_seconds = 0.0;
+                enabled = true;
+                shortcut = "2";
+                variant = "default";
+              }
+              {
+                action = "lock_and_suspend";
+                countdown_seconds = 0.0;
+                enabled = false;
+                shortcut = "3";
+                variant = "default";
+              }
+              {
+                action = "reboot";
+                countdown_seconds = 0.0;
+                enabled = true;
+                shortcut = "4";
+                variant = "default";
+              }
+              {
+                action = "shutdown";
+                countdown_seconds = 0.0;
+                enabled = true;
+                shortcut = "5";
+                variant = "destructive";
+              }
+            ];
+          };
+        };
         settingsVersion = 26;
         systemMonitor = {
           cpuCriticalThreshold = 90;
@@ -427,6 +626,11 @@ in {
           walker = false;
           wezterm = false;
         };
+        theme = {
+          builtin = "Catppuccin";
+          community_palette = "Oxocarbon";
+          mode = "dark";
+        };
         ui = {
           fontDefault = "JetBrainsMono Nerd Font";
           fontDefaultScale = 1;
@@ -438,12 +642,18 @@ in {
           tooltipsEnabled = true;
         };
         wallpaper = {
+          default = {
+            path = defaultWallpaper;
+          };
           directory = "/home/dan/Pictures/Wallpapers";
           enableMultiMonitorDirectories = false;
           enabled = false;
           fillColor = "#000000";
           fillMode = "crop";
           hideWallpaperFilenames = false;
+          last = {
+            path = defaultWallpaper;
+          };
           monitorDirectories = [
           ];
           overviewEnabled = false;
@@ -464,6 +674,23 @@ in {
           wallhavenResolutionMode = "atleast";
           wallhavenResolutionWidth = "";
           wallhavenSorting = "relevance";
+        };
+        widget = {
+          audio_visualizer = {
+            mirrored = false;
+          };
+          control-center = {
+            glyph = "triangle-inverted-filled";
+          };
+          media = {
+            art_size = 20;
+            max_length = 428;
+            title_scroll = "on_hover";
+          };
+          network = {
+            anchor = true;
+            show_label = false;
+          };
         };
       };
     };
