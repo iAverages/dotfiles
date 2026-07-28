@@ -8,6 +8,7 @@ return {
         vim.lsp.enable("html")
         vim.lsp.enable("cssls")
         vim.lsp.enable("bashls")
+        vim.lsp.enable("jsonls")
         vim.lsp.enable("tailwindcss")
         vim.lsp.enable("rust_analyzer")
 
