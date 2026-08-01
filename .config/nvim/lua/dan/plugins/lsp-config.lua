@@ -98,7 +98,6 @@ return {
 
         vim.lsp.config["tsserver"] = {
             cmd = {
-                -- "tsgo",
                 "./node_modules/.bin/tsgo",
                 "--lsp",
                 "--stdio",
