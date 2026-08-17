@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./browser
     ./games
@@ -31,6 +35,7 @@
     graphite-cli
     attic-client
     lens
+    inputs.visual-diff.packages.x86_64-linux.default
     # (pkgs.callPackage ./hytale.nix {})
   ];
 }

@@ -551,11 +551,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1784832170,
-        "narHash": "sha256-LPihQNhqm7ZNJNiy1v9hECgmd4XR4SsXYHF7pTNUfjQ=",
+        "lastModified": 1786918711,
+        "narHash": "sha256-bOyWy5uMV//UNzp35zFBGzAMXtLNNP0Nuan8acdr+8k=",
         "owner": "iaverages",
         "repo": "mirai",
-        "rev": "54e24b5640ecdc5e300130d95053fe1d381f4c93",
+        "rev": "63dd91d7349c9a4060a4318b0c4a7268f55dd486",
         "type": "github"
       },
       "original": {
@@ -819,7 +819,8 @@
         "private": "private",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "silentSDDM": "silentSDDM",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "visual-diff": "visual-diff"
       }
     },
     "rose-pine-hyprcursor": {
@@ -1012,6 +1013,26 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "visual-diff": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786926041,
+        "narHash": "sha256-DHk3kihexPLC64r3ppEt7W4dBwY0usLYX9+1CnWDrXs=",
+        "owner": "iAverages",
+        "repo": "visual-diff",
+        "rev": "41b370e50a8c80ad3969c53d32b7f1f4f160fc81",
+        "type": "github"
+      },
+      "original": {
+        "owner": "iAverages",
+        "repo": "visual-diff",
         "type": "github"
       }
     },

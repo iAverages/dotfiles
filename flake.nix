@@ -132,6 +132,10 @@
       url = "github:iaverages/mirai";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    visual-diff = {
+      url = "github:iAverages/visual-diff";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     private.url = "git+ssh://git@github.com/iAverages/nixos-private?ref=main";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
