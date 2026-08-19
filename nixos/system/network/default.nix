@@ -7,6 +7,6 @@
 
   networking.networkmanager = {
     enable = true;
-    dns = "none"; # prevents networkmanager from managing DNS
+    dns = "systemd-resolved";
   };
 }

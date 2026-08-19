@@ -97,7 +97,19 @@ return {
         vim.lsp.enable("yamlls")
 
         vim.lsp.config["tsserver"] = {
-            cmd = vim.fn.executable("tsgo") == 1 and { "tsgo", "--lsp", "--stdio" } or { "tsc", "--lsp", "--stdio" },
+            cmd = function(dispatchers, config)
+                local cmd = "tsc"
+                if (config or {}).root_dir then
+                    local bin = vim.fs.joinpath(config.root_dir, "node_modules/.bin")
+                    local tsgo = vim.fs.joinpath(bin, "tsgo")
+                    local tsc = vim.fs.joinpath(bin, "tsc")
+                    cmd = vim.fn.executable(tsgo) == 1 and tsgo or vim.fn.executable(tsc) == 1 and tsc or cmd
+                end
+                if cmd == "tsc" and vim.fn.executable(cmd) ~= 1 then
+                    cmd = "tsgo"
+                end
+                return vim.lsp.rpc.start({ cmd, "--lsp", "--stdio" }, dispatchers)
+            end,
             filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
             settings = {
                 typescript = {

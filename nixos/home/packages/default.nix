@@ -36,6 +36,7 @@
     attic-client
     lens
     inputs.visual-diff.packages.x86_64-linux.default
+    feishin
     # (pkgs.callPackage ./hytale.nix {})
   ];
 }

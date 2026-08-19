@@ -20,7 +20,7 @@
 
     theme = {
       name = "rose-pine";
-      package = pkgs.rose-pine-gtk-theme;
+      # package = pkgs.rose-pine-icon-theme-unstable;
     };
   };
 }

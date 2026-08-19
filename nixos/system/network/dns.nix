@@ -1,15 +1,20 @@
 {
-  # fix: for whatever reason my ips dns is being included in config, first
-  networking.resolvconf.enable = false;
-
-  environment.etc = {
-    # "resolv.conf".text = "nameserver 1.1.1.1\n";
-    "resolv.conf".text = "nameserver 192.168.1.12";
+  services.resolved = {
+    enable = true;
+    fallbackDns = [""];
   };
 
-  networking.hosts = {
-    # "192.168.1.179" = ["ctr.dan.local" "paperless.dan.local"];
+  # networking.nameservers = ["1.1.1.1"];
+  # networking.networkmanager.settings."global-dns-domain-*" = {
+  #   servers = "1.1.1.1";
+  # };
+  networking.nameservers = ["192.168.1.12"];
+  networking.networkmanager.settings."global-dns-domain-*" = {
+    servers = "192.168.1.12";
   };
+  # networking.dhcpcd.extraConfig = ''
+  #   nohook resolv.conf
+  # '';
 
   security.pki.certificateFiles = [../../ssl/ca.crt];
 }
