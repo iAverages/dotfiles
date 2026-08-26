@@ -16,6 +16,7 @@
     ./fastfetch.nix
     ./gh.nix
     ./gtk.nix
+    ./herdr.nix
     ./lsp.nix
     ./nh.nix
     ./opencode.nix
