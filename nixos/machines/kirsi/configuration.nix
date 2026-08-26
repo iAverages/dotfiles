@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
   hardware.nvidia.open = false;
   services.xserver.videoDrivers = ["nvidia"];
 
