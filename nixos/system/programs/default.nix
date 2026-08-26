@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./docker.nix
     ./hyprland.nix
@@ -6,4 +6,11 @@
     ./thunar.nix
     ./waydroid.nix
   ];
+
+  environment.systemPackages = with pkgs; [
+    via
+    vial
+  ];
+
+  services.udev.packages = [pkgs.via];
 }
