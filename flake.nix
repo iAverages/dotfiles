@@ -133,7 +133,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     visual-diff = {
-      url = "github:iAverages/visual-diff";
+      url = "git+https://git.kirsi.dev/SLOP/visual-diff";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     private.url = "git+ssh://git@github.com/iAverages/nixos-private?ref=main";
@@ -171,5 +171,6 @@
     };
 
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    hunk.url = "github:modem-dev/hunk";
   };
 }

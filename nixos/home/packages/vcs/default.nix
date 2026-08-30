@@ -1,4 +1,9 @@
-{lib, ...}: let
+{
+  lib,
+  inputs,
+  pkgs,
+  ...
+}: let
   userEmail = "me@danielraybone.com";
   allowedSignersFilePath = ".config/git/allowed_signers";
   machinesPath = ../../../machines;
@@ -18,4 +23,5 @@ in {
   imports = [./git.nix ./jj.nix];
 
   home.file.${allowedSignersFilePath}.text = allowedSigners;
+  home.packages = [inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk];
 }
