@@ -18,6 +18,29 @@
       };
       kirsi = {
         system = "x86_64-linux";
+        applications = [
+          {
+            package = "streamcontroller";
+            args = ["-b"];
+            background = true;
+          }
+          {
+            package = "spotify";
+            class = "spotify";
+            workspace = 1;
+          }
+          {
+            package = "vesktop";
+            class = "vesktop";
+            workspace = 1;
+            rules.suppress_event = "maximize";
+          }
+          {
+            package = "ghostty";
+            class = "com.mitchellh.ghostty";
+            workspace = 3;
+          }
+        ];
         monitors = {
           "HDMI-A-1" = {
             res = "1920x1080";
@@ -75,6 +98,7 @@
           meta = {
             inherit hostname;
             monitors = attrs.monitors;
+            applications = attrs.applications or [];
           };
         };
         modules = [
@@ -109,6 +133,7 @@
           meta = {
             inherit hostname;
             monitors = attrs.monitors;
+            applications = attrs.applications or [];
           };
         };
       };
@@ -172,5 +197,6 @@
 
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     hunk.url = "github:modem-dev/hunk";
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 }

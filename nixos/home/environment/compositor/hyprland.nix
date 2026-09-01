@@ -8,6 +8,12 @@
   lua = lib.generators.mkLuaInline;
   toLua = lib.generators.toLua {};
 
+  appCommand = app:
+    lib.escapeShellArgs ([(lib.getExe pkgs.${app.package})] ++ (app.args or []));
+  foregroundApplications = builtins.filter (app: !(app.background or false)) meta.applications;
+  backgroundApplications = builtins.filter (app: app.background or false) meta.applications;
+  startupCommands = map appCommand foregroundApplications;
+
   monitorOutputName = name:
     if name == " "
     then ""
@@ -103,6 +109,7 @@
 in {
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enable = false;
     # fix for portals
     package = null;
     portalPackage = null;
@@ -121,9 +128,10 @@ in {
           "hyprland.start"
           (lua ''
             function()
-              hl.exec_cmd(terminal)
               hl.exec_cmd("nm-applet")
-             -- hl.exec_cmd("dunst")
+              for _, command in ipairs(${toLua startupCommands}) do
+                hl.exec_cmd(command)
+              end
             end
           '')
         ];
@@ -132,6 +140,17 @@ in {
       monitor = mkMonitors meta.monitors;
 
       workspace_rule = mkWorkspaceRules meta.monitors;
+
+      window_rule =
+        map (
+          app:
+            {
+              match = {inherit (app) class;};
+              workspace = "${toString app.workspace} silent";
+            }
+            // (app.rules or {})
+        )
+        foregroundApplications;
 
       config = {
         general = {
@@ -168,6 +187,7 @@ in {
         animations = {enabled = true;};
 
         dwindle = {
+          default_split_ratio = 1.0;
           # pseudotile = true;
           preserve_split = true;
         };
@@ -318,4 +338,21 @@ in {
       # windowrulev2 = "suppressevent maximize, class:.*";
     };
   };
+
+  systemd.user.services =
+    backgroundApplications
+    |> map (app:
+      lib.nameValuePair app.package {
+        Unit = {
+          Description = app.package;
+          PartOf = ["graphical-session.target"];
+          After = ["graphical-session.target"];
+        };
+        Service = {
+          ExecStart = appCommand app;
+          Restart = "on-failure";
+        };
+        Install.WantedBy = ["graphical-session.target"];
+      })
+    |> builtins.listToAttrs;
 }
