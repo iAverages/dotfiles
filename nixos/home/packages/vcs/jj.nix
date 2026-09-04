@@ -20,6 +20,8 @@
         # this will remove all changes not inline with main or not tracked by a bookmark
         cleanup = ["abandon" "-r" "mutable() ~ ::main ~ main:: ~ ::bookmarks()"];
         list-cleanup = ["log" "-r" "mutable() ~ ::main ~ main:: ~ ::bookmarks()"];
+        # only shows changes for the current "branch"
+        branch = ["log" "-r" "trunk() | (trunk()..connected(@))"];
 
         inherit move-branch;
         mb = move-branch;
