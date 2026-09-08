@@ -16,6 +16,7 @@ opt.termguicolors = true
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 vim.api.nvim_set_option("clipboard", "unnamed")
 vim.cmd("set clipboard+=unnamedplus")
+vim.o.exrc = true
 
 opt.scrolloff = 999
 

@@ -8,7 +8,7 @@ in {
 
     file.".config/herdr/config.toml".source = tomlFormat.generate "herdr-config" {
       keys = {
-        prefix = "ctrl+n";
+        prefix = "ctrl+m";
       };
       session = {
         resume_agents_on_restore = false;

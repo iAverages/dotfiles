@@ -325,7 +325,6 @@ in {
           weatherEnabled = true;
           weatherShowEffects = false;
         };
-
         lockscreen = {
           wallpaper = "/home/dan/.local/share/mirai/wallpaper";
         };

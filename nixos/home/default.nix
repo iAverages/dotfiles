@@ -17,6 +17,8 @@
     '';
   };
 
+  services.kdeconnect.enable = true;
+
   programs.rclone = {
     enable = true;
     remotes = {

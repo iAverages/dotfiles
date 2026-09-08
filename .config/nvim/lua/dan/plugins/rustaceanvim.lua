@@ -1,6 +1,7 @@
 return {
     {
         "mrcjkb/rustaceanvim",
+        enable = false,
         version = "^9",
         init = function()
             vim.g.rustaceanvim = {
@@ -27,5 +28,5 @@ return {
             }
         end,
         lazy = false,
-    }
+    },
 }

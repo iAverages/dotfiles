@@ -82,8 +82,14 @@
     dust
     hyperfine
     cargo-info
+    sccache
     delta
     tokei
     tree-sitter
   ];
+
+  programs.cargo = {
+    enable = true;
+    settings.build.rustc-wrapper = "sccache";
+  };
 }

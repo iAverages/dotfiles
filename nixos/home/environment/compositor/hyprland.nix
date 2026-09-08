@@ -139,7 +139,14 @@ in {
 
       monitor = mkMonitors meta.monitors;
 
-      workspace_rule = mkWorkspaceRules meta.monitors;
+      workspace_rule =
+        mkWorkspaceRules meta.monitors
+        ++ [
+          {
+            workspace = "special:magic";
+            layout = "scrolling";
+          }
+        ];
 
       window_rule =
         map (
@@ -150,7 +157,17 @@ in {
             }
             // (app.rules or {})
         )
-        foregroundApplications;
+        foregroundApplications
+        ++ [
+          {
+            name = "rosemyne-screenshotter-no-animation";
+            match = {
+              class = "^Rosemyne$";
+              title = "^Rosemyne screenshotter$";
+            };
+            no_anim = true;
+          }
+        ];
 
       config = {
         general = {

@@ -1,6 +1,30 @@
 return {
     "neovim/nvim-lspconfig",
     config = function()
+        local function node_modules_bin(config, cmd)
+            local dir = (config or {}).root_dir or vim.fn.getcwd()
+            -- Workspace dependencies may be installed above the LSP's package root.
+            while dir do
+                local local_cmd = vim.fs.joinpath(dir, "node_modules/.bin", cmd)
+                if vim.fn.executable(local_cmd) == 1 then
+                    return local_cmd
+                end
+                local parent = vim.fs.dirname(dir)
+                dir = parent ~= dir and parent or nil
+            end
+            return cmd
+        end
+
+        local function local_node_cmd(cmd, args)
+            return function(dispatchers, config)
+                return vim.lsp.rpc.start(vim.list_extend({ node_modules_bin(config, cmd) }, args), dispatchers)
+            end
+        end
+
+        vim.lsp.config("biome", { cmd = local_node_cmd("biome", { "lsp-proxy" }) })
+        vim.lsp.config("oxlint", { cmd = local_node_cmd("oxlint", { "--lsp" }) })
+        vim.lsp.config("tailwindcss", { cmd = local_node_cmd("tailwindcss-language-server", { "--stdio" }) })
+
         -- configs provided by lspconfig
         vim.lsp.enable("biome")
         vim.lsp.enable("oxlint")
