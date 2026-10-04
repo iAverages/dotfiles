@@ -39,6 +39,7 @@
     inputs.visual-diff.packages.x86_64-linux.default
     feishin
     anki
+    (pkgs.callPackage ./inkdrop.nix {})
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.chatgpt
     # (pkgs.callPackage ./hytale.nix {})
   ];
